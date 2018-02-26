@@ -17,3 +17,10 @@ while True:
   print(s)
 ```
 
+For
+```py
+for i in range(0,5):
+  print(i)
+#prints from 0 to 4(if added 3th number in brackets(0,5,X) prints every i+X)
+```
+
