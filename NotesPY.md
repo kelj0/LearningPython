@@ -1,9 +1,11 @@
 # PYTHON
 
 
-Shitfing bits
+Printing text
 ```py
-<< //Shifts bits to left 
->> //Shifts bits to right 
 print("Print text")
 ```
+Operators(no 2 times like in cpp &&->&)
+& -> AND
+| -> OR
+
