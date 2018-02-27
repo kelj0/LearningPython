@@ -40,5 +40,14 @@ ab={
 #printing
 print(ab['Key1'])#prints Item1
 
+#SEQUENCES
+#same ase list but with aditional foo
+#first parameter is where to begin(if not it begins from start)
+#second parametar is where to end(if not it ends on end)
+#third parametar is jump ( if 2 then 1,3 from seq[1,2,3,4]
+print("List from 0-2",shopinglist[0:3])
+print("List all",shopinglist[:]
+print("List by i+=X",shopinglist[::X]
+#lists all seq but every X item
 
 ```
