@@ -49,5 +49,19 @@ print("List from 0-2",shopinglist[0:3])
 print("List all",shopinglist[:]
 print("List by i+=X",shopinglist[::X]
 #lists all seq but every X item
-
 ```
+Strings
+```py
+name = 'Swaroop'
+
+if name.startswith('Swa'):
+  print('Yes, the string starts with "Swa"')
+if 'a' in name:
+  print('Yes , it contains "a"')
+if name.find('war')!= -1:
+  print('Yes it conaints the string "war"')
+
+delimiter='_*_'
+mylist=['Brazil','Russia','India','China']
+print(delimiter.join(mylist))#prints mylist[0] delimiter then mylist[1] ..
+
