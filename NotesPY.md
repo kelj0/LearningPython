@@ -25,12 +25,19 @@ for i in range(0,5):
 ```
 Data types
 ```py
+#IF *LIST THEN I CAN PUT sep="." ect. for separating with . not with spaces
 #LIST
 list=["item1","item2","item3"]
 #printing it
-print(list);print(list(:)
+print(list)
+print(list(:))
+
 #TUPLES
 #Same like list but without extensive funcionality  (they are immutable also)
+tuple=("Car",1,0,5)
+print(tuple())
+#>> car 1 0.5
+
 
 #DICTIONARY
 ab={
