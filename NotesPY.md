@@ -14,14 +14,14 @@ while True:
   if s=='quit':
     break
   else:
-  print(s)
+    print(s)
 ```
 
 For
 ```py
 for i in range(0,5):
   print(i)
-#prints from 0 to 4(if added 3th number in brackets(0,5,X) prints every i+X)
+#prints from 0 to 4(if added 3rd number in brackets(0,5,X) prints every i+X)
 ```
 Data types
 ```py
@@ -30,12 +30,11 @@ Data types
 list=["item1","item2","item3"]
 #printing it
 print(list)
-print(list(:))
 
 #TUPLES
 #Same like list but without extensive funcionality  (they are immutable also)
 tuple=("Car",1,0,5)
-print(tuple())
+print(tuple)
 #>> car 1 0.5
 
 
