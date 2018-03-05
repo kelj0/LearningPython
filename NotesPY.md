@@ -61,6 +61,7 @@ Strings
 #CONVERTING LIST TO STRING
 some_list=["k","a","r","l","o"]
 names=''.join(some_list)
+
 name = 'Swaroop'
 
 if name.startswith('Swa'):
