@@ -46,6 +46,12 @@ ab={
 #printing
 print(ab['Key1'])#prints Item1
 
+#printing list element as in dict parametar valute()
+names={"imena":["karlo","pero","duro"],"prezimena":["kegljevic","peric","duric"]}
+ for i in range(3):
+    print("IME:",names['imena'][i])
+    print("PREZIME:",names['prezimena'][i])
+
 #SEQUENCES
 #same ase list but with aditional foo
 #first parameter is where to begin(if not it begins from start)
