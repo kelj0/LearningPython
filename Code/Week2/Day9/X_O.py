@@ -1,4 +1,4 @@
-polje=[5][9]
+polje=[[0 for x in range(9)]for y in range(5)]
 
 # 012345678XY
 # X | X | X 0
@@ -24,5 +24,5 @@ for y in range(0,5):
 
 for y in range(0,5):
     for x in range(0,9):
-        print(polje[y][x])
-        
+        print(polje[y][x],end='')
+    print()
