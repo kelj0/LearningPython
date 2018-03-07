@@ -72,6 +72,12 @@ name = 'Swaroop'
 
 if name.startswith('Swa'):
   print('Yes, the string starts with "Swa"')
+'hello'.isalpha()   #returns True if the string consists only of letters and is not blank
+'hello'.isalnum()   #returns True if the string consists only of letters and numbers and is not blank
+'hello'.isdecimal() #returns True if the string consists only of numeric characters and is not blank
+'hello'.isspace()   #returns True if the string consists only of spaces, tabs, and newlines and is not blank
+'hello'.istitle()   #returns True that begin with an uppercase letter followed by only lowercase letters.
+
 if 'a' in name:
   print('Yes , it contains "a"')
 if name.find('war')!= -1:
