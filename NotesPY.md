@@ -68,6 +68,19 @@ Strings
 some_list=["k","a","r","l","o"]
 names=''.join(some_list)
 
+# default spaces in rjust ljust in second parametar 
+'hello'.rjust(10,'*')
+#prints '*****hello'
+
+'hello'.ljust(10,'*')
+#prints 'hello*****'
+
+'hello'.center(10,'=')
+#prints '==hello==='
+
+
+
+
 name = 'Swaroop'
 
 if name.startswith('Swa'):
