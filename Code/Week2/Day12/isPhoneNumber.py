@@ -15,7 +15,13 @@ def isPhoneNumber(text):
         if not text[i].isdecimal():
             return False
     return True
-print('415-555-4242 is a phone number:',end='')
-print(isPhoneNumber('415-555-4242'))
-print('Moshi moshi is a phone number:',end='')
-print(isPhoneNumber('Moshi moshi'))
+
+message = 'Call me at 415-555-1011 tomorrow. 415-555-9999 is my office'
+
+for i in range (len(message)):
+    chunk = message[i:i+12]
+
+    if isPhoneNumber(chunk):
+        print("Found phone number:",chunk)
+print("Done")
+    
