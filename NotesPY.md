@@ -112,14 +112,20 @@ print('Phone number found: ' + mo.group())#mo.group() prints finded "term"
 # you can add names to grouped parametars ( first,second = mo.groups()) first will be 3digs , 
 # second will be 3digs-4digs
 
-#OPTIONAL MATCHING WITH ? MARK
+
 batRegex = re.compile(r'Bat(wo)?man')
 mo1= batRegex.search('The adventures of Batman')
 mo1.group()
 # 'Batman'
+
 mo2=batRegex.search('The adventure of Batwoman')
 mo2.group()
 # 'Batwoman'
+
+batRegex = re.compile(r'Bat(wo)*man')
+mo3 = batRegex.search('The Adventures of Batwowowowoman')
+mo3.group()
+# 'Batwowowowoman'
 ```
 
 
