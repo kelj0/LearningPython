@@ -105,7 +105,7 @@ import re
 #\d stands for a digit character(0-9)
 phoneNumRegex=re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')#makes search "term"
 mo= phoneNumRegex.search('My number is 123-123-1234')#searches for "term" in string, and puts it* 
-print('Phone number found: ' + mo.group())#mo.group() prints finded "term"               *in mo if it finds it
+print('Phone number found: ' + mo.group())#mo.group() prints finded "term"             *in mo if it finds it
 #you can also group items in phoneNumRegex-> phoneNumRegex=re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
 #and then you can use mo.group(1) to print first group of phoneNumRegex(3digits) .group(0) prints all ,
 # .groups() returns tuple of groups (3digits,3digs-4digs)
