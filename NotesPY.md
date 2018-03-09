@@ -106,6 +106,11 @@ import re
 phoneNumRegex=re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')#makes search "term"
 mo= phoneNumRegex.search('My number is 123-123-1234')#searches for "term" in string, and puts it in mo if it finds it
 print('Phone number found: ' + mo.group())#mo.group() prints finded "term"
+#you can also group items in phoneNumRegex-> phoneNumRegex=re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
+#and then you can use mo.group(1) to print first group of phoneNumRegex(3digits) .group(0) prints all ,
+# .groups() returns tuple of groups (3digits,3digs-4digs)
+# you can add names to grouped parametars ( first,second = mo.groups()) first will be 3digs , 
+# second will be 3digs-4digs
 ```
 
 
