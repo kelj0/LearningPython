@@ -79,8 +79,6 @@ names=''.join(some_list)
 #prints '==hello==='
 
 
-
-
 name = 'Swaroop'
 
 if name.startswith('Swa'):
@@ -99,4 +97,24 @@ if name.find('war')!= -1:
 delimiter='_*_'
 mylist=['Brazil','Russia','India','China']
 print(delimiter.join(mylist))#prints mylist[0] delimiter then mylist[1] ..
+```
+
+Regex
+```py
+import re
+#\d stands for a digit character(0-9)
+phoneNumRegex=re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')#makes search "term"
+mo= phoneNumRegex.search('My number is 123-123-1234')#searches for "term" in string, and puts it in mo if it finds it
+print('Phone number found: ' + mo.group())#mo.group() prints finded "term"
+```
+
+
+
+
+
+
+
+
+
+
 
