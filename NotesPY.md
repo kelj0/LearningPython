@@ -126,6 +126,14 @@ batRegex = re.compile(r'Bat(wo)*man')
 mo3 = batRegex.search('The Adventures of Batwowowowoman')
 mo3.group()
 # 'Batwowowowoman'
+
+
+batRegex = re.compile(r'Bat(wo)+man')
+mo4 = batRegex.search('The Adventures of Batman')
+mo4 == None
+# True
+
+
 ```
 
 
