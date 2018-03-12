@@ -141,6 +141,27 @@ mo4 == None
 # \s Any space, tab, or newline character. (Think of this as matching “space” characters.)
 # \S Any character that is not a space, tab, or newline.
 
+#NEGATIVE CHAR CLASS
+constantRegex = re.compile(r'[^aeiouAEIOU])
+constantRegex.findall("Robocop eats baby food.BabyFood.")
+#it will output all chars that are != from constantRegex
+
+#also you can use it to find first(^) or last match($)
+beginingHello=re.compile(r'^Hello')
+beginsWithHello.search('Hello world!')
+# <_sre.SRE_Match object; span=(0, 5), match='Hello'>
+beginingHello.search('He said hello.') == None
+#True
+
+endsWithNumber = re.compile(r'\d$')
+endsWithNumber.search('Your number is 42')
+#<_sre.SRE_Match object; span=(16, 17), match='2'>
+
+
+#Findin all chars exept newline
+atRegex = re.compile(r'.at')
+atRegex.findall('The cat in the hat sat on the flat mat.')
+# ['cat', 'hat', 'sat', 'lat', 'mat']
 
 ```
 
