@@ -99,6 +99,18 @@ mylist=['Brazil','Russia','India','China']
 print(delimiter.join(mylist))#prints mylist[0] delimiter then mylist[1] ..
 ```
 
+Working with files
+```py
+import os
+os.getcwd() #Current working directory in string format
+os.chdir("C:\\Windows\\System32") #Changes working dir
+os.makedirs("C:\\delicious\\walnut\\waffles") #Makes dir (delicious folder ,then inside delicious walnut ,then inside(*)
+                                                                                               *(walnut waffles folder)            
+
+
+
+```
+
 Regex
 ```py
 import re
