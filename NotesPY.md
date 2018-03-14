@@ -105,7 +105,7 @@ import os
 os.getcwd() #Current working directory in string format
 os.chdir("C:\\Windows\\System32") #Changes working dir
 os.makedirs("C:\\delicious\\walnut\\waffles") #Makes dir delicious folder ,then inside delicious walnut,(*)
-os.path.abspath(path) #returns string of apsolute path                      *(then inside walnut waffles folder)            
+os.path.abspath(path) #returns string of apsolute path                    *(then inside walnut waffles folder)            
 os.path.isabs(path) #Returns True if is absolute
 os.path.relpath(path,start) #Will return string of a path from start to path
 
