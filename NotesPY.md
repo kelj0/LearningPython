@@ -7,6 +7,15 @@ print("Print text")
 ```
 Operators(no 2 times like in cpp &&->&)
 
+Random
+```py
+import random
+a=[1,2,3]
+random.shuffle(a)#Shuffles elements in list 
+random.sample(a,2)#Takes random 2 elements in list 
+
+```
+
 While
 ```py
 while True:
