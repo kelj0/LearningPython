@@ -118,6 +118,7 @@ os.path.isdir(path)  #returns True if path argument exists and is folder
 #3. close()
 
 baconFile=open('bacon.txt','w') #second argument in open is 'w'(overwrites file with new contet)
+#if there is no file named 'bacon.txt' then it will create it 
 baconFile.write('Hello world!\n') #it returns num of chars written including newline
 #dont forget to close file after writing/reading to it
 baconFile.close()
