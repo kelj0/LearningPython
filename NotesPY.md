@@ -108,6 +108,31 @@ os.makedirs("C:\\delicious\\walnut\\waffles") #Makes dir delicious folder ,then 
 os.path.abspath(path) #returns string of apsolute path                    *(then inside walnut waffles folder)            
 os.path.isabs(path) #Returns True if is absolute
 os.path.relpath(path,start) #Will return string of a path from start to path
+os.path.exists(path) # returns True if refered file in path exists
+os.path.isfile(path) #returns True if path argument exists and is file
+os.path.isdir(path)  #returns True if path argument exists and is folder
+
+#R/W FILES
+#1. open()
+#2. read() or write() 
+#3. close()
+
+baconFile=open('bacon.txt','w') #second argument in open is 'w'(overwrites file with new contet)
+baconFile.write('Hello world!\n') #it returns num of chars written including newline
+#dont forget to close file after writing/reading to it
+baconFile.close()
+
+baconFile=open('bacon.txt','a') #second arg is 'a' unlike 'w'  it appends contet
+baconFile.write('Bacon is not a vegetable.')
+#dont forget to close 
+baconFile.close()
+
+baconFile.open('bacon.txt')
+contet=baconFile.read()
+baconFile.close()
+print(conte)
+#prints contet of baconFile(Hello world!\nBacon is not a vegetable)
+
 
 ```
 
@@ -176,14 +201,3 @@ atRegex.findall('The cat in the hat sat on the flat mat.')
 # ['cat', 'hat', 'sat', 'lat', 'mat']
 
 ```
-
-
-
-
-
-
-
-
-
-
-
