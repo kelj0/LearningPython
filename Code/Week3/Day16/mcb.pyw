@@ -13,6 +13,7 @@ if len(sys.argv)==3 and sys.argv[1].lower() == 'save':
 elif len(sys.argv)==3 and sys.argv[1].lower()=='delete':
     try:
         del mcbShelf[sys.argv[2]]
+        print("Deleted ",sys.argv[2])
     except KeyError:
         print("Sorry there is no item called like that..il print you available")
         for key in mcbShelf.keys():
