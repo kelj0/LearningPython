@@ -113,8 +113,9 @@ Working with files
 import os
 os.getcwd() #Current working directory in string format
 os.chdir("C:\\Windows\\System32") #Changes working dir
-os.makedirs("C:\\delicious\\walnut\\waffles") #Makes dir delicious folder ,then inside delicious walnut,(*)
-os.path.abspath(path) #returns string of apsolute path                    *(then inside walnut waffles folder)            
+os.makedirs("C:\\delicious\\walnut\\waffles") #Makes dir delicious folder, then inside delicious walnut,
+#then inside walnut waffles folder
+os.path.abspath(path) #returns string of apsolute path
 os.path.isabs(path) #Returns True if is absolute
 os.path.relpath(path,start) #Will return string of a path from start to path
 os.path.exists(path) # returns True if refered file in path exists
@@ -148,8 +149,8 @@ Shutil
 import shutil
 shutil.copy('source','destination')#it will copy source file to destination folder
 shutil.copytree('source','destination')#it will copy everything from bacon to bacon_backup
-shutil.move('source','destination')#move source to destination folder(if source exists it overwrites), you can
-#also rename it if you put diferend name in destination shutil.move('C:\\bacon.txt', 'C:\\eggs\\new_bacon.txt')
+shutil.move('source','destination')#move source to destination folder(if source exists it overwrites),you can
+#also rename it if you put diferend name in destination ('C:\\bacon.txt','C:\\eggs\\new_bacon.txt')
 
 ```
 
