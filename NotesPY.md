@@ -151,7 +151,6 @@ shutil.copy('source','destination')#it will copy source file to destination fold
 shutil.copytree('source','destination')#it will copy everything from bacon to bacon_backup
 shutil.move('source','destination')#move source to destination folder(if source exists it overwrites),you can
 #also rename it if you put diferend name in destination ('C:\\bacon.txt','C:\\eggs\\new_bacon.txt')
-
 ```
 
 
