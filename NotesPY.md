@@ -142,9 +142,17 @@ contet=baconFile.read()
 baconFile.close()
 print(conte)
 #prints contet of baconFile(Hello world!\nBacon is not a vegetable)
-
+```
+Shutil
+```py
+import shutil
+shutil.copy('source','destination')#it will copy source file to destination folder
+shutil.copytree('source','destination')#it will copy everything from bacon to bacon_backup
+shutil.move('source','destination')#move source to destination folder(if source exists it overwrites), you can
+#also rename it if you put diferend name in destination shutil.move('C:\\bacon.txt', 'C:\\eggs\\new_bacon.txt')
 
 ```
+
 
 Regex
 ```py
