@@ -111,16 +111,28 @@ print(delimiter.join(mylist))#prints mylist[0] delimiter then mylist[1] ..
 Working with files
 ```py
 import os
+
+
+
+#info
 os.getcwd() #Current working directory in string format
+os.path.abspath(path) #returns string of apsolute path
+os.path.relpath(path,start) #Will return string of a path from start to path
+
 os.chdir("C:\\Windows\\System32") #Changes working dir
 os.makedirs("C:\\delicious\\walnut\\waffles") #Makes dir delicious folder, then inside delicious walnut,
 #then inside walnut waffles folder
-os.path.abspath(path) #returns string of apsolute path
+
+#Checks
 os.path.isabs(path) #Returns True if is absolute
-os.path.relpath(path,start) #Will return string of a path from start to path
 os.path.exists(path) # returns True if refered file in path exists
 os.path.isfile(path) #returns True if path argument exists and is file
 os.path.isdir(path)  #returns True if path argument exists and is folder
+
+#Delete
+os.unlink(path) #will delete FILE a path
+os.rmdir(path) # will delete FOLDER at path
+shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
 
 #R/W FILES
 #1. open()
