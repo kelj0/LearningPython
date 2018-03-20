@@ -112,8 +112,6 @@ Working with files
 ```py
 import os
 
-
-
 #info
 os.getcwd() #Current working directory in string format
 os.path.abspath(path) #returns string of apsolute path
