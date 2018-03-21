@@ -127,13 +127,24 @@ os.path.exists(path) # returns True if refered file in path exists
 os.path.isfile(path) #returns True if path argument exists and is file
 os.path.isdir(path)  #returns True if path argument exists and is folder
 
-#Delete
+#PERM DELETE
 os.unlink(path) #will delete FILE a path
 os.rmdir(path) # will delete FOLDER at path
 shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
 
 import send2trash
-send2trash.send2trash(path)
+send2trash.send2trash(path) #sends "path" to TRASH
+
+import os
+#Prints folders,subfolders and files in folders (os.walk returns name of folder in path
+#second parametar is name of subfolder and 3rd parametar is filenames in subfolders
+for folderName,subfolders,filenames in os.walk(path):
+  print('The current folder is' + folderName)
+  for subfolder in subfolders:
+    print('SUBFOLDER OF' + folderName + ': '+subfolder)
+  for filename in filenames:
+    print('FILE INSIDE ' + folderName+': '+ filename)
+  print('')
 
 
 #R/W FILES
@@ -165,6 +176,8 @@ shutil.copy('source','destination')#it will copy source file to destination fold
 shutil.copytree('source','destination')#it will copy everything from bacon to bacon_backup
 shutil.move('source','destination')#move source to destination folder(if source exists it overwrites),you can
 #also rename it if you put diferend name in destination ('C:\\bacon.txt','C:\\eggs\\new_bacon.txt')
+shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
+
 ```
 
 
