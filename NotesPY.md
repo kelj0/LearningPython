@@ -179,6 +179,14 @@ exampleZip.namelist()
 
 fileinsidezip.file_size() #prints size of file in bytes
 fileinsidezip.compress_size #prints compressed size in bytes
+exampleZip.extractall(path(optional)) # extracts files in zip in current working dir
+#if no folder called like path extractall will make it
+exampleZip.extract(file/folder,path(optional))#extracts specific file/folder to working dir | (optional) path
+
+#creating new zip files
+newZip = zipfile.ZipFile('new.zip','w') #opens zipfile object in write('w') mode , also has append('a') mode
+newZip.write('spam.txt',compress_type=zipfile.ZIP_DEFLATED)
+newZip.close()
 
 exampleZip.close() #When you finish working with file
 
