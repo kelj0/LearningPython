@@ -132,6 +132,10 @@ os.unlink(path) #will delete FILE a path
 os.rmdir(path) # will delete FOLDER at path
 shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
 
+import send2trash
+send2trash.send2trash(path)
+
+
 #R/W FILES
 #1. open()
 #2. read() or write() 
