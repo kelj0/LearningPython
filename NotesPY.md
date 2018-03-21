@@ -169,6 +169,20 @@ baconFile.close()
 print(conte)
 #prints contet of baconFile(Hello world!\nBacon is not a vegetable)
 ```
+ZIP FILES
+```py
+import zipfile
+#navigate to foldere where is zip you wanna work with
+exampleZip = zipfile.ZipFile('testzip.zip') #exampleZip is testzip.zip now
+exampleZip.namelist() 
+#prints all folders/subfolders and files of zip file
+
+fileinsidezip.file_size() #prints size of file in bytes
+fileinsidezip.compress_size #prints compressed size in bytes
+
+exampleZip.close() #When you finish working with file
+
+```
 Shutil
 ```py
 import shutil
