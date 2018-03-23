@@ -24,6 +24,3 @@ def backupToZip(folder):
             backupZip.write(os.path.join(folderName,filename))
     backupZip.close()
     print('Done')
-
-
-backupToZip("C:\\Users\\Karlo\\Desktop\\cats")
