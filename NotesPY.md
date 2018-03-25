@@ -83,6 +83,13 @@ print("List by i+=X",shopinglist[::X]
 #lists all seq but every X item
 ```
 
+Web Scraping
+```py
+import webbrowser
+webbrowser.open(URL)#opens that page in new tab
+
+```
+
 Strings
 ```py
 #CONVERTING LIST TO STRING
