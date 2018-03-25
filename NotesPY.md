@@ -118,6 +118,9 @@ Logging
 import logging
 logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
 #basic syntax for logging , its usefull when debugging to see what is happening in program
+#if you want to write logs in file just pass KEYWORD filename="nameoffile.txt" as one of parametars
+logging.basicConfig(filename="log.txt",level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
+
 logging.debug('Msg')
 #Prints 2018-03-25 16:51:35,172 - DEBUG - Msg
 #if debug is succesful then you can skip printing msg's with 
