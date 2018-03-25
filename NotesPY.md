@@ -17,17 +17,17 @@ random.sample(a,2)#Takes random 2 elements in list
 While
 ```py
 while True:
-  s=input("Enter string")
-  if s=='quit':
-    break
-  else:
-    print(s)
+    s=input("Enter string")
+    if s=='quit':
+      break
+    else:
+      print(s)
 ```
 
 For
 ```py
 for i in range(0,5):
-  print(i)
+    print(i)
 #prints from 0 to 4(if added 3rd number in brackets(0,5,X) prints every i+X)
 ```
 
@@ -56,8 +56,8 @@ print(ab['Key1'])#prints Item1
 #printing list element as in dict parametar valute()
 names={"imena":["karlo","pero","duro"],"prezimena":["kegljo","peric","duric"]}
  for i in range(3):
-    print("IME:",names['imena'][i])
-    print("PREZIME:",names['prezimena'][i])
+      print("IME:",names['imena'][i])
+      print("PREZIME:",names['prezimena'][i])
 
 #SEQUENCES
 #same ase list but with aditional foo
@@ -94,9 +94,9 @@ if name.startswith('Swa'):
 'hello'.istitle()   #returns True that begin with an uppercase letter followed by only lowercase letters.
 
 if 'a' in name:
-  print('Yes , it contains "a"')
+    print('Yes , it contains "a"')
 if name.find('war')!= -1:
-  print('Yes it conaints the string "war"')
+    print('Yes it conaints the string "war"')
 
 delimiter='_*_'
 mylist=['Brazil','Russia','India','China']
