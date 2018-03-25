@@ -144,13 +144,13 @@ send2trash.send2trash(path) #sends "path" to TRASH
 #Prints folders,subfolders and files in folders (os.walk returns name of folder in path
 #second parametar is name of subfolder and 3rd parametar is filenames in subfolders
 for folderName,subfolders,filenames in os.walk(path):
-  print('The current folder is' + folderName)
-  for subfolder in subfolders:
-    print('SUBFOLDER OF' + folderName + ': '+subfolder)
-  for filename in filenames:
-    print('FILE INSIDE ' + folderName+': '+ filename)
-  print('')
-
+    print('The current folder is' + folderName)
+    for subfolder in subfolders:
+        print('SUBFOLDER OF' + folderName + ': '+subfolder)
+    for filename in filenames:
+        print('FILE INSIDE ' + folderName+': '+ filename)
+    print('')
+   
 
 baconFile=open('bacon.txt','w') #second argument in open is 'w'(overwrites file with new contet)
 #if there is no file named 'bacon.txt' then it will create it 
@@ -182,14 +182,12 @@ fileinsidezip.compress_size #prints compressed size in bytes
 exampleZip.extractall(path(optional)) # extracts files in zip in current working dir
 #if no folder called like path extractall will make it
 exampleZip.extract(file/folder,path(optional))#extracts specific file/folder to working dir | (optional) path
+exampleZip.close() #When you finish working with file
 
 #creating new zip files
 newZip = zipfile.ZipFile('new.zip','w') #opens zipfile object in write('w') mode , also has append('a') mode
 newZip.write('spam.txt',compress_type=zipfile.ZIP_DEFLATED)
 newZip.close()
-
-exampleZip.close() #When you finish working with file
-
 ```
 Shutil
 ```py
@@ -199,7 +197,6 @@ shutil.copytree('source','destination')#it will copy everything from bacon to ba
 shutil.move('source','destination')#move source to destination folder(if source exists it overwrites),you can
 #also rename it if you put diferend name in destination ('C:\\bacon.txt','C:\\eggs\\new_bacon.txt')
 shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
-
 ```
 
 
@@ -215,7 +212,6 @@ print('Phone number found: ' + mo.group())#mo.group() prints finded "term"      
 # .groups() returns tuple of groups (3digits,3digs-4digs)
 # you can add names to grouped parametars ( first,second = mo.groups()) first will be 3digs , 
 # second will be 3digs-4digs
-
 
 batRegex = re.compile(r'Bat(wo)?man')
 mo1= batRegex.search('The adventures of Batman')
