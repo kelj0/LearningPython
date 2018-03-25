@@ -10,6 +10,7 @@ If you want to get input in debugger
 
 ->below add "console":"externalTerminal" (dont forget to put ',' after line)
 
+
 Printing text
 ```py
 print("Print text")
