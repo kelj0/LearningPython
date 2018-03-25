@@ -113,6 +113,17 @@ assert "red" in stoplight.values() , "Neither light is red!"+str(stoplight)
 #AssertionError : Neither light is red! {'key1':'blue','key2':'green'}
 #As you can see i would immediately assume that error is in dictionary
 ```
+Logging
+```py
+import logging
+logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
+#basic syntax for logging , its usefull when debugging to see what is happening in program
+logging.debug('Msg')
+#Prints 2018-03-25 16:51:35,172 - DEBUG - Msg
+#if debug is succesful then you can skip printing msg's with 
+logging.disable(logging.CRITICAL)
+
+```
 
 Working with files
 ```py
