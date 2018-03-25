@@ -5,8 +5,6 @@ Printing text
 ```py
 print("Print text")
 ```
-Operators(no 2 times like in cpp &&->&)
-
 Random
 ```py
 import random
@@ -47,7 +45,6 @@ tuple=("Car",1,0,5)
 print(tuple)
 #>> car 1 0.5
 
-
 #DICTIONARY
 ab={
 'Key1':'Item1',
@@ -72,6 +69,7 @@ print("List all",shopinglist[:]
 print("List by i+=X",shopinglist[::X]
 #lists all seq but every X item
 ```
+
 Strings
 ```py
 #CONVERTING LIST TO STRING
