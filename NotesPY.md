@@ -32,6 +32,7 @@ for i in range(0,5):
   print(i)
 #prints from 0 to 4(if added 3rd number in brackets(0,5,X) prints every i+X)
 ```
+
 Data types
 ```py
 #IF *LIST THEN I CAN PUT sep="." ect. for separating with . not with spaces
