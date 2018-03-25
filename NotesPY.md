@@ -80,16 +80,12 @@ names=''.join(some_list)
 # default spaces in rjust ljust in second parametar 
 'hello'.rjust(10,'*')
 #prints '*****hello'
-
 'hello'.ljust(10,'*')
 #prints 'hello*****'
-
 'hello'.center(10,'=')
 #prints '==hello==='
 
-
 name = 'Swaroop'
-
 if name.startswith('Swa'):
   print('Yes, the string starts with "Swa"')
 'hello'.isalpha()   #returns True if the string consists only of letters and is not blank
@@ -106,6 +102,18 @@ if name.find('war')!= -1:
 delimiter='_*_'
 mylist=['Brazil','Russia','India','China']
 print(delimiter.join(mylist))#prints mylist[0] delimiter then mylist[1] ..
+```
+
+Assertions
+```py
+#You can see where is bug in your program if you include them
+# 1st "Paramar to chech if false then when problem happens you can write feedback to see what is the problem"
+# 2nd "Feedback to output when problem occures
+assert "red" in stoplight.values() , "Neither light is red!"+str(stoplight)
+#if there is no red in dic keys then program writes this:
+#AssertionError : Neither light is red! {'key1':'blue','key2':'green'}
+#As you can see i would immediately assume that error is in dictionary
+
 ```
 
 Working with files
