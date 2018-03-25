@@ -87,7 +87,13 @@ Web Scraping
 ```py
 import webbrowser
 webbrowser.open(URL)#opens that page in new tab
-
+```
+.Bat
+```
+To run python scripts write
+@py.exe C:\path\to\your\pythonScript.py %*
+python must be in sys PATH, advice: put all bat files in one folder and add folder to sys PATH 
+you will be able to run your bat files with run (win+r on windows)
 ```
 
 Strings
