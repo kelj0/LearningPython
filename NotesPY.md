@@ -122,6 +122,7 @@ logging.debug('Msg')
 #Prints 2018-03-25 16:51:35,172 - DEBUG - Msg
 #if debug is succesful then you can skip printing msg's with 
 logging.disable(logging.CRITICAL)
+#you simply pass logging.disable() a logging level , and it will suppress all log msg at that lvl and lower 
 
 ```
 
