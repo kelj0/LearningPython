@@ -113,7 +113,6 @@ assert "red" in stoplight.values() , "Neither light is red!"+str(stoplight)
 #if there is no red in dic keys then program writes this:
 #AssertionError : Neither light is red! {'key1':'blue','key2':'green'}
 #As you can see i would immediately assume that error is in dictionary
-
 ```
 
 Working with files
