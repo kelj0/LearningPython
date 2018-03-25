@@ -1,10 +1,23 @@
 # PYTHON
 
+DEBUGGER
+
+If you want to get input in debugger 
+
+->go in launch.json file (ctrl+shitf+D)
+
+->in first part add python path to pythonPath
+
+->below add "console":"externalTerminal" (dont forget to put ',' after line)
+
+----------------------------------------------------------------------------------------------------------------
+
 
 Printing text
 ```py
 print("Print text")
 ```
+
 Random
 ```py
 import random
@@ -68,6 +81,13 @@ print("List from 0-2",shopinglist[0:3])
 print("List all",shopinglist[:]
 print("List by i+=X",shopinglist[::X]
 #lists all seq but every X item
+```
+
+Web Scraping
+```py
+import webbrowser
+webbrowser.open(URL)#opens that page in new tab
+
 ```
 
 Strings
