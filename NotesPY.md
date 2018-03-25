@@ -141,7 +141,6 @@ shutil.rmtree(path) # will remove folder at path, and all files and folder it co
 import send2trash
 send2trash.send2trash(path) #sends "path" to TRASH
 
-import os
 #Prints folders,subfolders and files in folders (os.walk returns name of folder in path
 #second parametar is name of subfolder and 3rd parametar is filenames in subfolders
 for folderName,subfolders,filenames in os.walk(path):
