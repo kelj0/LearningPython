@@ -1,10 +1,14 @@
 # PYTHON
 
+DEBUGGER
+If you want to get input in debugger go in launch.json file (ctrl+shitf+D),in first part 
+add python path to pythonPath , and below add "console":"externalTerminal" (dont forget to put ',' after line)
 
 Printing text
 ```py
 print("Print text")
 ```
+
 Random
 ```py
 import random
