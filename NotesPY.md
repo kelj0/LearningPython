@@ -87,6 +87,13 @@ Web Scraping
 ```py
 import webbrowser
 webbrowser.open(URL)#opens that page in new tab
+
+pip install requests ( or python -m pip install requests)
+import requests
+res = requests.get('http://www.gutenberg.org/cache/epub/1112/pg1112.txt')#goes to text web page
+res.status_code == requests.codes.ok #returns true if request succeeded
+#you can also check len(res.text), and print it 
+print(res.text[:250])
 ```
 .Bat
 ```
