@@ -1,2 +1,2 @@
-@py.exe D:\--python\mapIt.py Hrvatska
+@py.exe D:\--python\mapIt.py %*
 @pause
