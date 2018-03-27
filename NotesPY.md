@@ -104,6 +104,19 @@ try:
 except Exception as exc:
     print('Problem with res: %s' % (exc))
     
+#Saving to hard drive
+
+res.iter_content(chunk)
+#each chunk is of the bytes data type and you get to specify how many bytes each chunk will contain
+
+res = requests.get(URL)
+res.raise_for_status() #Check if any errors
+playFile = open('Filename.txt','wb')
+for chunk in res.iter_content(size of chunks):
+    playFile.write(chunk)
+
+playFile.close()
+
 ```
 
 
