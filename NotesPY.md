@@ -94,7 +94,12 @@ res = requests.get('http://www.gutenberg.org/cache/epub/1112/pg1112.txt')#goes t
 res.status_code == requests.codes.ok #returns true if request succeeded
 #you can also check len(res.text), and print it 
 print(res.text[:250])
+
+res.raise_for_status() #this will raise an exception if there was and error downloading the file
+#and will do nothing if the download succeeded
 ```
+
+
 .Bat
 ```
 To run python scripts write
