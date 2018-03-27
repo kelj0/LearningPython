@@ -97,6 +97,13 @@ print(res.text[:250])
 
 res.raise_for_status() #this will raise an exception if there was and error downloading the file
 #and will do nothing if the download succeeded
+
+#good practice to do is 
+try:
+    res.raise_for_status()
+except Exception as exc:
+    print('Problem with res: %s' % (exc))
+    
 ```
 
 
