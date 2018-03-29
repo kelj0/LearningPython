@@ -147,6 +147,10 @@ elems[0].getText() #elems has only 1 id="author" so we want 1st elem of elems(0 
 str(elems[0]) # returns "html" version of "author"
 #<span id="author">Al Sweigart</span>
 
+#we can use exampleSoup.get to find some key elements
+exampleSoup.get('id') #prints 'author'
+exampleSoup.get('some_nonexistent_addr') == None #prints True
+exampleSoup.attrs #prints {'id:'author'}
 exampleFile.close()
 ```
 
