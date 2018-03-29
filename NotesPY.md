@@ -106,16 +106,13 @@ except Exception as exc:
     
 #Saving to hard drive
 
-res.iter_content(chunk)
-#each chunk is of the bytes data type and you get to specify how many bytes each chunk will contain
-#100 000 is generally a good size
-
 res = requests.get(URL)
 res.raise_for_status() #Check if any errors
 playFile = open('Filename.txt','wb')
 for chunk in res.iter_content(size of chunks):
     playFile.write(chunk)
-    
+#each chunk is of the bytes data type and you get to specify how many bytes each chunk will contain
+#100 000 is generally a good size    
 playFile.close()
 
 
