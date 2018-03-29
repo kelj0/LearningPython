@@ -137,6 +137,16 @@ soup.select('input[type="button"]') #All elements named <input>that have and att
 exampleFile=open('example.html','r') #open html file for reading
 exampleSoup = bs4.BeautifulSoup(exampleFile) read example.html in exampleSoup
 print(exampleSoup.text[:200]) #print first 200 chars from exampleSoup(loaded from file)
+
+elems = exampleSoup.select('#author') #creates list of all id="author"
+>>len(elems) #checking how many "author" id's are
+1
+
+elems[0].getText() #elems has only 1 id="author" so we want 1st elem of elems(0 elem is first in list)
+#'Al sweigart' , this is "inner" HTML , see diference on line below
+str(elems[0]) # returns "html" version of "author"
+#<span id="author">Al Sweigart</span>
+
 exampleFile.close()
 ```
 
