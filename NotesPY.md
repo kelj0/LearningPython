@@ -133,9 +133,10 @@ soup.select('div>span') #All elements named <span> that are directly within and 
 soup.select('input[name]') #All elements named <input> that have a name attribute with any valute
 soup.select('input[type="button"]') #All elements named <input>that have and attribute 
                                     #named type with value button
-
-
-
+#working with files
+exampleFile=open('example.html','r') #open html file for reading
+exampleSoup = bs4.BeautifulSoup(exampleFile) read example.html in exampleSoup
+exampleFile.close()
 ```
 
 
