@@ -90,7 +90,7 @@ webbrowser.open(URL)#opens that page in new tab
 
 pip install requests ( or python -m pip install requests)
 import requests
-res = requests.get('http://www.gutenberg.org/cache/epub/1112/pg1112.txt')#goes to text web page
+res = requests.get('http://www.gutenberg.org/cache/epub/1112/pg1112.txt')#res == page source
 res.status_code == requests.codes.ok #returns true if request succeeded
 #you can also check len(res.text), and print it 
 print(res.text[:250])
@@ -121,6 +121,8 @@ playFile.close()
 
 #BeautifulSoup module
 import bs4
+res = requests.get(url)#get page source
+noStarchSoup = bs4.BeautifulSoup(res.text)#stores res in noStarchSoup
 
 ```
 
