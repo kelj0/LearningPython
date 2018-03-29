@@ -123,6 +123,9 @@ playFile.close()
 import bs4
 res = requests.get(url)#get page source
 noStarchSoup = bs4.BeautifulSoup(res.text)#stores res in noStarchSoup
+#you can also load an HTML file from hdd 
+exampleFile = open('example.html')
+exampleSoup=bs4.BeautifulSoup(exampleFile)
 
 ```
 
