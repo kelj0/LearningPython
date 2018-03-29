@@ -124,6 +124,18 @@ noStarchSoup = bs4.BeautifulSoup(res.text)#stores res in noStarchSoup
 exampleFile = open('example.html')
 exampleSoup=bs4.BeautifulSoup(exampleFile)
 
+#finding element with select()
+soup.select('div') #All elements named <div>
+soup.select('#author') #The element with and id attribute of author
+soup.select('.notice') #All lements that use a CSS class attribute names notice
+soup.select('div span') #All elements named <span> that are withing an element named <div>
+soup.select('div>span') #All elements named <span> that are directly within and leement named <div>
+soup.select('input[name]') #All elements named <input> that have a name attribute with any valute
+soup.select('input[type="button"]') #All elements named <input>that have and attribute 
+                                    #named type with value button
+
+
+
 ```
 
 
