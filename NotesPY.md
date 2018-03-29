@@ -115,12 +115,12 @@ res.raise_for_status() #Check if any errors
 playFile = open('Filename.txt','wb')
 for chunk in res.iter_content(size of chunks):
     playFile.write(chunk)
-
+    
 playFile.close()
 
+
+#BeautifulSoup module
 import bs4
-
-
 
 ```
 
