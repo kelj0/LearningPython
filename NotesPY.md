@@ -187,7 +187,6 @@ is_displayed() #Returns True if the element is visible
 is_enabled() #For input elements , returns True if the element is enabled
 is_selected() #For checkbox or radio button elements , returns True if the element is selected
 location #A dictionary with keys 'x' and 'y' for the position of the element in page
-
 ```
 
 .Bat
