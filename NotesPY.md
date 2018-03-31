@@ -183,6 +183,10 @@ tag_name #The tag name , such as 'a' for an <a> element
 get_attribute(name) #The value for the element's name attribute
 text #The the text within the element , such as 'Hello' in <span>Hello</span>
 clear() #For text field or text area elements , clears the text typed into it
+is_displayed() #Returns True if the element is visible
+is_enabled() #For input elements , returns True if the element is enabled
+is_selected() #For checkbox or radio button elements , returns True if the element is selected
+location #A dictionary with keys 'x' and 'y' for the position of the element in page
 
 ```
 
