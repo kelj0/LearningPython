@@ -161,6 +161,23 @@ type(browser)
 #<class 'selenium.webdriver.firefox.webdriver.WebDriver'>
 browser.get('http://inventwithpython.com') #opens that site in 'browser'
 
+#WebDriver Methods for Finding Elements
+#in basic syntax is browser.find_element/elements+something if you put element
+#it returns single WebElement object , but if you put elements it returns list of all WebElement's
+#ect. 
+browser.find_element_by_class_name('name') #Elements that use CSS class 'name'
+#if you use here browser.find_elements_by_class_name(name) it would return list of all classes
+#named 'name'
+
+css_selector(selector) #Elements that match the CSS selector
+id(id) #Elements with a matching id attribute value
+link_text(text) #<a> elements that completely match the text provided
+partial_link_text(text) #<a> elements that contain the text provided
+name(name) #Elements with a matching name atribute value
+tag_name(name) #Elements with a matching tag name(case insensitive; an <a> element is matched by
+# 'a' and 'A')
+
+
 
 ```
 
