@@ -177,6 +177,13 @@ name(name) #Elements with a matching name atribute value
 tag_name(name) #Elements with a matching tag name(case insensitive; an <a> element is matched by
 # 'a' and 'A')
 
+#Once you have the WebElement object you can find out more about it vy reading the attributes or 
+#calling the methods
+tag_name #The tag name , such as 'a' for an <a> element
+get_attribute(name) #The value for the element's name attribute
+text #The the text within the element , such as 'Hello' in <span>Hello</span>
+clear() #For text field or text area elements , clears the text typed into it
+
 ```
 
 .Bat
