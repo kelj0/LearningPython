@@ -152,6 +152,14 @@ exampleSoup.get('id') #prints 'author'
 exampleSoup.get('some_nonexistent_addr') == None #prints True
 exampleSoup.attrs #prints {'id:'author'}
 exampleFile.close()
+
+#Selenium
+from selenium import webdriver
+
+browser = webdriver.Firefox() #opens firefox
+type(browser)
+#<class 'selenium.webdriver.firefox.webdriver.WebDriver'>
+browser.get('http://inventwithpython.com') #opens that site in 'browser'
 ```
 
 
