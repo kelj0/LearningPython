@@ -189,6 +189,10 @@ is_enabled() #For input elements , returns True if the element is enabled
 is_selected() #For checkbox or radio button elements , returns True if the element is selected
 location #A dictionary with keys 'x' and 'y' for the position of the element in page
 
+#Special Keys (arrow,end,home..)
+from selenium.webdriver.common.keys import Keys
+#you just sent them as normal key (linkElem.send_keys(Keys.END) for 'pressing END')
+
 #Clicking
 linkElem = browser.find_element_by_link_text('Read It Online')
 linkElem.click() #Clicks on Read it online
@@ -299,7 +303,6 @@ for folderName,subfolders,filenames in os.walk(path):
         print('FILE INSIDE ' + folderName+': '+ filename)
     print('')
    
-
 baconFile=open('bacon.txt','w') #second argument in open is 'w'(overwrites file with new contet)
 #if there is no file named 'bacon.txt' then it will create it 
 baconFile.write('Hello world!\n') #it returns num of chars written including newline
