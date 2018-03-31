@@ -160,6 +160,8 @@ browser = webdriver.Firefox() #opens firefox
 type(browser)
 #<class 'selenium.webdriver.firefox.webdriver.WebDriver'>
 browser.get('http://inventwithpython.com') #opens that site in 'browser'
+
+
 ```
 
 .Bat
