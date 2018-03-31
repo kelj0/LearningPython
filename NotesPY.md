@@ -177,8 +177,6 @@ name(name) #Elements with a matching name atribute value
 tag_name(name) #Elements with a matching tag name(case insensitive; an <a> element is matched by
 # 'a' and 'A')
 
-
-
 ```
 
 .Bat
