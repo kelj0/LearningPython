@@ -162,7 +162,6 @@ type(browser)
 browser.get('http://inventwithpython.com') #opens that site in 'browser'
 ```
 
-
 .Bat
 ```
 To run python scripts write
