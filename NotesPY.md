@@ -250,6 +250,8 @@ assert "red" in stoplight.values() , "Neither light is red!"+str(stoplight)
 #AssertionError : Neither light is red! {'key1':'blue','key2':'green'}
 #As you can see i would immediately assume that error is in dictionary
 ```
+
+
 Logging
 ```py
 import logging
@@ -340,6 +342,7 @@ newZip = zipfile.ZipFile('new.zip','w') #opens zipfile object in write('w') mode
 newZip.write('spam.txt',compress_type=zipfile.ZIP_DEFLATED)
 newZip.close()
 ```
+
 Shutil
 ```py
 import shutil
@@ -350,11 +353,11 @@ shutil.move('source','destination')#move source to destination folder(if source 
 shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
 ```
 
-
 Regex
 ```py
 import re
 #\d stands for a digit character(0-9)
+
 phoneNumRegex=re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')#makes search "term"
 mo= phoneNumRegex.search('My number is 123-123-1234')#searches for "term" in string, and puts it* 
 print('Phone number found: ' + mo.group())#mo.group() prints finded "term"             *in mo if it finds it
@@ -407,7 +410,6 @@ beginingHello.search('He said hello.') == None
 endsWithNumber = re.compile(r'\d$')
 endsWithNumber.search('Your number is 42')
 #<_sre.SRE_Match object; span=(16, 17), match='2'>
-
 
 #Findin all chars exept newline
 atRegex = re.compile(r'.at')
