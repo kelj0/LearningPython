@@ -46,19 +46,24 @@ for i in range(0,5):
 
 Data types
 ```py
-#IF *LIST THEN I CAN PUT sep="." ect. for separating with . not with spaces
+#---------------------------------------------------------------------
 #LIST
+#---------------------------------------------------------------------
 list=["item1","item2","item3"]
 #printing it
 print(list)
 
+#---------------------------------------------------------------------
 #TUPLES
+#---------------------------------------------------------------------
 #Same like list but without extensive funcionality  (they are immutable also)
 tuple=("Car",1,0,5)
 print(tuple)
 #>> car 1 0.5
 
+#---------------------------------------------------------------------
 #DICTIONARY
+#---------------------------------------------------------------------
 ab={
 'Key1':'Item1',
 'Key2':'Item2'
@@ -72,7 +77,18 @@ names={"imena":["karlo","pero","duro"],"prezimena":["kegljo","peric","duric"]}
       print("IME:",names['imena'][i])
       print("PREZIME:",names['prezimena'][i])
 
+#Nested dictionary
+dic={'nested':{'name':karlo,'year':1},'nestedList':[1,2,3]}
+
+print(dic['nested']['name'])
+#'karlo'
+print(dic['nested']['nestedList'][0])
+#'1'
+
+
+#---------------------------------------------------------------------
 #SEQUENCES
+#---------------------------------------------------------------------
 #same ase list but with aditional foo
 #first parameter is where to begin(if not it begins from start)
 #second parametar is where to end(if not it ends on end)
@@ -85,11 +101,14 @@ print("List by i+=X",shopinglist[::X]
 
 Web Scraping
 ```py
+#---------------------------------------------------------------------
+#webbrowser,requests
+#---------------------------------------------------------------------
 import webbrowser
+import requests
+
 webbrowser.open(URL)#opens that page in new tab
 
-pip install requests ( or python -m pip install requests)
-import requests
 res = requests.get('http://www.gutenberg.org/cache/epub/1112/pg1112.txt')#res == page source
 res.status_code == requests.codes.ok #returns true if request succeeded
 #you can also check len(res.text), and print it 
@@ -104,8 +123,9 @@ try:
 except Exception as exc:
     print('Problem with res: %s' % (exc))
     
+#---------------------------------------------------------------------
 #Saving to hard drive
-
+#---------------------------------------------------------------------
 res = requests.get(URL)
 res.raise_for_status() #Check if any errors
 playFile = open('Filename.txt','wb')
@@ -115,8 +135,9 @@ for chunk in res.iter_content(size of chunks):
 #100 000 is generally a good size    
 playFile.close()
 
-
+#---------------------------------------------------------------------
 #BeautifulSoup module
+#---------------------------------------------------------------------
 import bs4
 res = requests.get(url)#get page source
 noStarchSoup = bs4.BeautifulSoup(res.text)#stores res in noStarchSoup
@@ -152,8 +173,61 @@ exampleSoup.get('id') #prints 'author'
 exampleSoup.get('some_nonexistent_addr') == None #prints True
 exampleSoup.attrs #prints {'id:'author'}
 exampleFile.close()
-```
 
+#---------------------------------------------------------------------
+#Selenium
+#MORE INFO : http://selenium-python.readthedocs.org/
+#---------------------------------------------------------------------
+from selenium import webdriver
+
+browser = webdriver.Firefox() #opens firefox
+type(browser)
+#<class 'selenium.webdriver.firefox.webdriver.WebDriver'>
+browser.get('http://inventwithpython.com') #opens that site in 'browser'
+
+#WebDriver Methods for Finding Elements
+#in basic syntax is browser.find_element/elements+something if you put element
+#it returns single WebElement object , but if you put elements it returns list of all WebElement's
+#ect. 
+browser.find_element_by_class_name('name') #Elements that use CSS class 'name'
+#if you use here browser.find_elements_by_class_name(name) it would return list of all classes
+#named 'name'
+
+css_selector(selector) #Elements that match the CSS selector
+id(id) #Elements with a matching id attribute value
+link_text(text) #<a> elements that completely match the text provided
+partial_link_text(text) #<a> elements that contain the text provided
+name(name) #Elements with a matching name atribute value
+tag_name(name) #Elements with a matching tag name(case insensitive; an <a> element is matched by
+# 'a' and 'A')
+
+#Once you have the WebElement object you can find out more about it vy reading the attributes or 
+#calling the methods
+
+tag_name #The tag name , such as 'a' for an <a> element
+get_attribute(name) #The value for the element's name attribute
+text #  The the text within the element , such as 'Hello' in <span>Hello</span>
+clear() #For text field or text area elements , clears the text typed into it
+is_displayed() #Returns True if the element is visible
+is_enabled() #For input elements , returns True if the element is enabled
+is_selected() #For checkbox or radio button elements , returns True if the element is selected
+location #A dictionary with keys 'x' and 'y' for the position of the element in page
+
+#Special Keys (arrow,end,home..)
+from selenium.webdriver.common.keys import Keys
+#you just sent them as normal key (linkElem.send_keys(Keys.END) for 'pressing END')
+
+#Clicking
+linkElem = browser.find_element_by_link_text('Read It Online')
+linkElem.click() #Clicks on Read it online
+
+#Browser buttons
+browser.back() #Clicks Back button
+browser.forward()
+browser.refresh()
+browser.quit()
+
+```
 
 .Bat
 ```
@@ -206,6 +280,8 @@ assert "red" in stoplight.values() , "Neither light is red!"+str(stoplight)
 #AssertionError : Neither light is red! {'key1':'blue','key2':'green'}
 #As you can see i would immediately assume that error is in dictionary
 ```
+
+
 Logging
 ```py
 import logging
@@ -259,7 +335,6 @@ for folderName,subfolders,filenames in os.walk(path):
         print('FILE INSIDE ' + folderName+': '+ filename)
     print('')
    
-
 baconFile=open('bacon.txt','w') #second argument in open is 'w'(overwrites file with new contet)
 #if there is no file named 'bacon.txt' then it will create it 
 baconFile.write('Hello world!\n') #it returns num of chars written including newline
@@ -297,6 +372,7 @@ newZip = zipfile.ZipFile('new.zip','w') #opens zipfile object in write('w') mode
 newZip.write('spam.txt',compress_type=zipfile.ZIP_DEFLATED)
 newZip.close()
 ```
+
 Shutil
 ```py
 import shutil
@@ -307,11 +383,11 @@ shutil.move('source','destination')#move source to destination folder(if source 
 shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
 ```
 
-
 Regex
 ```py
 import re
 #\d stands for a digit character(0-9)
+
 phoneNumRegex=re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')#makes search "term"
 mo= phoneNumRegex.search('My number is 123-123-1234')#searches for "term" in string, and puts it* 
 print('Phone number found: ' + mo.group())#mo.group() prints finded "term"             *in mo if it finds it
@@ -364,7 +440,6 @@ beginingHello.search('He said hello.') == None
 endsWithNumber = re.compile(r'\d$')
 endsWithNumber.search('Your number is 42')
 #<_sre.SRE_Match object; span=(16, 17), match='2'>
-
 
 #Findin all chars exept newline
 atRegex = re.compile(r'.at')
