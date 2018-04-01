@@ -7,14 +7,11 @@ import time
 
 
 browser = webdriver.Firefox()
-
 browser.get('https://gabrielecirulli.github.io/2048/')
 
 linkKey = browser.find_element_by_tag_name('html')
-
 retry = browser.find_element_by_class_name('retry-button')
 while True:
-    
     linkKey.send_keys(Keys.ARROW_DOWN)
     time.sleep(0.01)
     linkKey.send_keys(Keys.ARROW_LEFT)
@@ -31,9 +28,3 @@ while True:
             retry.click()
     except NoSuchElementException:
         print('Playing...')
-        
-
-
-
-    
-    
