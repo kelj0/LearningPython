@@ -385,6 +385,9 @@ sheet['A1'] #returns <Cell Sheet3.A1>
 sheet['A1'].value #Gets value of A1
 c = sheet['B1']
 c.value # gets value of c -> value of sheet['B1]
+c.row #prints 1
+c.column #prints B
+c.coordinate #prints B1
 
 ```
 
