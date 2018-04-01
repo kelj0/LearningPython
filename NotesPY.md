@@ -85,6 +85,9 @@ print("List by i+=X",shopinglist[::X]
 
 Web Scraping
 ```py
+#---------------------------------------------------------------------
+#webbrowser,requests
+#---------------------------------------------------------------------
 import webbrowser
 webbrowser.open(URL)#opens that page in new tab
 
@@ -104,8 +107,9 @@ try:
 except Exception as exc:
     print('Problem with res: %s' % (exc))
     
+#---------------------------------------------------------------------
 #Saving to hard drive
-
+#---------------------------------------------------------------------
 res = requests.get(URL)
 res.raise_for_status() #Check if any errors
 playFile = open('Filename.txt','wb')
@@ -115,8 +119,9 @@ for chunk in res.iter_content(size of chunks):
 #100 000 is generally a good size    
 playFile.close()
 
-
+#---------------------------------------------------------------------
 #BeautifulSoup module
+#---------------------------------------------------------------------
 import bs4
 res = requests.get(url)#get page source
 noStarchSoup = bs4.BeautifulSoup(res.text)#stores res in noStarchSoup
@@ -153,7 +158,10 @@ exampleSoup.get('some_nonexistent_addr') == None #prints True
 exampleSoup.attrs #prints {'id:'author'}
 exampleFile.close()
 
+#---------------------------------------------------------------------
 #Selenium
+#MORE INFO : http://selenium-python.readthedocs.org/
+#---------------------------------------------------------------------
 from selenium import webdriver
 
 browser = webdriver.Firefox() #opens firefox
@@ -196,6 +204,12 @@ from selenium.webdriver.common.keys import Keys
 #Clicking
 linkElem = browser.find_element_by_link_text('Read It Online')
 linkElem.click() #Clicks on Read it online
+
+#Browser buttons
+browser.back() #Clicks Back button
+browser.forward()
+browser.refresh()
+browser.quit()
 
 ```
 
