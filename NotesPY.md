@@ -378,6 +378,10 @@ import openpyxl
 wb = openpyxl.load_workbook('example.xlsx')
 type(wb)
 >> <class 'openpyxl.workbook.workbook.Workbook'>
+wb.get_sheet_names() #prints list of sheets
+sheet = wb.get_sheet_by_name('Sheet3')
+sheet #prints <Worksheet "Sheet3">
+
 
 ```
 
