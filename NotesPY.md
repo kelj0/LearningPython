@@ -381,7 +381,10 @@ type(wb)
 wb.get_sheet_names() #prints list of sheets
 sheet = wb.get_sheet_by_name('Sheet3')
 sheet #prints <Worksheet "Sheet3">
-
+sheet['A1'] #returns <Cell Sheet3.A1>
+sheet['A1'].value #Gets value of A1
+c = sheet['B1']
+c.value # gets value of c -> value of sheet['B1]
 
 ```
 
