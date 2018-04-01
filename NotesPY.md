@@ -372,6 +372,14 @@ newZip = zipfile.ZipFile('new.zip','w') #opens zipfile object in write('w') mode
 newZip.write('spam.txt',compress_type=zipfile.ZIP_DEFLATED)
 newZip.close()
 ```
+Excel
+```py
+import openpyxl
+wb = openpyxl.load_workbook('example.xlsx')
+type(wb)
+>> <class 'openpyxl.workbook.workbook.Workbook'>
+
+```
 
 Shutil
 ```py
