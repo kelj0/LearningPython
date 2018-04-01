@@ -46,19 +46,24 @@ for i in range(0,5):
 
 Data types
 ```py
-#IF *LIST THEN I CAN PUT sep="." ect. for separating with . not with spaces
+#---------------------------------------------------------------------
 #LIST
+#---------------------------------------------------------------------
 list=["item1","item2","item3"]
 #printing it
 print(list)
 
+#---------------------------------------------------------------------
 #TUPLES
+#---------------------------------------------------------------------
 #Same like list but without extensive funcionality  (they are immutable also)
 tuple=("Car",1,0,5)
 print(tuple)
 #>> car 1 0.5
 
+#---------------------------------------------------------------------
 #DICTIONARY
+#---------------------------------------------------------------------
 ab={
 'Key1':'Item1',
 'Key2':'Item2'
@@ -72,7 +77,18 @@ names={"imena":["karlo","pero","duro"],"prezimena":["kegljo","peric","duric"]}
       print("IME:",names['imena'][i])
       print("PREZIME:",names['prezimena'][i])
 
+#Nested dictionary
+dic={'nested':{'name':karlo,'year':1},'nestedList':[1,2,3]}
+
+print(dic['nested']['name'])
+#'karlo'
+print(dic['nested']['nestedList'][0])
+#'1'
+
+
+#---------------------------------------------------------------------
 #SEQUENCES
+#---------------------------------------------------------------------
 #same ase list but with aditional foo
 #first parameter is where to begin(if not it begins from start)
 #second parametar is where to end(if not it ends on end)
@@ -89,10 +105,10 @@ Web Scraping
 #webbrowser,requests
 #---------------------------------------------------------------------
 import webbrowser
+import requests
+
 webbrowser.open(URL)#opens that page in new tab
 
-pip install requests ( or python -m pip install requests)
-import requests
 res = requests.get('http://www.gutenberg.org/cache/epub/1112/pg1112.txt')#res == page source
 res.status_code == requests.codes.ok #returns true if request succeeded
 #you can also check len(res.text), and print it 
