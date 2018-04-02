@@ -422,9 +422,6 @@ for row in sheet['A1':'C3']):
 #C3 14
 #--- END OF ROW ---
 
-
-
-
 ```
 
 Shutil
