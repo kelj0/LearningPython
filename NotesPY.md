@@ -389,6 +389,14 @@ c.row #prints 1
 c.column #prints B
 c.coordinate #prints B1
 
+sheet.cell(row = 1 , column = 2).value #Gets value at 1st row and 2nd column
+for i in range (1,6,2):
+        print(i, sheet.cell(row = i , column = 2).value)
+#prints following..
+1 Apples
+3 Pears
+5 Strawberries
+
 ```
 
 Shutil
