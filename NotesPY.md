@@ -410,17 +410,17 @@ for row in sheet['A1':'C3']):
         print('--- END OF ROW ---')
 #outputs following 
 #A1 2015-04-05 13:34:02
-B1 Apples
-C1 73
---- END OF ROW ---
-A2 2015-04-05 03:41:23
-B2 Cherries
-C2 85
---- END OF ROW ---
-A3 2015-04-06 12:46:51
-B3 Pears
-C3 14
---- END OF ROW ---
+#B1 Apples
+#C1 73
+#--- END OF ROW ---
+#A2 2015-04-05 03:41:23
+#B2 Cherries
+#C2 85
+#--- END OF ROW ---
+#A3 2015-04-06 12:46:51
+#B3 Pears
+#C3 14
+#--- END OF ROW ---
 
 
 
