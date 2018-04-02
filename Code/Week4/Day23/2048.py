@@ -24,7 +24,7 @@ while True:
     try:
         gameOver = browser.find_element_by_class_name('game-over')
         if gameOver:
-            time.sleep(10)
+            time.sleep(5)
             retry.click()
     except NoSuchElementException:
         print('Playing...')
