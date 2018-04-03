@@ -42,29 +42,22 @@ If you want to get input in debugger
 Printing text
 ```py
 print("Print text")
-```
 
-Random
-```py
+#Random
 import random
 a=[1,2,3]
 random.shuffle(a)#Shuffles elements in list 
 random.sample(a,2)#Takes random 2 elements in list 
 
-```
-
-While
-```py
+#While
 while True:
     s=input("Enter string")
     if s=='quit':
       break
     else:
       print(s)
-```
 
-For
-```py
+#For
 for i in range(0,5):
     print(i)
 #prints from 0 to 4(if added 3rd number in brackets(0,5,X) prints every i+X)
