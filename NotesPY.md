@@ -1,50 +1,69 @@
 # PYTHON
 
-DEBUGGER
+### DEBUGGER
 
 If you want to get input in debugger 
 
-->go in launch.json file (ctrl+shitf+D)
+>go in launch.json file (ctrl+shitf+D)
 
-->in first part add python path to pythonPath
+>in first part add python path to pythonPath
 
-->below add "console":"externalTerminal" (dont forget to put ',' after line)
+>below add "console":"externalTerminal" (dont forget to put ',' after line)
 
-----------------------------------------------------------------------------------------------------------------
+---
+## Table of contents
 
+-    [Basics](#Basics)
 
+-    [Data types](#Data-Types)
+
+-    [Web Scraping](#Web-Scraping)
+
+-    [Bat](#Bat)
+
+-    [Strings](#Strings)
+
+-    [Assertions](#Assertions)
+
+-    [Logging](#Logging)
+
+-    [Working with files](#Working-with-files)
+
+-    [ZIP FILES](#ZIP-FILES)
+
+-    [Excel](#Excel)
+
+-    [Shutil](#Shutil)
+
+-    [Regex](#Regex)
+
+---
+## Basic <a name="Basics"></a>
 Printing text
 ```py
 print("Print text")
-```
 
-Random
-```py
+#Random
 import random
 a=[1,2,3]
 random.shuffle(a)#Shuffles elements in list 
 random.sample(a,2)#Takes random 2 elements in list 
 
-```
-
-While
-```py
+#While
 while True:
     s=input("Enter string")
     if s=='quit':
       break
     else:
       print(s)
-```
 
-For
-```py
+#For
 for i in range(0,5):
     print(i)
 #prints from 0 to 4(if added 3rd number in brackets(0,5,X) prints every i+X)
 ```
 
-Data types
+## Data types<a name="Data-Types"></a>
 ```py
 #---------------------------------------------------------------------
 #LIST
@@ -99,7 +118,7 @@ print("List by i+=X",shopinglist[::X]
 #lists all seq but every X item
 ```
 
-Web Scraping
+## Web Scraping<a name="Web-Scraping"></a>
 ```py
 #---------------------------------------------------------------------
 #webbrowser,requests
@@ -229,7 +248,7 @@ browser.quit()
 
 ```
 
-.Bat
+## Bat<a name="Bat"></a>
 ```
 To run python scripts write
 @py.exe C:\path\to\your\pythonScript.py %*
@@ -237,7 +256,7 @@ python must be in sys PATH, advice: put all bat files in one folder and add fold
 you will be able to run your bat files with run (win+r on windows)
 ```
 
-Strings
+## Strings<a name="Strings"></a>
 ```py
 #CONVERTING LIST TO STRING
 some_list=["k","a","r","l","o"]
@@ -270,7 +289,7 @@ mylist=['Brazil','Russia','India','China']
 print(delimiter.join(mylist))#prints mylist[0] delimiter then mylist[1] ..
 ```
 
-Assertions
+## Assertions<a name="Assertions"></a>
 ```py
 #You can see where is bug in your program if you include them
 # 1st "Paramar to chech if false then when problem happens you can write feedback to see what is the problem"
@@ -281,8 +300,7 @@ assert "red" in stoplight.values() , "Neither light is red!"+str(stoplight)
 #As you can see i would immediately assume that error is in dictionary
 ```
 
-
-Logging
+## Logging<a name="Logging"></a>
 ```py
 import logging
 logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
@@ -298,7 +316,7 @@ logging.disable(logging.CRITICAL)
 
 ```
 
-Working with files
+## Working with files<a name="Working-with-files"></a>
 ```py
 import os
 
@@ -352,7 +370,8 @@ baconFile.close()
 print(conte)
 #prints contet of baconFile(Hello world!\nBacon is not a vegetable)
 ```
-ZIP FILES
+
+## ZIP FILES<a name="ZIP-FILES"></a>
 ```py
 import zipfile
 #navigate to foldere where is zip you wanna work with
@@ -372,7 +391,8 @@ newZip = zipfile.ZipFile('new.zip','w') #opens zipfile object in write('w') mode
 newZip.write('spam.txt',compress_type=zipfile.ZIP_DEFLATED)
 newZip.close()
 ```
-Excel
+
+## Excel<a name="Excel"></a>
 ```py
 import openpyxl
 wb = openpyxl.load_workbook('example.xlsx')
@@ -397,9 +417,37 @@ for i in range (1,6,2):
 3 Pears
 5 Strawberries
 
+#Getting full table printed
+sheet = wb.get_sheet_by_name('Sheet1')
+tuple(sheet['A1':'C3'])
+#should write sth like this ((<Cell Sheet1.A1>, <Cell Sheet1.B1>, <Cell Sheet1.C1>),
+#(<Cell Sheet1.A2>,#<Cell Sheet1.B2>, <Cell Sheet1.C2>), (<Cell Sheet1.A3>,
+#<Cell Sheet1.B3>,<Cell Sheet1.C3>))
+
+for row in sheet['A1':'C3']):
+        for cell in row:
+                print(cell.coordinate, cell.value)
+        print('--- END OF ROW ---')
+#outputs following 
+#A1 2015-04-05 13:34:02
+#B1 Apples
+#C1 73
+#--- END OF ROW ---
+#A2 2015-04-05 03:41:23
+#B2 Cherries
+#C2 85
+#--- END OF ROW ---
+#A3 2015-04-06 12:46:51
+#B3 Pears
+#C3 14
+#--- END OF ROW ---
+
+sheet = wb.worksheets[0]
+sheet.max_row #returns max row, good for for iterations..
+
 ```
 
-Shutil
+## Shutil<a name="Shutil"></a>
 ```py
 import shutil
 shutil.copy('source','destination')#it will copy source file to destination folder
@@ -409,7 +457,7 @@ shutil.move('source','destination')#move source to destination folder(if source 
 shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
 ```
 
-Regex
+## Regex<a name="Regex"></a>
 ```py
 import re
 #\d stands for a digit character(0-9)
