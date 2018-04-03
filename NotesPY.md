@@ -15,25 +15,25 @@ If you want to get input in debugger
 
 [1. Data types](#Data-Types)
 
-2.Web Scraping
+[2.Web Scraping](#Web-Scraping)
 
-3.Bat
+[3.Bat](#Bat)
 
-4.Strings
+[4.Strings](#Strings)
 
-5.Assertions
+[5.Assertions](#Assertions)
 
-6.Logging
+[6.Logging](#Logging)
 
-7.Working with files
+[7.Working with files](#Working-with-files)
 
-8.ZIP FILES
+[8.ZIP FILES](#ZIP-FILES)
 
-9.Excel
+[9.Excel](#Excel)
 
-10.Shutil
+[10.Shutil](#Shutil)
 
-11.Regex
+[11.Regex](#Regex)
 
 
 
@@ -127,7 +127,7 @@ print("List by i+=X",shopinglist[::X]
 #lists all seq but every X item
 ```
 
-2.Web Scraping
+## 2.Web Scraping<a name="Web-Scraping"></a>
 ```py
 #---------------------------------------------------------------------
 #webbrowser,requests
@@ -257,7 +257,7 @@ browser.quit()
 
 ```
 
-3. .Bat
+## 3.Bat<a name="Bat"></a>
 ```
 To run python scripts write
 @py.exe C:\path\to\your\pythonScript.py %*
@@ -265,7 +265,7 @@ python must be in sys PATH, advice: put all bat files in one folder and add fold
 you will be able to run your bat files with run (win+r on windows)
 ```
 
-4.Strings
+## 4.Strings<a name="Strings"></a>
 ```py
 #CONVERTING LIST TO STRING
 some_list=["k","a","r","l","o"]
@@ -298,7 +298,7 @@ mylist=['Brazil','Russia','India','China']
 print(delimiter.join(mylist))#prints mylist[0] delimiter then mylist[1] ..
 ```
 
-5.Assertions
+## 5.Assertions<a name="Assertions"></a>
 ```py
 #You can see where is bug in your program if you include them
 # 1st "Paramar to chech if false then when problem happens you can write feedback to see what is the problem"
@@ -309,7 +309,7 @@ assert "red" in stoplight.values() , "Neither light is red!"+str(stoplight)
 #As you can see i would immediately assume that error is in dictionary
 ```
 
-6.Logging
+## 6.Logging<a name="Logging"></a>
 ```py
 import logging
 logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
@@ -325,7 +325,7 @@ logging.disable(logging.CRITICAL)
 
 ```
 
-7.Working with files
+## 7.Working with files<a name="Working-with-files"></a>
 ```py
 import os
 
@@ -380,7 +380,7 @@ print(conte)
 #prints contet of baconFile(Hello world!\nBacon is not a vegetable)
 ```
 
-8.ZIP FILES
+## 8.ZIP FILES<a name="ZIP-FILES"></a>
 ```py
 import zipfile
 #navigate to foldere where is zip you wanna work with
@@ -401,7 +401,7 @@ newZip.write('spam.txt',compress_type=zipfile.ZIP_DEFLATED)
 newZip.close()
 ```
 
-9.Excel
+## 9.Excel<a name="Excel"></a>
 ```py
 import openpyxl
 wb = openpyxl.load_workbook('example.xlsx')
@@ -452,7 +452,7 @@ for row in sheet['A1':'C3']):
 #--- END OF ROW ---
 ```
 
-10.Shutil
+## 10.Shutil<a name="Shutil"></a>
 ```py
 import shutil
 shutil.copy('source','destination')#it will copy source file to destination folder
@@ -462,7 +462,7 @@ shutil.move('source','destination')#move source to destination folder(if source 
 shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
 ```
 
-11.Regex
+## 11.Regex<a name="Regex"></a>
 ```py
 import re
 #\d stands for a digit character(0-9)
