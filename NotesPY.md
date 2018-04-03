@@ -441,6 +441,10 @@ for row in sheet['A1':'C3']):
 #B3 Pears
 #C3 14
 #--- END OF ROW ---
+
+sheet = wb.worksheets[0]
+sheet.max_row #returns max row, good for for iterations..
+
 ```
 
 ## Shutil<a name="Shutil"></a>
