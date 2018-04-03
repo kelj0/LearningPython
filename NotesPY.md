@@ -72,7 +72,7 @@ for i in range(0,5):
 #prints from 0 to 4(if added 3rd number in brackets(0,5,X) prints every i+X)
 ```
 
-## Data types<a name="Data-Types"></a>
+## 1.Data types<a name="Data-Types"></a>
 ```py
 #---------------------------------------------------------------------
 #LIST
