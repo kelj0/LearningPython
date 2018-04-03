@@ -104,7 +104,6 @@ print(dic['nested']['name'])
 print(dic['nested']['nestedList'][0])
 #'1'
 
-
 #---------------------------------------------------------------------
 #SEQUENCES
 #---------------------------------------------------------------------
@@ -204,7 +203,9 @@ type(browser)
 #<class 'selenium.webdriver.firefox.webdriver.WebDriver'>
 browser.get('http://inventwithpython.com') #opens that site in 'browser'
 
-#WebDriver Methods for Finding Elements
+#---------------------------------------------------------------------
+# find_element_by...
+#---------------------------------------------------------------------
 #in basic syntax is browser.find_element/elements+something if you put element
 #it returns single WebElement object , but if you put elements it returns list of all WebElement's
 #ect. 
@@ -219,10 +220,10 @@ partial_link_text(text) #<a> elements that contain the text provided
 name(name) #Elements with a matching name atribute value
 tag_name(name) #Elements with a matching tag name(case insensitive; an <a> element is matched by
 # 'a' and 'A')
-
+#---------------------------------------------------------------------
 #Once you have the WebElement object you can find out more about it vy reading the attributes or 
 #calling the methods
-
+#---------------------------------------------------------------------
 tag_name #The tag name , such as 'a' for an <a> element
 get_attribute(name) #The value for the element's name attribute
 text #  The the text within the element , such as 'Hello' in <span>Hello</span>
@@ -231,10 +232,12 @@ is_displayed() #Returns True if the element is visible
 is_enabled() #For input elements , returns True if the element is enabled
 is_selected() #For checkbox or radio button elements , returns True if the element is selected
 location #A dictionary with keys 'x' and 'y' for the position of the element in page
-
-#Special Keys (arrow,end,home..)
+#---------------------------------------------------------------------
+#Special Keys (arrow,end,home..),Clicking,browser buttons..
+#---------------------------------------------------------------------
 from selenium.webdriver.common.keys import Keys
-#you just sent them as normal key (linkElem.send_keys(Keys.END) for 'pressing END')
+#you just sent them as normal key
+linkElem.send_keys(Keys.END)# 'press END'
 
 #Clicking
 linkElem = browser.find_element_by_link_text('Read It Online')
@@ -245,12 +248,14 @@ browser.back() #Clicks Back button
 browser.forward()
 browser.refresh()
 browser.quit()
-
+#---------------------------------------------------------------------
 ```
 
 ## Bat<a name="Bat"></a>
 ```
-To run python scripts write
+#---------------------------------------------------------------------
+To run python scripts
+#---------------------------------------------------------------------
 @py.exe C:\path\to\your\pythonScript.py %*
 python must be in sys PATH, advice: put all bat files in one folder and add folder to sys PATH 
 you will be able to run your bat files with run (win+r on windows)
@@ -258,6 +263,9 @@ you will be able to run your bat files with run (win+r on windows)
 
 ## Strings<a name="Strings"></a>
 ```py
+#---------------------------------------------------------------------
+#Basics
+#---------------------------------------------------------------------
 #CONVERTING LIST TO STRING
 some_list=["k","a","r","l","o"]
 names=''.join(some_list)
@@ -269,7 +277,9 @@ names=''.join(some_list)
 #prints 'hello*****'
 'hello'.center(10,'=')
 #prints '==hello==='
-
+#---------------------------------------------------------------------
+#Checks
+#---------------------------------------------------------------------
 name = 'Swaroop'
 if name.startswith('Swa'):
   print('Yes, the string starts with "Swa"')
@@ -283,7 +293,7 @@ if 'a' in name:
     print('Yes , it contains "a"')
 if name.find('war')!= -1:
     print('Yes it conaints the string "war"')
-
+#---------------------------------------------------------------------
 delimiter='_*_'
 mylist=['Brazil','Russia','India','China']
 print(delimiter.join(mylist))#prints mylist[0] delimiter then mylist[1] ..
@@ -291,6 +301,9 @@ print(delimiter.join(mylist))#prints mylist[0] delimiter then mylist[1] ..
 
 ## Assertions<a name="Assertions"></a>
 ```py
+#---------------------------------------------------------------------
+#Basics
+#---------------------------------------------------------------------
 #You can see where is bug in your program if you include them
 # 1st "Paramar to chech if false then when problem happens you can write feedback to see what is the problem"
 # 2nd "Feedback to output when problem occures
@@ -302,6 +315,9 @@ assert "red" in stoplight.values() , "Neither light is red!"+str(stoplight)
 
 ## Logging<a name="Logging"></a>
 ```py
+#---------------------------------------------------------------------
+#Basics
+#---------------------------------------------------------------------
 import logging
 logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
 #basic syntax for logging , its usefull when debugging to see what is happening in program
@@ -319,8 +335,9 @@ logging.disable(logging.CRITICAL)
 ## Working with files<a name="Working-with-files"></a>
 ```py
 import os
-
-#info
+#---------------------------------------------------------------------
+#Getting basic info
+#---------------------------------------------------------------------
 os.getcwd() #Current working directory in string format
 os.path.abspath(path) #returns string of apsolute path
 os.path.relpath(path,start) #Will return string of a path from start to path
@@ -328,14 +345,16 @@ os.path.relpath(path,start) #Will return string of a path from start to path
 os.chdir("C:\\Windows\\System32") #Changes working dir
 os.makedirs("C:\\delicious\\walnut\\waffles") #Makes dir delicious folder, then inside delicious walnut,
 #then inside walnut waffles folder
-
+#---------------------------------------------------------------------
 #Checks
+#---------------------------------------------------------------------
 os.path.isabs(path) #Returns True if is absolute
 os.path.exists(path) # returns True if refered file in path exists
 os.path.isfile(path) #returns True if path argument exists and is file
 os.path.isdir(path)  #returns True if path argument exists and is folder
-
-#PERM DELETE
+#---------------------------------------------------------------------
+#Delete files,folders(permanent or send to trash)
+#---------------------------------------------------------------------
 os.unlink(path) #will delete FILE a path
 os.rmdir(path) # will delete FOLDER at path
 shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
@@ -352,7 +371,9 @@ for folderName,subfolders,filenames in os.walk(path):
     for filename in filenames:
         print('FILE INSIDE ' + folderName+': '+ filename)
     print('')
-   
+#---------------------------------------------------------------------
+#Basics(r/w to files)
+#---------------------------------------------------------------------
 baconFile=open('bacon.txt','w') #second argument in open is 'w'(overwrites file with new contet)
 #if there is no file named 'bacon.txt' then it will create it 
 baconFile.write('Hello world!\n') #it returns num of chars written including newline
@@ -373,20 +394,26 @@ print(conte)
 
 ## ZIP FILES<a name="ZIP-FILES"></a>
 ```py
+#---------------------------------------------------------------------
+#Basics
+#---------------------------------------------------------------------
 import zipfile
 #navigate to foldere where is zip you wanna work with
 exampleZip = zipfile.ZipFile('testzip.zip') #exampleZip is testzip.zip now
 exampleZip.namelist() 
 #prints all folders/subfolders and files of zip file
-
+#---------------------------------------------------------------------
+#Getting size,compressing size..extracting..
+#---------------------------------------------------------------------
 fileinsidezip.file_size() #prints size of file in bytes
 fileinsidezip.compress_size #prints compressed size in bytes
 exampleZip.extractall(path(optional)) # extracts files in zip in current working dir
 #if no folder called like path extractall will make it
 exampleZip.extract(file/folder,path(optional))#extracts specific file/folder to working dir | (optional) path
 exampleZip.close() #When you finish working with file
-
+#---------------------------------------------------------------------
 #creating new zip files
+#---------------------------------------------------------------------
 newZip = zipfile.ZipFile('new.zip','w') #opens zipfile object in write('w') mode , also has append('a') mode
 newZip.write('spam.txt',compress_type=zipfile.ZIP_DEFLATED)
 newZip.close()
@@ -394,6 +421,9 @@ newZip.close()
 
 ## Excel<a name="Excel"></a>
 ```py
+#---------------------------------------------------------------------
+#Basics
+#---------------------------------------------------------------------
 import openpyxl
 wb = openpyxl.load_workbook('example.xlsx')
 type(wb)
@@ -416,8 +446,9 @@ for i in range (1,6,2):
 1 Apples
 3 Pears
 5 Strawberries
-
+#---------------------------------------------------------------------
 #Getting full table printed
+#---------------------------------------------------------------------
 sheet = wb.get_sheet_by_name('Sheet1')
 tuple(sheet['A1':'C3'])
 #should write sth like this ((<Cell Sheet1.A1>, <Cell Sheet1.B1>, <Cell Sheet1.C1>),
@@ -428,6 +459,7 @@ for row in sheet['A1':'C3']):
         for cell in row:
                 print(cell.coordinate, cell.value)
         print('--- END OF ROW ---')
+        
 #outputs following 
 #A1 2015-04-05 13:34:02
 #B1 Apples
@@ -442,6 +474,9 @@ for row in sheet['A1':'C3']):
 #C3 14
 #--- END OF ROW ---
 
+#---------------------------------------------------------------------
+#Create/remove Sheet, save file ..
+#---------------------------------------------------------------------
 sheet = wb.worksheets[0]
 sheet.max_row #returns max row, good for for iterations..
 
@@ -450,10 +485,23 @@ sheet.max_row #returns max row, good for for iterations..
 >>sheet = wb.get_active_sheet()
 >>sheet.title
 'Sheet'
->>sheet.title = 'Spam Bacon Eggs Sheet'
+>>sheet.title = 'Spam Bacon Eggs Sheet' #Every time you change name you need to save file to "make it count"
 >>wb.get_sheet_names()
 ['Spam Bacon Eggs Sheet']
+>>wb.save('example_copy.xlsx') #Saves new changed file in example_copy.xlsx
 
+>>wb.create_sheet()
+<Worksheet Sheet1>
+>>wb.get_sheet_names()
+['Sheet','Sheet1']
+>>wb.create_sheet(index=0,title = 'First Sheet')
+<Worksheet "First Sheet">
+>>wb.get_sheet_names()
+['First Sheet','Sheet','Sheet1']
+>>wb.remove_sheet(wb.get_sheet_by_name('Sheet'))
+>>wb.get_sheet_names()
+['First Sheet','Sheet1']
+#---------------------------------------------------------------------
 
 ```
 
@@ -469,6 +517,9 @@ shutil.rmtree(path) # will remove folder at path, and all files and folder it co
 
 ## Regex<a name="Regex"></a>
 ```py
+#---------------------------------------------------------------------
+#Basics
+#---------------------------------------------------------------------
 import re
 #\d stands for a digit character(0-9)
 
@@ -480,6 +531,7 @@ print('Phone number found: ' + mo.group())#mo.group() prints finded "term"      
 # .groups() returns tuple of groups (3digits,3digs-4digs)
 # you can add names to grouped parametars ( first,second = mo.groups()) first will be 3digs , 
 # second will be 3digs-4digs
+#---------------------------------------------------------------------
 
 batRegex = re.compile(r'Bat(wo)?man')
 mo1= batRegex.search('The adventures of Batman')
@@ -500,16 +552,18 @@ batRegex = re.compile(r'Bat(wo)+man')
 mo4 = batRegex.search('The Adventures of Batman')
 mo4 == None
 # True
-
+#---------------------------------------------------------------------
 #SHORTHAND CODES FOR COMMON CHARACTER CLASSES
+#---------------------------------------------------------------------
 # \d Any numeric digit from 0 to 9.
 # \D Any character that is not a numeric digit from 0 to 9.
 # \w Any letter, numeric digit, or the underscore character.(Think of this as matching “word” characters.)
 # \W Any character that is not a letter, numeric digit, or the underscore character.
 # \s Any space, tab, or newline character. (Think of this as matching “space” characters.)
 # \S Any character that is not a space, tab, or newline.
-
+#---------------------------------------------------------------------
 #NEGATIVE CHAR CLASS
+#---------------------------------------------------------------------
 constantRegex = re.compile(r'[^aeiouAEIOU])
 constantRegex.findall("Robocop eats baby food.BabyFood.")
 #it will output all chars that are != from constantRegex
