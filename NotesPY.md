@@ -44,7 +44,7 @@ for i in range(0,5):
 #prints from 0 to 4(if added 3rd number in brackets(0,5,X) prints every i+X)
 ```
 
-Data types
+1.Data types
 ```py
 #---------------------------------------------------------------------
 #LIST
@@ -99,7 +99,7 @@ print("List by i+=X",shopinglist[::X]
 #lists all seq but every X item
 ```
 
-Web Scraping
+2.Web Scraping
 ```py
 #---------------------------------------------------------------------
 #webbrowser,requests
@@ -229,7 +229,7 @@ browser.quit()
 
 ```
 
-.Bat
+3. .Bat
 ```
 To run python scripts write
 @py.exe C:\path\to\your\pythonScript.py %*
@@ -237,7 +237,7 @@ python must be in sys PATH, advice: put all bat files in one folder and add fold
 you will be able to run your bat files with run (win+r on windows)
 ```
 
-Strings
+4.Strings
 ```py
 #CONVERTING LIST TO STRING
 some_list=["k","a","r","l","o"]
@@ -270,7 +270,7 @@ mylist=['Brazil','Russia','India','China']
 print(delimiter.join(mylist))#prints mylist[0] delimiter then mylist[1] ..
 ```
 
-Assertions
+5.Assertions
 ```py
 #You can see where is bug in your program if you include them
 # 1st "Paramar to chech if false then when problem happens you can write feedback to see what is the problem"
@@ -281,8 +281,7 @@ assert "red" in stoplight.values() , "Neither light is red!"+str(stoplight)
 #As you can see i would immediately assume that error is in dictionary
 ```
 
-
-Logging
+6.Logging
 ```py
 import logging
 logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
@@ -298,7 +297,7 @@ logging.disable(logging.CRITICAL)
 
 ```
 
-Working with files
+7.Working with files
 ```py
 import os
 
@@ -352,7 +351,8 @@ baconFile.close()
 print(conte)
 #prints contet of baconFile(Hello world!\nBacon is not a vegetable)
 ```
-ZIP FILES
+
+8.ZIP FILES
 ```py
 import zipfile
 #navigate to foldere where is zip you wanna work with
