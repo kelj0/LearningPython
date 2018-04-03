@@ -11,7 +11,7 @@ If you want to get input in debugger
 >below add "console":"externalTerminal" (dont forget to put ',' after line)
 
 ---
-
+```
 -[Basics](#Basics)
 
 -[Data types](#Data-Types)
@@ -35,7 +35,7 @@ If you want to get input in debugger
 -[Shutil](#Shutil)
 
 -[Regex](#Regex)
-
+```
 ---
 ## Basic <a name="Basics"></a>
 Printing text
