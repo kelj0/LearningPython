@@ -14,25 +14,15 @@ If you want to get input in debugger
 
 
 [1. Data types](#Data-Types)
-
 [2.Web Scraping](#Web-Scraping)
-
 [3.Bat](#Bat)
-
 [4.Strings](#Strings)
-
 [5.Assertions](#Assertions)
-
 [6.Logging](#Logging)
-
 [7.Working with files](#Working-with-files)
-
 [8.ZIP FILES](#ZIP-FILES)
-
 [9.Excel](#Excel)
-
 [10.Shutil](#Shutil)
-
 [11.Regex](#Regex)
 
 
