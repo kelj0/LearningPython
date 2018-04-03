@@ -13,17 +13,28 @@ If you want to get input in debugger
 ----------------------------------------------------------------------------------------------------------------
 
 
-[Data Types]
+1.Data Types
+
 2.Web Scraping
+
 3. .Bat
+
 4.Strings
+
 5.Assertions
+
 6.Logging
+
 7.Working with files
+
 8.ZIP FILES
+
 9.Excel
+
 10.Shutil
+
 11.Regex
+
 
 
 
@@ -59,7 +70,7 @@ for i in range(0,5):
 #prints from 0 to 4(if added 3rd number in brackets(0,5,X) prints every i+X)
 ```
 
-[Data types](#Data types)
+Data types
 ```py
 #---------------------------------------------------------------------
 #LIST
