@@ -445,6 +445,16 @@ for row in sheet['A1':'C3']):
 sheet = wb.worksheets[0]
 sheet.max_row #returns max row, good for for iterations..
 
+>>wb.get_sheet_names()
+['Sheet']
+>>sheet = wb.get_active_sheet()
+>>sheet.title
+'Sheet'
+>>sheet.title = 'Spam Bacon Eggs Sheet'
+>>wb.get_sheet_names()
+['Spam Bacon Eggs Sheet']
+
+
 ```
 
 ## Shutil<a name="Shutil"></a>
