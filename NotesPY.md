@@ -13,29 +13,29 @@ If you want to get input in debugger
 ---
 ## Table of contents
 
--[Basics](#Basics)
+-    [Basics](#Basics)
 
--[Data types](#Data-Types)
+-    [Data types](#Data-Types)
 
--[Web Scraping](#Web-Scraping)
+-    [Web Scraping](#Web-Scraping)
 
--[Bat](#Bat)
+-    [Bat](#Bat)
 
--[Strings](#Strings)
+-    [Strings](#Strings)
 
--[Assertions](#Assertions)
+-    [Assertions](#Assertions)
 
--[Logging](#Logging)
+-    [Logging](#Logging)
 
--[Working with files](#Working-with-files)
+-    [Working with files](#Working-with-files)
 
--[ZIP FILES](#ZIP-FILES)
+-    [ZIP FILES](#ZIP-FILES)
 
--[Excel](#Excel)
+-    [Excel](#Excel)
 
--[Shutil](#Shutil)
+-    [Shutil](#Shutil)
 
--[Regex](#Regex)
+-    [Regex](#Regex)
 
 ---
 ## Basic <a name="Basics"></a>
