@@ -13,7 +13,9 @@ If you want to get input in debugger
 ---
 
 -[Basics](#Basics)
+
 -[Data types](#Data-Types)
+
 -[Web Scraping](#Web-Scraping)
 
 -[Bat](#Bat)
