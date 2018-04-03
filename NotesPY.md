@@ -17,7 +17,7 @@ If you want to get input in debugger
 
 2.Web Scraping
 
-3. .Bat
+3..Bat
 
 4.Strings
 
@@ -70,7 +70,7 @@ for i in range(0,5):
 #prints from 0 to 4(if added 3rd number in brackets(0,5,X) prints every i+X)
 ```
 
-Data types
+1.Data types
 ```py
 #---------------------------------------------------------------------
 #LIST
