@@ -372,7 +372,8 @@ newZip = zipfile.ZipFile('new.zip','w') #opens zipfile object in write('w') mode
 newZip.write('spam.txt',compress_type=zipfile.ZIP_DEFLATED)
 newZip.close()
 ```
-Excel
+
+9.Excel
 ```py
 import openpyxl
 wb = openpyxl.load_workbook('example.xlsx')
@@ -421,10 +422,9 @@ for row in sheet['A1':'C3']):
 #B3 Pears
 #C3 14
 #--- END OF ROW ---
-
 ```
 
-Shutil
+10.Shutil
 ```py
 import shutil
 shutil.copy('source','destination')#it will copy source file to destination folder
@@ -434,7 +434,7 @@ shutil.move('source','destination')#move source to destination folder(if source 
 shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
 ```
 
-Regex
+11.Regex
 ```py
 import re
 #\d stands for a digit character(0-9)
