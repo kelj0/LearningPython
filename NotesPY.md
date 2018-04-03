@@ -1,19 +1,19 @@
 # PYTHON
 
 DEBUGGER
-
+```
 If you want to get input in debugger 
 
-->go in launch.json file (ctrl+shitf+D)
+>go in launch.json file (ctrl+shitf+D)
 
-->in first part add python path to pythonPath
+>in first part add python path to pythonPath
 
-->below add "console":"externalTerminal" (dont forget to put ',' after line)
-
+>below add "console":"externalTerminal" (dont forget to put ',' after line)
+```
 ---
 
+-[Basics](#Basics)
 -[Data types](#Data-Types)
-
 -[Web Scraping](#Web-Scraping)
 
 -[Bat](#Bat)
@@ -35,9 +35,7 @@ If you want to get input in debugger
 -[Regex](#Regex)
 
 ---
-
-
-
+## Basic <a name="Basics"></a>
 Printing text
 ```py
 print("Print text")
