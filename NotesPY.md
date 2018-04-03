@@ -1,7 +1,7 @@
 # PYTHON
 
 DEBUGGER
-```
+
 If you want to get input in debugger 
 
 >go in launch.json file (ctrl+shitf+D)
@@ -9,7 +9,7 @@ If you want to get input in debugger
 >in first part add python path to pythonPath
 
 >below add "console":"externalTerminal" (dont forget to put ',' after line)
-```
+
 ---
 
 -[Basics](#Basics)
