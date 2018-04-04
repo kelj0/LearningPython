@@ -102,7 +102,7 @@ dic={'nested':{'name':karlo,'year':1},'nestedList':[1,2,3]}
 print(dic['nested']['name'])
 #'karlo'
 print(dic['nested']['nestedList'][0])
-#'1'
+'1'
 
 #---------------------------------------------------------------------
 #SEQUENCES
