@@ -502,6 +502,12 @@ sheet.max_row #returns max row, good for for iterations..
 >>wb.get_sheet_names()
 ['First Sheet','Sheet1']
 #---------------------------------------------------------------------
+#Adding new content to tables..
+#---------------------------------------------------------------------
+>>sheet = wb.get_sheet_by_name('Sheet')
+>>sheet['A1'] = 'Test' #Writes Test to A1 cell in 'Sheet'
+>>sheet['A1'].value
+'Test'
 
 ```
 
