@@ -613,5 +613,10 @@ print(endTime-startTime) # prints time in seconds
 time.sleep(1) #pass number of seconds you want your program to stay paused
 #You cant interrupt program while "sleeping" , ADVICE: dont sleep for 30 seconds , rather for do a for loop
 # that sleeps for 1 second every iteration , you can than press CTRL+C to raise KeyboardInterrupt exception
+
+#Rounding Numbers
+now = time.time()
+round(now)# rounds time to int(clears all decimals),you can pass 2nd arg to round to specify
+# number of rounded decimals
 ```
 
