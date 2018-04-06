@@ -598,6 +598,12 @@ atRegex.findall('The cat in the hat sat on the flat mat.')
 ```py
 import time
 time.time() #Returns number of seconds(float) since 1.1.1970(Unix epoch)
+#Calculating script time
+startTime = time.time()
+#----code----
+endTime = time.time()
+print(endTime-startTime) # prints time in seconds
+
 
 ```
 
