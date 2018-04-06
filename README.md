@@ -596,7 +596,8 @@ atRegex.findall('The cat in the hat sat on the flat mat.')
 
 ## Time <a name="Time"></a>
 ```py
-
+import time
+time.time() #Returns number of seconds(float) since 1.1.1970(Unix epoch)
 
 ```
 
