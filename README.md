@@ -37,6 +37,8 @@ If you want to get input in debugger
 
 -    [Regex](#Regex)
 
+-    [Time](#Time)
+
 ---
 ## Basic <a name="Basics"></a>
 Printing text
@@ -590,5 +592,11 @@ endsWithNumber.search('Your number is 42')
 atRegex = re.compile(r'.at')
 atRegex.findall('The cat in the hat sat on the flat mat.')
 # ['cat', 'hat', 'sat', 'lat', 'mat']
+```
+
+## Time <a name="Time"></a>
+```py
+
 
 ```
+
