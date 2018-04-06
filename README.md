@@ -604,6 +604,5 @@ startTime = time.time()
 endTime = time.time()
 print(endTime-startTime) # prints time in seconds
 
-
 ```
 
