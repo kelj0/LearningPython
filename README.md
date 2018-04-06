@@ -597,7 +597,7 @@ atRegex.findall('The cat in the hat sat on the flat mat.')
 ## Time <a name="Time"></a>
 ```py
 #---------------------------------------------------------------------
-#Basics
+#Basics TIME
 #---------------------------------------------------------------------
 import time
 time.time() #Returns number of seconds(float) since 1.1.1970(Unix epoch)
@@ -618,5 +618,14 @@ time.sleep(1) #pass number of seconds you want your program to stay paused
 now = time.time()
 round(now)# rounds time to int(clears all decimals),you can pass 2nd arg to round to specify
 # number of rounded decimals
+
+#---------------------------------------------------------------------
+#Basics DATE&time
+#---------------------------------------------------------------------
+import datetime
+daterime.datetime.now()
+#returns datetime obj ( year,month,day,hour,minute,second,microsecond)
+
+
 ```
 
