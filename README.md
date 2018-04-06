@@ -596,6 +596,9 @@ atRegex.findall('The cat in the hat sat on the flat mat.')
 
 ## Time <a name="Time"></a>
 ```py
+#---------------------------------------------------------------------
+#Basics
+#---------------------------------------------------------------------
 import time
 time.time() #Returns number of seconds(float) since 1.1.1970(Unix epoch)
 #Calculating script time
@@ -603,6 +606,16 @@ startTime = time.time()
 #----code----
 endTime = time.time()
 print(endTime-startTime) # prints time in seconds
+
+#cProfile.run() much more informative level of detail that time.time()
+#Read doc here -> https://docs.python.org/3/library/profile.html
+
+time.sleep(1) #pass number of seconds you want your program to stay paused
+#You cant interrupt program while "sleeping" , ADVICE: dont sleep for 30 seconds , rather for do a for loop
+# that sleeps for 1 second every iteration , you can than press CTRL+C to raise KeyboardInterrupt exception
+
+
+
 
 ```
 
