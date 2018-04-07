@@ -626,6 +626,11 @@ import datetime
 daterime.datetime.now()
 #returns datetime obj ( year,month,day,hour,minute,second,microsecond)
 
+#you can compare dates
+newYear2016 = datetime.datetime(2016,1,1,0,0,0)
+newYear2015 = datetime.datetime(2015,1,1,0,0,0)
+newYear2015<newYear2016
+>>True
 
 ```
 
