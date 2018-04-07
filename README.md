@@ -632,5 +632,16 @@ newYear2015 = datetime.datetime(2015,1,1,0,0,0)
 newYear2015<newYear2016
 >>True
 
+delta = datetime.timedelta(days=11, hours=10, minutes=9, seconds=8)
+delta.days,delta.seconds,delta.microseconds
+>>(11,36548,0)
+delta.total_seconds()
+>>986948.0
+str(delta)
+>>'11 days, 10:09:08'
+
+
+
+
 ```
 
