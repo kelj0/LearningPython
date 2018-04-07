@@ -640,8 +640,10 @@ delta.total_seconds()
 str(delta)
 >>'11 days, 10:09:08'
 
-
-
+#Converting datetime obj to string
+oct21st = datetime.datetime(2015,10,21,16,29,0)
+oct21st.strftime('%Y/%m/%d %H:%M:%S')
+>>'2015/10/21 16:29:00'
+#If you want all of %Y,%m..-> go to http://strftime.org/
 
 ```
-
