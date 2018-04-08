@@ -41,7 +41,7 @@ If you want to get input in debugger
 
 -    [Multithreading](#Multithreading)
 
--    [Launching Programs](#Launching Programs)
+-    [Launching_Programs](#Launching_Programs)
 
 ---
 ## Basic <a name="Basics"></a>
@@ -695,7 +695,7 @@ threadObj.start()
 >>Cats & Dogs
 ```
 
-## Launching Programs <a name="Launching Programs"></a>
+## Launching_Programs <a name="Launching_Programs"></a>
 ```py
 
 ˙˙˙
