@@ -720,4 +720,9 @@ subprocess.Popen(['C:\\Windows\\notepad.exe','C:\\hello.txt'])
 subprocess.Popen(['C:\\Users\\Karlo\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe','D:\\hello.py'])
 >>Hello
 
+subprocess.Popen(['start','hello.txt'],shell=True)
+# This should open hello.txt with associated application that opens .txt file extensions 
+# in my case this is notepad
+# 'start' means open with application associated with .txt in this example
+# shell=True is needed only on windows!
 ˙˙˙
