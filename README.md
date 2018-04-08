@@ -710,4 +710,14 @@ subprocess.Popen('C:\\Windows\\System32\\calc.exe')
 # wait() method -> Will block until the launched process has terminated
 #               -> return value of wait() is exit code
 
+#---------------------------------------------------------------------
+#Passing command line arguments to Popen()
+#---------------------------------------------------------------------
+subprocess.Popen(['C:\\Windows\\notepad.exe','C:\\hello.txt'])
+# Launches notepad.exe but also open hello.txt with it
+# Can also do with other programs like ect. 
+# in hello.py writes print('Hello')
+subprocess.Popen(['C:\\Users\\Karlo\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe','D:\\hello.py'])
+>>Hello
+
 ˙˙˙
