@@ -41,6 +41,8 @@ If you want to get input in debugger
 
 -    [Multithreading](#Multithreading)
 
+-    [Launching Programs](#Launching Programs)
+
 ---
 ## Basic <a name="Basics"></a>
 Printing text
@@ -691,5 +693,9 @@ threadObj = threading.Thread(target=print('cats','dogs',sep=' & '))
 threadObj = threading.Thread(target=print, args=['Cats','Dogs'],kwargs={'sep':' & '})
 threadObj.start()
 >>Cats & Dogs
-
 ```
+
+## Launching Programs <a name="Launching Programs"></a>
+```py
+
+˙˙˙
