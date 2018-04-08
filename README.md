@@ -675,5 +675,10 @@ print('End of program.')
 >>Start of program
 >>End of program
 >>Wake up!
-    
+-------------------
+#Se
+threadObj = threading.Thread(target=print, args=['Cats','Dogs'],kwargs={'sep':' & '})
+threadObj.start()
+>>Cats & Dogs
+
 ```
