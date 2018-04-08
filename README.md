@@ -39,6 +39,8 @@ If you want to get input in debugger
 
 -    [Time](#Time)
 
+-    [Multithreading](#Multithreading)
+
 ---
 ## Basic <a name="Basics"></a>
 Printing text
@@ -656,5 +658,22 @@ oct21st.strftime('%Y/%m/%d %H:%M:%S')
 #and understand the string.
 datetime.datetime.strptime('October 21, 2015', '%B %d, %Y')
 >>datetime.datetime(2015,10,21,0,0,0)
+```
 
+## Multithreading <a name="Multithreading"></a>
+```py
+import threading,time
+print('Start of program.')
+
+def takeANap():
+    time.sleep(5)
+    print('Wake up!')
+    
+threadObj = threading.Thread(targer=takeANap)
+threadObj.start()
+print('End of program.')
+>>Start of program
+>>End of program
+>>Wake up!
+    
 ```
