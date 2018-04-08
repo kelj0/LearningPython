@@ -733,7 +733,7 @@ subprocess.Popen(['start','hello.txt'],shell=True)
 
 ## Sending_email_and_Text_messages <a name="Sending_email_and_Text_messages"></a>
 ```py
-                                SMTP
+SMTP
 #---------------------------------------------------------------------
 #Connecting to server
 #---------------------------------------------------------------------
@@ -747,9 +747,9 @@ smtpObj = smtplib.SMTP('smtp.gmail.com',587)
 
 #Call oddly named ehlo() to "say hello" to the SMTP email server
 smtpObj.ehlo()
-#for me it responded
->>(250, b'smtp.gmail.com at your service, [your.ip.address.is.here]\nSIZE 35882577\n8BITMIME
-\nSTARTTLS\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8')
+#for me it responded(its in 1 row but i put in 2 so i dont have long line :P)
+#(250, b'smtp.gmail.com at your service, [your.ip.address.is.here]\nSIZE 35882577\n8BITMIME
+#\nSTARTTLS\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8')
 
 #---------------------------------------------------------------------
 #Sending mail and disconnectiong from server
@@ -769,5 +769,30 @@ smtpObj.sendmail('my_email_address@gmail.com', 'recipient@example.com',
 #Disconnecting from the SMTP Server
 smtpObj.quit()
 #The 221 in the return value menas the session is ending
+#---------------------------------------------------------------------
+
+IMAP
+#---------------------------------------------------------------------
+#Connecting to server
+#---------------------------------------------------------------------
+import imapclient
+imapObj = imapclient.IMAPClient('imap.gmail.com',ssl=True)
+imapObj.login('my_email_address@gmail.com', 'MY_SECRET_PASSWORD')
+
+#---------------------------------------------------------------------
+#Selecting Folder and searching for email
+#---------------------------------------------------------------------
+import pprint
+pprint,pprint(imapObj.list_folders())
+#should print alot of nested lists :D
+
+#To select a folder to search through pass folders name as a string
+imapObj.select_folder('INBOX',readonly=True)
+#If selected folder does not exist python will raise an imaplib.error exception
+#readonly=True prevents you from accidentally making changes or deletions to any of the emails in this folder
+
+#Performing the search
+#You will need IMAP Search Keys see link bellow , if not working just google for it :)
+# -> https://afterlogic.com/mailbee-net/docs/MailBee.ImapMail.Imap.Search_overload_2.html
 
 ```
