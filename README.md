@@ -697,5 +697,13 @@ threadObj.start()
 
 ## Launching_Programs <a name="Launching_Programs"></a>
 ```py
+#---------------------------------------------------------------------
+#Bacics
+#---------------------------------------------------------------------
+import subprocess
+subprocess.Popen('C:\\Windows\\System32\\calc.exe')
+#The return value is a Popen obj, which has 2 useful methods: poll() and wait()
+#poll() method-> returns None if the process is still runing at the time poll() is called
+#             -> if program has terminated it will return process's integer exit code
 
 ˙˙˙
