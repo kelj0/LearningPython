@@ -733,6 +733,10 @@ subprocess.Popen(['start','hello.txt'],shell=True)
 
 ## Sending_email_and_Text_messages <a name="Sending_email_and_Text_messages"></a>
 ```py
+                                SMTP
+#---------------------------------------------------------------------
+#Connecting to server
+#---------------------------------------------------------------------
 import smtplib
 # Search for <your provider> smtp settings to see server and port to use
 # in this example il do with gmail
@@ -747,8 +751,23 @@ smtpObj.ehlo()
 >>(250, b'smtp.gmail.com at your service, [your.ip.address.is.here]\nSIZE 35882577\n8BITMIME
 \nSTARTTLS\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8')
 
-# Logging in gmail 
+#---------------------------------------------------------------------
+#Sending mail and disconnectiong from server
+#---------------------------------------------------------------------
+# Logging in gmail
 smtpObj.login('YOUR_EMAIL','YOUR_PASSWORD') 
 # If you use 2-Step Verification create app password and copy that under your_password
+
+smtpObj.sendmail('my_email_address@gmail.com', 'recipient@example.com',
+'Subject: Some subject.\nEmail send with python <3')
+# sendmail takes 3 arg-> Your email as a string
+#                     -> Recipients email as a string or a list of strings(for multiple recipients)
+#                     -> Email body as string
+# Start of email body string must begin with 'Subject: \n' for the subject line of the email
+>>{} #Empty dictionary means all recipients were successfully send the email
+
+#Disconnecting from the SMTP Server
+smtpObj.quit()
+#The 221 in the return value menas the session is ending
 
 ```
