@@ -721,7 +721,7 @@ subprocess.Popen(['C:\\Windows\\notepad.exe','C:\\hello.txt'])
 # Launches notepad.exe but also open hello.txt with it
 # Can also do with other programs like ect. 
 # in hello.py writes print('Hello')
-subprocess.Popen(['C:\\Users\\Karlo\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe','D:\\hello.py'])
+subprocess.Popen(['FULL_PATH_TO_PYTHON.exe','D:\\hello.py'])
 >>Hello
 
 subprocess.Popen(['start','hello.txt'],shell=True)
@@ -734,5 +734,12 @@ subprocess.Popen(['start','hello.txt'],shell=True)
 ## Sending_email_and_Text_messages <a name="Sending_email_and_Text_messages"></a>
 ```py
 import smtplib
+# Search for <your provider> smtp settings to see server and port to use
+# in this example il do with gmail
+
+smtpObj = smtplib.SMTP('smtp.gmail.com',587)
+# if smptlib.SMPT() call is not successful your SMTP server might not support TLS on port 587
+# in that case use smtplib.SMTP_SSL() and port 465 instead
+
 
 ```
