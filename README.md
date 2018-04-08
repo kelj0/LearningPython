@@ -741,5 +741,14 @@ smtpObj = smtplib.SMTP('smtp.gmail.com',587)
 # if smptlib.SMPT() call is not successful your SMTP server might not support TLS on port 587
 # in that case use smtplib.SMTP_SSL() and port 465 instead
 
+#Call oddly named ehlo() to "say hello" to the SMTP email server
+smtpObj.ehlo()
+#for me it responded
+>>(250, b'smtp.gmail.com at your service, [your.ip.address.is.here]\nSIZE 35882577\n8BITMIME
+\nSTARTTLS\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8')
+
+# Logging in gmail 
+smtpObj.login('YOUR_EMAIL','YOUR_PASSWORD') 
+# If you use 2-Step Verification create app password and copy that under your_password
 
 ```
