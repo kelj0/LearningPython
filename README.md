@@ -662,6 +662,9 @@ datetime.datetime.strptime('October 21, 2015', '%B %d, %Y')
 
 ## Multithreading <a name="Multithreading"></a>
 ```py
+#---------------------------------------------------------------------
+#Bacics
+#---------------------------------------------------------------------
 import threading,time
 print('Start of program.')
 
@@ -679,7 +682,6 @@ print('End of program.')
 #---------------------------------------------------------------------
 #Passing arg to thread obj , kwargs stands for keyword argument 
 #---------------------------------------------------------------------
-
 #THIS IS INCORRECT WAY!
 threadObj = threading.Thread(target=print('cats','dogs',sep=' & '))
 #---------------------------------------------------------------------
