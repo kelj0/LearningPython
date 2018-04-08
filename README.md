@@ -43,6 +43,8 @@ If you want to get input in debugger
 
 -    [Launching_Programs](#Launching_Programs)
 
+-    [Sending_email_and_Text_messages](#Sending_email_and_Text_messages)
+
 ---
 ## Basic <a name="Basics"></a>
 Printing text
@@ -726,3 +728,8 @@ subprocess.Popen(['start','hello.txt'],shell=True)
 # 'start' means open with application associated with .txt in this example
 # shell=True is needed only on windows!
 ˙˙˙
+
+## Sending_email_and_Text_messages <a name="Sending_email_and_Text_messages"></a>
+```py
+
+```
