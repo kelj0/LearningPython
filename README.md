@@ -675,8 +675,17 @@ print('End of program.')
 >>Start of program
 >>End of program
 >>Wake up!
--------------------
-#Se
+
+#---------------------------------------------------------------------
+#Passing arg to thread obj , kwargs stands for keyword argument 
+#---------------------------------------------------------------------
+
+#THIS IS INCORRECT WAY!
+threadObj = threading.Thread(target=print('cats','dogs',sep=' & '))
+#---------------------------------------------------------------------
+
+#This is de wai xD
+#---------------------------------------------------------------------
 threadObj = threading.Thread(target=print, args=['Cats','Dogs'],kwargs={'sep':' & '})
 threadObj.start()
 >>Cats & Dogs
