@@ -702,8 +702,12 @@ threadObj.start()
 #---------------------------------------------------------------------
 import subprocess
 subprocess.Popen('C:\\Windows\\System32\\calc.exe')
-#The return value is a Popen obj, which has 2 useful methods: poll() and wait()
-#poll() method-> returns None if the process is still runing at the time poll() is called
-#             -> if program has terminated it will return process's integer exit code
+# The return value is a Popen obj, which has 2 useful methods: poll() and wait()
+# poll() method-> returns None if the process is still runing at the time poll() is called
+#              -> if program has terminated it will return process's integer exit code
+# You can use exit code to see if process terminated without errors(exit code == 0) if
+# there is a error caused the process to terminate(exit code !=0(generally 1))
+# wait() method -> Will block until the launched process has terminated
+#               -> return value of wait() is exit code
 
 ˙˙˙
