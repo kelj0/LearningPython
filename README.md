@@ -11,6 +11,7 @@ If you want to get input in debugger
 >below add "console":"externalTerminal" (dont forget to put ',' after line)
 
 ---
+---
 ## Table of contents
 
 -    [Basics](#Basics)
@@ -45,6 +46,7 @@ If you want to get input in debugger
 
 -    [Sending_email_and_Text_messages](#Sending_email_and_Text_messages)
 
+---
 ---
 ## Basic <a name="Basics"></a>
 Printing text
@@ -727,9 +729,10 @@ subprocess.Popen(['start','hello.txt'],shell=True)
 # in my case this is notepad
 # 'start' means open with application associated with .txt in this example
 # shell=True is needed only on windows!
-˙˙˙
+```
 
 ## Sending_email_and_Text_messages <a name="Sending_email_and_Text_messages"></a>
 ```py
+import smtplib
 
 ```
