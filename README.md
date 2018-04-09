@@ -790,12 +790,13 @@ pprint.pprint(imapObj.list_folders())
 imapObj.select_folder('INBOX',readonly=True)
 #If selected folder does not exist python will raise an imaplib.error exception
 #readonly=True prevents you from accidentally making changes or deletions to any of the emails in this folder
-
+#---------------------------------------------------------------------
 #Performing the search
+#---------------------------------------------------------------------
 #You will need IMAP Search Keys see link bellow , if not working just google for it :)
 # -> https://afterlogic.com/mailbee-net/docs/MailBee.ImapMail.Imap.Search_overload_2.html
 #Here are some example search() method calls
-
+#---------------------------------------------------------------------
 imapObj.search(['ALL'] # Returns every message in the currently selected folder.
 imapObj.search(['ON 05-Jul-2015']) # Returns every message sent on July 5, 2015
 
@@ -809,14 +810,15 @@ imapObj.search(['SINCE 01-Jan-2015', 'FROM alice@example.com'])
 imapObj.search(['SINCE 01-Jan-2015', 'NOT FROM alice@example.com'])
 # Returns every message sent from everyone except alice@example.com
 # since the start of 2015.
-
+#---------------------------------------------------------------------
 # Search method returns unique IDs (UIDs) for the emails, as integer values
 # Pass UIDs to the fetch() method to obtain the email content
 UIDs = imapObj.gmail_search('meaning of life') # this is googles search you can use it instead of search()
 >>UIDs
 [42]
-
+#---------------------------------------------------------------------
 #Fetching an Email and marking it as Read
+#---------------------------------------------------------------------
 #UIDs is list of UIDs xD , and BODY[] tells fetch() to download all body content of emails from UIDs
 rawMessages = imapObj.fetch(UIDs,['BODY[]'])
 import pprint
@@ -842,10 +844,4 @@ import imaplib
 imaplib._MAXLINE = 1000000
 #This should fix the problem :) _MAXLINE changes limit
 
-
-
-
 ```
-
-
-
