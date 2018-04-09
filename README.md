@@ -46,6 +46,8 @@ If you want to get input in debugger
 
 -    [Sending_email_and_Text_messages](#Sending_email_and_Text_messages)
 
+-    [Manipulating_Images]($Manipulating_Images)
+
 ---
 ---
 ## Basic <a name="Basics"></a>
@@ -887,3 +889,15 @@ imapObj.expunge() #Permanently deletes messages with /Deleted flag
 #---------------------------------------------------------------------
 imapObj.logout()
 ```
+
+## Manipulating_Images <a name="Manipulating_Images"></a>
+```py
+
+
+
+
+
+
+```
+
+
