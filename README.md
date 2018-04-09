@@ -844,4 +844,26 @@ import imaplib
 imaplib._MAXLINE = 1000000
 #This should fix the problem :) _MAXLINE changes limit
 
+
+#---------------------------------------------------------------------
+#Getting Email Addresses from a Raw Message
+#---------------------------------------------------------------------
+import pyzmail
+message = pyzmail.PyzMessage.factory(rawMessages[40041]['BODY[]'])
+# Now you can use several methods that make easy to get email's subject,sender..
+message.get_subject()
+>>'Hello!'
+message.get_addresses('from')
+>>[('Some Name','somename@gmail.com')]
+message.get_addresses('to')
+>>[('My Email','myemail@gmail.com')]
+
+
+
 ```
+
+
+
+
+
+
