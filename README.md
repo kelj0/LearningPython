@@ -858,12 +858,17 @@ message.get_addresses('from')
 message.get_addresses('to')
 >>[('My Email','myemail@gmail.com')]
 
-
+message.text_part != None
+>>True
+message.html_part != None
+>>True
+# This are check to see "shape" of message, .text_part != None means it is builded with at least normal text
+# .html_part != None means its builded with at least html, if both are True that means msg is html and normal
+# Getting string of mail
+# If its plaintext
+message.text_part.get_payload().decode(message.text_part.charset)
+# If its html content
+message.html_part.get_payload().decode(message.html_part.charset)
+#Current message is both html and plaintext :) so i can use both to extract string
 
 ```
-
-
-
-
-
-
