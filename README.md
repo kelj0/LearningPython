@@ -882,10 +882,8 @@ imapObj.delete_messages(UIDs) # Puts /Deleted flag on all UIDs
 imapObj.expunge() #Permanently deletes messages with /Deleted flag
 >>('Success', [(5452, 'EXISTS')])
 
-
 #---------------------------------------------------------------------
 #Dissconecting from IMAP Server
 #---------------------------------------------------------------------
 imapObj.logout()
-
 ```
