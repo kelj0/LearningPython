@@ -46,7 +46,7 @@ If you want to get input in debugger
 
 -    [Sending_email_and_Text_messages](#Sending_email_and_Text_messages)
 
--    [Manipulating_Images]($Manipulating_Images)
+-    [Manipulating_Images](#Manipulating_Images)
 
 ---
 ---
