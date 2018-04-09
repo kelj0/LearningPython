@@ -871,4 +871,21 @@ message.text_part.get_payload().decode(message.text_part.charset)
 message.html_part.get_payload().decode(message.html_part.charset)
 #Current message is both html and plaintext :) so i can use both to extract string
 
+
+#---------------------------------------------------------------------
+#Deleting Emails
+#---------------------------------------------------------------------
+imapObj.select_folder('INBOX',readonly=False)
+UIDs = imapObj.search(['ON 09-Jul-2015'])
+imapObj.delete_messages(UIDs) # Puts /Deleted flag on all UIDs
+>>{40066: ('\\Seen', '\\Deleted')}
+imapObj.expunge() #Permanently deletes messages with /Deleted flag
+>>('Success', [(5452, 'EXISTS')])
+
+
+#---------------------------------------------------------------------
+#Dissconecting from IMAP Server
+#---------------------------------------------------------------------
+imapObj.logout()
+
 ```
