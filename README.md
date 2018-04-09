@@ -928,7 +928,24 @@ catIm = Image.open('zophie.png')
 im = Image.new('RGBA',(100,200),'purple') # Creates im obj(purple color 100x200 pix)
 im.save('purpleImage.png') # Saves im obj as purpleImage in cur working dir 
 
+#---------------------------------------------------------------------
+# Cropping Images,Copying and Pasting images onto Other Images
+#---------------------------------------------------------------------
+catIm = image.open('zophie.png')
+faceIm = catIm.crop((335,345,565,560)) # Crops and saves it to faceIm (catIm is still same)
+>>faceIm.size
+(230,215)
+
+catCopyIm = catIm.copy() # Creates catCopyIm (copy of catIm)
+catCopyIm = paste(faceIm,(0,0))
+catCopyIm = paste(faceIm,(400,500))
+catCopyIm.save('pasted.png')
+
+# This code above opened cat img, cropped from it and saved to faceIm , pasted faceIm 2 times
+# On copy of catIm (catCopyIm) on coordinates in (x,y)
+
+
+
+
+
 ```
-
-
-
