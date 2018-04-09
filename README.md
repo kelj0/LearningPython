@@ -783,7 +783,7 @@ imapObj.login('my_email_address@gmail.com', 'MY_SECRET_PASSWORD')
 #Selecting Folder and searching for email
 #---------------------------------------------------------------------
 import pprint
-pprint,pprint(imapObj.list_folders())
+pprint.pprint(imapObj.list_folders())
 #should print alot of nested lists :D
 
 #To select a folder to search through pass folders name as a string
@@ -794,5 +794,58 @@ imapObj.select_folder('INBOX',readonly=True)
 #Performing the search
 #You will need IMAP Search Keys see link bellow , if not working just google for it :)
 # -> https://afterlogic.com/mailbee-net/docs/MailBee.ImapMail.Imap.Search_overload_2.html
+#Here are some example search() method calls
+
+imapObj.search(['ALL'] # Returns every message in the currently selected folder.
+imapObj.search(['ON 05-Jul-2015']) # Returns every message sent on July 5, 2015
+
+imapObj.search(['SINCE 01-Jan-2015', 'BEFORE 01-Feb-2015', 'UNSEEN'])
+# Returns every message sent in January 2015 that is unread. (Note that
+# this means on and after January 1 and up to but not including February 1.)
+
+imapObj.search(['SINCE 01-Jan-2015', 'FROM alice@example.com']) 
+# Returns every message from alice@example.com sent since the start of 2015.
+
+imapObj.search(['SINCE 01-Jan-2015', 'NOT FROM alice@example.com'])
+# Returns every message sent from everyone except alice@example.com
+# since the start of 2015.
+
+# Search method returns unique IDs (UIDs) for the emails, as integer values
+# Pass UIDs to the fetch() method to obtain the email content
+UIDs = imapObj.gmail_search('meaning of life') # this is googles search you can use it instead of search()
+>>UIDs
+[42]
+
+#Fetching an Email and marking it as Read
+#UIDs is list of UIDs xD , and BODY[] tells fetch() to download all body content of emails from UIDs
+rawMessages = imapObj.fetch(UIDs,['BODY[]'])
+import pprint
+pprint.pprint('rawMessages')
+# This is ect. what should be printed as rawMessages using pprint
+
+# {40040: {'BODY[]': 'Delivered-To: my_email_address@gmail.com\r\n'
+# 'Received: by 10.76.71.167 with SMTP id '
+# --snip--
+# '\r\n'
+# '------=_Part_6000970_707736290.1404819487066--\r\n',
+# 'SEQ': 5430}}
+
+
+#---------------------------------------------------------------------
+#Size limits
+#---------------------------------------------------------------------
+# If your search matches a large number of email messages, Python might
+# raise an exception that says imaplib.error: got more than 10000 bytes. When
+# this happens, you will have to disconnect and reconnect to the IMAP server and try again
+
+import imaplib
+imaplib._MAXLINE = 1000000
+#This should fix the problem :) _MAXLINE changes limit
+
+
+
 
 ```
+
+
+
