@@ -898,9 +898,37 @@ imapObj.logout()
 from PIL import ImageColor
 >>ImageColor.getcolor('red','RGBA')
 (255,0,0,255) 
-#Basicly getcolor returns RGBA tuple (its case INsensitive->'red'=='RED')
+# Basicly getcolor returns RGBA tuple (its case INsensitive->'red'=='RED')
 
+# Loading image 
+catIm = Image.open('zophie.png')
+# If img is not in cur working dir just import os and os.chdir('C:\\folder_with_image_file')
+
+#---------------------------------------------------------------------
+# Working with Image Data Type
+#---------------------------------------------------------------------
+>>catIm.size
+(816,1088)
+>>width,height = catIm.size
+
+>>width
+816
+>>height
+1088
+
+>>catIm.filename
+'zophie.png'
+>>catIm.format
+'PNG'
+>>catIm.format_description
+'Portable network graphic'
+>>catIm.save('zophie.jpg')
+# Saves zophie.jpg on hdd(now you have zophie.jpg and zophie.png)
+
+im = Image.new('RGBA',(100,200),'purple') # Creates im obj(purple color 100x200 pix)
+im.save('purpleImage.png') # Saves im obj as purpleImage in cur working dir 
 
 ```
+
 
 
