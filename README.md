@@ -892,10 +892,13 @@ imapObj.logout()
 
 ## Manipulating_Images <a name="Manipulating_Images"></a>
 ```py
-
-
-
-
+#---------------------------------------------------------------------
+# Basics
+#---------------------------------------------------------------------
+from PIL import ImageColor
+>>ImageColor.getcolor('red','RGBA')
+(255,0,0,255) 
+#Basicly getcolor returns RGBA tuple (its case INsensitive->'red'=='RED')
 
 
 ```
