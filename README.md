@@ -944,8 +944,4 @@ catCopyIm.save('pasted.png')
 # This code above opened cat img, cropped from it and saved to faceIm , pasted faceIm 2 times
 # On copy of catIm (catCopyIm) on coordinates in (x,y)
 
-
-
-
-
 ```
