@@ -950,4 +950,50 @@ catCopyIm.save('pasted.png')
 # This code above opened cat img, cropped from it and saved to faceIm , pasted faceIm 2 times
 # On copy of catIm (catCopyIm) on coordinates in (x,y)
 
+# Making "matrix" of crops
+catImWidth, catImHeight = catIm.size
+faceImWidth, faceImHeight = faceIm.size
+catCopy = catIm.copy() # Get copy so you dont mess with originaly photo :P
+for left in range(0,catImWidth,faceImWidth):# For from left side to right "jumping" for len of crop width
+    for top in range(0,catImHeight, faceimHeight): # For from top to bottom for crop height
+        print(left,top) # Printing this is just for info
+        catCopyTwo.paste(faceIm,(left,top) # Paste crop on picture on location(left,top)
+        
+#---------------------------------------------------------------------
+# Resizing
+#---------------------------------------------------------------------
+W,H=catIm.size
+quartersizedIm = catim.resize(( int(H/2) , int(W/2) ))
+quartersizedIm.save('quartersized.png)
+
+#---------------------------------------------------------------------
+# Rotating,Flipping..
+#---------------------------------------------------------------------
+catIm.rotate(90).save('rotated90.png')
+catIm.rotate(270).save('rotated270.png')
+
+catIm.rotate(6).save('cat.png') # Edges will be "cut off" cause of rotation
+catIm.rotate(6,expand=True).save('cat_expand.png') # Picture will fit to rotation(it will be bigger)
+
+#---------------------------------------------------------------------
+# Mirroring
+#---------------------------------------------------------------------
+catIm.transpose(Image.FLIP_LEFT_RIGHT).save('horizontal_flip.png')
+catIm.transpose(Image.FLIP_TOP_BOTTOM).save('vertical_flip.png')
+
+#---------------------------------------------------------------------
+# Changing Individual Pixels
+#---------------------------------------------------------------------
+im = Image.new('RGBA',(100,100))
+>>im.getpixel((0,0))
+(0,0,0,0)
+for x in range(100):
+    for y in range(50):
+        im.putpixel((x,y),(210,210,210))
+        
+
+
 ```
+
+
+
