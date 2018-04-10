@@ -1003,7 +1003,7 @@ draw = ImageDraw.Draw(im) # Pass image obj to draw to create image draw obj
 #---------------------------------------------------------------------
 https://pillow.readthedocs.io/en/3.1.x/reference/ImageDraw.html
 # Pointless to make notes of this, just throw look at this link above ,
-# if link i broken when you are reading this google for python PIL drawing :)  
+# if link is broken when you are reading this google for python PIL drawing :)  
 
 #---------------------------------------------------------------------
 # Drawing Text
