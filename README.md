@@ -1013,16 +1013,20 @@ from PIL import ImageFont
 # 1. is string for the font's TrueType file(.ttf)
 # 2. is size :D
 # Here's example!
+#-----------------------------
 from PIL import Image, ImageDraw, ImageFont
 import os
+#-----------------------------
 im = Image.new('RGBA', (200,200), 'white')
 draw = ImageDraw.Draw(im)
 draw.text((20,150), 'Hello', fill='purple')
+#-----------------------------
 fontsFolder = 'FONT_FOLDER' # e.g. 'C:\Windows\Fonts'
 arialFont = ImageFont.truetype(os.path.join(fontsFolder, 'arial.ttf'), 32)
 draw.text((100,150), 'Howday', fill='gray', font=arialFont)
+#-----------------------------
 im.save('text.png')
 # This should make png with printed Hello and Howdy in diferend fonts and on diferend positions
-
+# I showed there 2 ways of Drawing text
 
 ```
