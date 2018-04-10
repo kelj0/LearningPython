@@ -990,4 +990,24 @@ im = Image.new('RGBA',(100,100))
 for x in range(100):
     for y in range(50):
         im.putpixel((x,y),(210,210,210))
+        
+#---------------------------------------------------------------------
+# Drawing on Images
+#---------------------------------------------------------------------
+from PIL import Image, ImageDraw
+im = Image.new('RGBA', (200,200), 'white')
+draw = ImageDraw.Draw(im) # Pass image obj to draw to create image draw obj
+
+#---------------------------------------------------------------------
+# Drawing Shapes
+#---------------------------------------------------------------------
+https://pillow.readthedocs.io/en/3.1.x/reference/ImageDraw.html
+# Pointless to make notes of this, just throw look at this link above ,
+# if link i broken when you are reading this google for python PIL drawing :)  
+
+#---------------------------------------------------------------------
+# Drawing Text
+#---------------------------------------------------------------------
+#todo
+
 ```
