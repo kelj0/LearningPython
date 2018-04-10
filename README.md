@@ -48,6 +48,8 @@ If you want to get input in debugger
 
 -    [Manipulating_Images](#Manipulating_Images)
 
+-    [Controling_Mouse&Keyboard_with_GUI_Automation](#Controling_Mouse&Keyboard_with_GUI_Automation)
+
 ---
 
 ## Basic <a name="Basics"></a>
@@ -1028,5 +1030,17 @@ draw.text((100,150), 'Howday', fill='gray', font=arialFont)
 im.save('text.png')
 # This should make png with printed Hello and Howdy in diferend fonts and on diferend positions
 # I showed there 2 ways of Drawing text
+```
+
+## Controling_Mouse&Keyboard_with_GUI_Automation <a name="Controling_Mouse&Keyboard_with_GUI_Automation"></a>
+```py
+#todo.. too tired to do it now 
 
 ```
+
+
+
+
+
+
+
