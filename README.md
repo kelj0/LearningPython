@@ -11,7 +11,7 @@ If you want to get input in debugger
 >below add "console":"externalTerminal" (dont forget to put ',' after line)
 
 ---
----
+
 ## Table of contents
 
 -    [Basics](#Basics)
@@ -49,7 +49,7 @@ If you want to get input in debugger
 -    [Manipulating_Images](#Manipulating_Images)
 
 ---
----
+
 ## Basic <a name="Basics"></a>
 Printing text
 ```py
@@ -901,6 +901,7 @@ from PIL import ImageColor
 # Basicly getcolor returns RGBA tuple (its case INsensitive->'red'=='RED')
 
 # Loading image 
+from PIL import Image
 catIm = Image.open('zophie.png')
 # If img is not in cur working dir just import os and os.chdir('C:\\folder_with_image_file')
 
@@ -932,10 +933,15 @@ im.save('purpleImage.png') # Saves im obj as purpleImage in cur working dir
 # Cropping Images,Copying and Pasting images onto Other Images
 #---------------------------------------------------------------------
 catIm = image.open('zophie.png')
+#---------------------------------------------------------------------
 faceIm = catIm.crop((335,345,565,560)) # Crops and saves it to faceIm (catIm is still same)
+# 1st parametar = left side,if ++ crop "goes" to left
+# 2nd parametar = top side,++ == top side goes down
+# 3 == (right side)+1, ++ == right side goes left
+# 4 == (bottom side)+1 , ++ == bottom side goes down
 >>faceIm.size
 (230,215)
-
+#---------------------------------------------------------------------
 catCopyIm = catIm.copy() # Creates catCopyIm (copy of catIm)
 catCopyIm = paste(faceIm,(0,0))
 catCopyIm = paste(faceIm,(400,500))
