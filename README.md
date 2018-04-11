@@ -1034,7 +1034,26 @@ im.save('text.png')
 
 ## Controling_Mouse&Keyboard_with_GUI_Automation <a name="Controling_Mouse&Keyboard_with_GUI_Automation"></a>
 ```py
-#todo.. too tired to do it now 
+#---------------------------------------------------------------------
+#-----------------------------WARNING---------------------------------
+#---------------------------------------------------------------------
+# if you use GUI automation there are problems if program goes out of control,
+# ect. missclicks something , python doesnt know that it missed so it will countinue to do its job
+# and will do it than probably wrong and it can maybe make some unwanted damage to system xd
+# To keep it safe you can add pauses after every autogui function call
+import pyautogui
+pyautogui.PAUSE = 1      # Pauses for 1 second so you have some time to exit program :P
+
+# There is also option to use FAILSAFE feature , basicly moveing your mouse in top left corner
+# raises FailSafeException exception
+pyautogui.FAILSAFE = True # Put False if you want to disable it 
+
+#---------------------------------------------------------------------
+# Controlling Mouse Movement
+#---------------------------------------------------------------------
+import pyautogui
+
+
 
 ```
 
