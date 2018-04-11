@@ -1077,6 +1077,23 @@ pyautogui.rightClick()
 #---------------------------------------------------------------------
 pyautogui.dragTo(x, y, duration=0.25) # Arg are same as moveTo and moveRel
 pyautogui.dragRel(x,y,duration=0.25)
-
+#---------------------------------------------------------------------
+# Scrolling the Mouse
+#---------------------------------------------------------------------
+pyautogui.scroll(200)
+# Scrolls UP, if int in function is negative then it scrolls DOWN
+#---------------------------------------------------------------------
+# Working with the Screen
+#---------------------------------------------------------------------
+# Getting a Screenshot
+im = pyautogui.screentshot()
+#-------------------------------
+#[Quick code]Screenshot,copy ss to clipboard so you can paste it to discord xD and save it to desktop :P
+#-------------------------------
+import os,pyperclip
+os.chdir('C:Desktop/')
+pyperclip.copy(im)
+im.save('test.png')
+#-------------------------------
 
 ```
