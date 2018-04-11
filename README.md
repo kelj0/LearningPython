@@ -1058,6 +1058,7 @@ pyautogui.moveTo(x, y, duration=0.25)
 
 pyautogui.moveRel(x,y,duration=0.25) # Same as moveTo but moves mouse relative to current position
 pyautogui.position() # Returns tuple of mouse's current position
+
 #---------------------------------------------------------------------
 # Clicking the Mouse
 #---------------------------------------------------------------------
@@ -1072,16 +1073,19 @@ pyautogui.mouseUp()   # Releases the button
 pyautogui.middleClick()
 pyautogui.doubleClick()
 pyautogui.rightClick()
+
 #---------------------------------------------------------------------
 # Dragging the Mouse
 #---------------------------------------------------------------------
 pyautogui.dragTo(x, y, duration=0.25) # Arg are same as moveTo and moveRel
 pyautogui.dragRel(x,y,duration=0.25)
+
 #---------------------------------------------------------------------
 # Scrolling the Mouse
 #---------------------------------------------------------------------
 pyautogui.scroll(200)
 # Scrolls UP, if int in function is negative then it scrolls DOWN
+
 #---------------------------------------------------------------------
 # Working with the Screen
 #---------------------------------------------------------------------
