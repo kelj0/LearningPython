@@ -1057,15 +1057,26 @@ pyautogui.moveTo(x, y, duration=0.25)
 # Moves mouse to (x,y) on screen in 0.25s , duration parametar is not needed(mouse teleports then)
 
 pyautogui.moveRel(x,y,duration=0.25) # Same as moveTo but moves mouse relative to current position
-
 pyautogui.position() # Returns tuple of mouse's current position
+#---------------------------------------------------------------------
+# Clicking the Mouse
+#---------------------------------------------------------------------
+pyautogui.click(10,5) # [LEFT click by default] Clicks on x==10,y==5
+pyautogui.click(10,5, button='left') # You can specify button->'left','middle' and 'right' click
+
+pyautogui.mouseDown() # Do i need to explain this 2 ? :d,pushes left mouse button.,same as click
+                      # It can also take button= argument for left,right and middle button
+pyautogui.mouseUp()   # Releases the button
+
+# You can also do this
+pyautogui.middleClick()
+pyautogui.doubleClick()
+pyautogui.rightClick()
+#---------------------------------------------------------------------
+# Dragging the Mouse
+#---------------------------------------------------------------------
+pyautogui.dragTo(x, y, duration=0.25) # Arg are same as moveTo and moveRel
+pyautogui.dragRel(x,y,duration=0.25)
 
 
 ```
-
-
-
-
-
-
-
