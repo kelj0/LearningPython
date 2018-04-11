@@ -1052,7 +1052,13 @@ pyautogui.FAILSAFE = True # Put False if you want to disable it
 # Controlling Mouse Movement
 #---------------------------------------------------------------------
 import pyautogui
+pyautogui.size() # Returns tuple of screens width and height in pixels
+pyautogui.moveTo(x, y, duration=0.25) 
+# Moves mouse to (x,y) on screen in 0.25s , duration parametar is not needed(mouse teleports then)
 
+pyautogui.moveRel(x,y,duration=0.25) # Same as moveTo but moves mouse relative to current position
+
+pyautogui.position() # Returns tuple of mouse's current position
 
 
 ```
