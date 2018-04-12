@@ -1081,6 +1081,39 @@ import os,pyperclip
 os.chdir('C:Desktop/')
 pyperclip.copy(im)
 im.save('test.png')
-#-------------------------------
+#---------------------------------------------------------------------
+# Image recognition
+#---------------------------------------------------------------------
+pyautogui.locateOnScreen('picture.png')
+# Returns tuple of 4 int (x,y,W,H) x,y is top left corner of found element
+# and W,H are width and height of that obj from x,y position 
+
+# If there are multiple same obj(like picture) you can create list of tuples
+list(pyautogui.locateAllOnScreen('picture.png')
+
+pyautogui.center((643, 745, 70, 29)) # ect. Returns coordinates of obj's center
+>> (678, 759)
+pyautogui.click((678, 759)) # Clicks middle of located obj(picture)
+
+#---------------------------------------------------------------------
+# Controling the Keyboard
+#---------------------------------------------------------------------
+pyautogui.click(100,200); pyautogui.typewrite('Hello world!')
+# I clicked first to put window in focus then i send virtual keys to clicked [text box ect]
+# There is also second parametar in typewrite cause this will type string instantly.. you can pass
+# number of s for each key stroke
+pyautogui.typewrite("This",0.25)
+
+# Writing key names
+pyautogui.typewrite('a','left','b') # Thsi will write a,go left and write b
+# finaly output will be 'ba' 
+
+# Here are all of Keyboard Atttributes
+
+![PyKeyboard Attributes](https://i.imgur.com/nrr0rqh.png)
+
 
 ```
+
+
+
