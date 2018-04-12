@@ -15,40 +15,23 @@ If you want to get input in debugger
 ## Table of contents
 
 -    [Basics](#Basics)
-
 -    [Data types](#Data-Types)
-
 -    [Web Scraping](#Web-Scraping)
-
 -    [Bat](#Bat)
-
 -    [Strings](#Strings)
-
 -    [Assertions](#Assertions)
-
 -    [Logging](#Logging)
-
 -    [Working with files](#Working-with-files)
-
 -    [ZIP FILES](#ZIP-FILES)
-
 -    [Excel](#Excel)
-
 -    [Shutil](#Shutil)
-
 -    [Regex](#Regex)
-
 -    [Time](#Time)
-
 -    [Multithreading](#Multithreading)
-
 -    [Launching_Programs](#Launching_Programs)
-
--    [Sending_email_and_Text_messages](#Sending_email_and_Text_messages)
-
--    [Manipulating_Images](#Manipulating_Images)
-
--    [Controling_Mouse&Keyboard_with_GUI_Automation](#Controling_Mouse&Keyboard_with_GUI_Automation)
+-    [Sending email and Text messages](#Sending_email_and_Text_messages)
+-    [Manipulating Images](#Manipulating_Images)
+-    [Controling Mouse Keyboard with GUI Automation](#Controling_Mouse&Keyboard_with_GUI_Automation)
 
 ---
 
