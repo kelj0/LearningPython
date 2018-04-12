@@ -1109,8 +1109,8 @@ pyautogui.typewrite('a','left','b') # Thsi will write a,go left and write b
 # finaly output will be 'ba' 
 
 # Here are all of Keyboard Atttributes
+[LINK](https://i.imgur.com/nrr0rqh.png)
 
-![PyKeyboard Attributes](https://i.imgur.com/nrr0rqh.png)
 
 
 ```
