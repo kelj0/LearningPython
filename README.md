@@ -1108,12 +1108,17 @@ pyautogui.typewrite("This",0.25)
 pyautogui.typewrite('a','left','b') # Thsi will write a,go left and write b
 # finaly output will be 'ba' 
 
-# Here are all of Keyboard Atttributes
-[LINK](https://i.imgur.com/nrr0rqh.png)
-
-
-
+# Here are all of Keyboard Attributes
+  -> https://i.imgur.com/nrr0rqh.png
+#-------------------------------------
+# Pressing and Releasing the Keyboard
+#-------------------------------------
+# Much like mouseDown() and MouseUp()
+pyautogui.keyDown('shift');pyautogui.press('4');pyautogui.keyUp('shift')
+>> '$'
+  
+# Hotkeys
+# If you want to press ctrl+c ( to copy something) you would need 2 keyDown and 2 keyUp lines
+# you can use this instead
+pyautogui.hotkey('ctrl','c') # Presses keys by order and releases them in reverse
 ```
-
-
-
