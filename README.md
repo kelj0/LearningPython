@@ -58,6 +58,64 @@ while True:
 for i in range(0,5):
     print(i)
 #prints from 0 to 4(if added 3rd number in brackets(0,5,X) prints every i+X)
+
+#---------------------------------------------------------------------
+# Functions
+#---------------------------------------------------------------------
+# Lets make 2 files -> foo.py and test.py
+def foo():
+    print('Hello from function!')
+# Save it as foo.py in same dir as test.py
+# in test.py write following
+
+from foo import *
+foo() # Prints "Hello from funciton!"
+# Read as from file foo.py import all 
+# This is usefull for making your code cleaner :)
+
+# Getting values to foo
+def changeA(a):
+    a=5
+    return a
+a=1
+changeA(a)
+# If we call this foo it will change "scoped a" that means that every variable in
+# function is diferend from variables in other functions
+# a is still 1 after function, if we want to change global variables write following
+
+a=10
+
+def changeA(a):
+    global a=20
+    return a
+
+changeA(a)
+# This indeed changes a to 20 :)
+
+def testFoo(incomingVariable):
+    return incomingVariable
+
+sendingVariable = "Here comes nothing"
+testFoo(sendingVariable)
+# This calls testFoo and sends "sendingVariable" , function recives variable(makes copy)
+# and calls it "incomingVariable" in his scope 
+
+#---------------------------------------------------------------------
+# Advanced
+#---------------------------------------------------------------------
+def makeLine(a,b):
+    def y(x):
+        return x*5
+    return y
+    
+a = makeLine(5,2)
+a(1)
+# returns 5
+
+# This is called creating functions on the fly, this makes foo that RETURNS FOO!
+# You can now call a ,pass parametar and it will return parametar multiplyed by 5
+# C,C++ and many other languages dont allow you to define foo that retunrs foo
+
 ```
 
 ## Data types<a name="Data-Types"></a>
