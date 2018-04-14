@@ -432,6 +432,7 @@ for folderName,subfolders,filenames in os.walk(path):
 baconFile=open('bacon.txt','w') #second argument in open is 'w'(overwrites file with new contet)
 #if there is no file named 'bacon.txt' then it will create it 
 baconFile.write('Hello world!\n') #it returns num of chars written including newline
+text = baconFile.read() # This reads file in string "text"
 #dont forget to close file after writing/reading to it
 baconFile.close()
 
