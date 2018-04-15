@@ -115,6 +115,16 @@ a(1)
 # This is called creating functions on the fly, this makes foo that RETURNS FOO!
 # You can now call a ,pass parametar and it will return parametar multiplyed by 5
 # C,C++ and many other languages dont allow you to define foo that retunrs foo
+#---------------------------------------------------------------------
+# Feed foo with any number of arg
+#---------------------------------------------------------------------
+# Basicly it this foo returns tuple of all given arg
+def foo(*arg):
+    return arg
+>>foo('a','b','c')
+('a', 'b', 'c')
+>>type(foo('a','b','c'))
+<class 'tuple'>
 
 ```
 
