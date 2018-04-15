@@ -451,11 +451,6 @@ baconFile.close()
 print(content)
 #prints content of baconFile(Hello world!\nBacon is not a vegetable)
 
-# Reading files without whitespaces
-from scanner import *
-s= Scanner("")
-
-
 ```
 
 ## ZIP FILES<a name="ZIP-FILES"></a>
