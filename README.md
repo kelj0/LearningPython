@@ -436,16 +436,26 @@ text = baconFile.read() # This reads file in string "text"
 #dont forget to close file after writing/reading to it
 baconFile.close()
 
+# Trick to delete condent from file
+open(fileName,"w").close() # As you learned "w" clears file to make it clear to write in it 
+# we close file immediately and file is clear as new :P
+
 baconFile=open('bacon.txt','a') #second arg is 'a' unlike 'w'  it appends contet
 baconFile.write('Bacon is not a vegetable.')
 #dont forget to close 
 baconFile.close()
 
 baconFile.open('bacon.txt')
-contet=baconFile.read()
+content=baconFile.read()
 baconFile.close()
-print(conte)
-#prints contet of baconFile(Hello world!\nBacon is not a vegetable)
+print(content)
+#prints content of baconFile(Hello world!\nBacon is not a vegetable)
+
+# Reading files without whitespaces
+from scanner import *
+s= Scanner("")
+
+
 ```
 
 ## ZIP FILES<a name="ZIP-FILES"></a>
