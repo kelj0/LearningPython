@@ -130,14 +130,60 @@ def foo(*arg):
 ## Data types<a name="Data-Types"></a>
 ```py
 #---------------------------------------------------------------------
-#LIST
+# LIST
 #---------------------------------------------------------------------
 list=["item1","item2","item3"]
 #printing it
 print(list)
+#---------------------------------------------------------------------
+# Making own list
+#---------------------------------------------------------------------
+# Lists are made from Node's
+# Node has its value and adress of next node
+# Lets make foo that creates Node
+def NodeCreate(value,next):
+    return[value,next]
+# We return array of 2 items; value and next
+# Now lets make foo that returns value and next of Node
+def NodeValue(n):
+    return n[0]
+
+def NodeNext(n):
+    return n[1]
+
+# Good ... now we need 2 more foo's that will set value and next 
+
+def NodeSetValue(n,value):
+    n[0]= value
+    return
+    
+def NodeSetNext(n,next):
+    n[1] = next
+    return
+
+a = NodeCreate(3,None)
+b = NodeCreate(4,None)
+print("a value ", NodeValue(a))
+>> a value 3
+print("b value ", NodeValue(b))
+>> b value 4
+NodeSetValue(a,"two")
+print("a value ",NodeValue(a))
+>> a value two
+
+NodeSetNext(a,b) # LINK
+print("b value, through a is", NodeValue(NodeNext(a)))
+b value, through a is 4
+
+print("a is ",a)
+>> a is [2, [4,None]]
+
+NodeSetNext(b,NodeCreate(6,None))
+print("a is",a)
+>>a is [2, [4, [6, None]]]
 
 #---------------------------------------------------------------------
-#TUPLES
+# TUPLES
 #---------------------------------------------------------------------
 #Same like list but without extensive funcionality  (they are immutable also)
 tuple=("Car",1,0,5)
@@ -145,7 +191,7 @@ print(tuple)
 #>> car 1 0.5
 
 #---------------------------------------------------------------------
-#DICTIONARY
+# DICTIONARY
 #---------------------------------------------------------------------
 ab={
 'Key1':'Item1',
