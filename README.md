@@ -265,7 +265,7 @@ res.status_code == requests.codes.ok #returns true if request succeeded
 #you can also check len(res.text), and print it 
 print(res.text[:250])
 
-res.raise_for_status() #this will raise an exception if there was and error downloading the file
+res.raise_for_status() #this will raise an exception if there was and error downloading
 #and will do nothing if the download succeeded
 
 #good practice to do is 
