@@ -202,7 +202,30 @@ def join(value,list):
     n = NodeCreate(value,None) # Create new node with next==None
     NodeSetNext(n,list) # Set nodes next to be list (as in next item in our list)
     return n # We return our custom node
-    
+#-------------------------------------------    
+# Lets add feature to our list appending 
+#-------------------------------------------
+def append(listA,listB): # You must append node to list(with next pointing to None)
+    if len(listA) < 1:
+        return "First parametar must be list of at least 1 member"
+    node = listA
+    while(NodeNext(node)!=None): # We loop untill we get to last member of listA
+        node = NodeNext(node)    
+    NodeSetNext(node,listB)  # Set last member next to listB
+    return
+
+a = ListCreate(1,2,3)
+# List looks like this now  1->2->3->None
+
+append(a,NodeCreate(4)) # a is now 1,2,3,4 (4 is pointing to None)
+# List looks like this now  1->2->3->4->None
+
+# Lets print all numbers as ints 
+temp = a
+while(NodeNext(temp)!=None):
+    print(NodeValue(temp))
+    temp = NodeNext(temp)
+print(NodeValue(temp))  # This is last number cause while loops to last member(but doesn't print last)
 
 
 #---------------------------------------------------------------------
