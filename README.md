@@ -136,7 +136,7 @@ list=["item1","item2","item3"]
 #printing it
 print(list)
 #---------------------------------------------------------------------
-# Making own list
+# Making own nodes
 #---------------------------------------------------------------------
 # Lists are made from Node's
 # Node has its value and adress of next node
@@ -181,6 +181,29 @@ print("a is ",a)
 NodeSetNext(b,NodeCreate(6,None))
 print("a is",a)
 >>a is [2, [4, [6, None]]]
+#---------------------------------------------------------------------
+# Making own linked list
+#---------------------------------------------------------------------
+def join(value,list):
+    return NodeCreate(value,list) # creates new node that glues two args together
+    # Few lines down is more detailed join foo
+    
+def ListCreate(*args):
+    item = None
+    for i in range(len(args)-1,-1,-1): # from right to left(from end to start) 
+        items = join(args[i],items)    # cause first item joined goes on end
+    return items
+ListCreate()
+>> None # Returns None cause we didnt pass args in foo
+ListCreate(2,"two",False)
+>>[2,["two",[False,None]]]
+
+def join(value,list):
+    n = NodeCreate(value,None) # Create new node with next==None
+    NodeSetNext(n,list) # Set nodes next to be list (as in next item in our list)
+    return n # We return our custom node
+    
+
 
 #---------------------------------------------------------------------
 # TUPLES
