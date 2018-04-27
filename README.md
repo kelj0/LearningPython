@@ -226,6 +226,58 @@ while(NodeNext(temp)!=None):
     print(NodeValue(temp))
     temp = NodeNext(temp)
 print(NodeValue(temp))  # This is last number cause while loops to last member(but doesn't print last)
+#----------------------------------------
+# Lets create heat and tail to make it easyer looping through list
+#----------------------------------------
+def head(items):
+    return NodeValue(items)
+
+def tail(items):
+    return NodeNext(items)
+
+def setHead(items,value):
+    NodeSetValue(items,value)
+    return
+    
+def setTail(items,next):
+    NodeSetNext(items,next)
+    return
+# Head is first item if list , and tail returns list of all items to end(except first)
+a = ListCreate(1,2,3,4)
+head(a)
+>> 1
+tail(a)
+>> [2,[3,[4,None]]]
+setHead(tail(a),0)  # Sets first member of tail(a)(2nd member of a) to 0
+a
+>> [1,[0,[3,[4,None]]]]
+#----------------------------------------
+# Now lets make some functions to get elements on some index..
+#----------------------------------------
+def ListIndexNode(items,index): # If index is greater that or equal to the number of nodes you get error!
+    node = items
+    for i in range(0,index,1):
+        node = tail(node)
+    return node
+
+def ListIndex(items,index):
+    node = ListIndexNode(items,index)
+    return head(node)
+
+def ListSetIndex(items,index,value):
+    node = ListIndexNode(items,index)
+    NodeSetValue(node,value)
+    return
+#----------------------------------------
+# What if you want to find element in list? 
+#----------------------------------------
+def find(value,items):
+    spot = items
+    while(spot!=None):
+        if(head(spot)==value):
+            return spot
+        spot = tail(spot)
+    return None
 
 
 #---------------------------------------------------------------------
