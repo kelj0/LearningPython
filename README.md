@@ -279,6 +279,13 @@ def find(value,items):
         spot = tail(spot)
     return None
 
+Quick read, important if implementing lists!
+# You may be asking, why go through all this trouble to implement lists when arrays seem to do every thing
+# lists can do. The reason comes down to the fact that no data structure does all things well. For example, a
+# data structure may be very fast when putting values in, but very slow in taking values out. Another kind
+# of data structure may be very slow putting values in but very fast taking values out. This is why there are
+# quite a number of different data structures, each with their own strengths.
+
 
 #---------------------------------------------------------------------
 # TUPLES
