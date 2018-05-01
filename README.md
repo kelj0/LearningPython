@@ -345,8 +345,8 @@ class Person:
     pass # An empty block
 p = Person()
 print(p)
->> <__main__.Person object at 0x07124850> # We print something like this(This tells us we have instance of the
-# Person class in the __main__ module
+>> <__main__.Person object at 0x07124850> # We print something like this(This tells us we have instance
+# of the Person class in the __main__ module
 
 #---------------------------------------------------------------------
 # Methods
@@ -360,7 +360,7 @@ p.say_hi()
 # We can also write this as Person().say_hi()
 
 #----------------------------------
-# __init__ (constructor in c++)
+# __init__ (as constructor in c++)
 #----------------------------------
 class Person:
     def __init__(self,name):
