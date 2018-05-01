@@ -16,6 +16,7 @@ If you want to get input in debugger
 
 -    [Basics](#Basics)
 -    [Data types](#Data-Types)
+-    [OOP](#Object-Oriented-programming)
 -    [Web Scraping](#Web-Scraping)
 -    [Bat](#Bat)
 -    [Strings](#Strings)
@@ -331,6 +332,50 @@ print("List all",shopinglist[:]
 print("List by i+=X",shopinglist[::X]
 #lists all seq but every X item
 ```
+
+## Object Oriented Programming<a name="Object-Oriented-programming"></a>
+```py
+#The 'self' in Python is equivalent to the 'this' pointer in C++
+
+#---------------------------------------------------------------------
+# Basics
+#---------------------------------------------------------------------
+# Lets make simple class
+class Person:
+    pass # An empty block
+p = Person()
+print(p)
+>> <__main__.Person object at 0x07124850> # We print something like this(This tells us we have instance of the
+# Person class in the __main__ module
+
+#---------------------------------------------------------------------
+# Methods
+#---------------------------------------------------------------------
+class Person:
+    def say_hi(self):
+        print('Hello')
+p = Person()
+p.say_hi()
+>> Hello
+# We can also write this as Person().say_hi()
+
+#----------------------------------
+# __init__ (constructor in c++)
+#----------------------------------
+class Person:
+    def __init__(self,name):
+        self.name=name
+    
+    def say_hi(self):
+        print('Hello',self.name)
+        
+p = Person('keljo')
+p.say_hi()
+>> Hello keljo
+
+
+```
+
 
 ## Web Scraping<a name="Web-Scraping"></a>
 ```py
