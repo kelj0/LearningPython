@@ -373,6 +373,10 @@ p = Person('keljo')
 p.say_hi()
 >> Hello keljo
 
+# If you use data members with names using the double underscore prefix such as __private Python uses
+# name-mangling to effectively make it a private variable
+# see code Python->Codes->Week6->day38
+
 ```
 
 
