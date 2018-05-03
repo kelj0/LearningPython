@@ -368,11 +368,10 @@ class Person:
     
     def say_hi(self):
         print('Hello',self.name)
-        
+    
 p = Person('keljo')
 p.say_hi()
 >> Hello keljo
-
 
 ```
 
