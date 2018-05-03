@@ -375,8 +375,14 @@ p.say_hi()
 
 # If you use data members with names using the double underscore prefix such as __private Python uses
 # name-mangling to effectively make it a private variable
+
+
+#----------------------------------
+# Inheritance
+#----------------------------------
 # see code Python->Codes->Week6->day38
 
+TODO: Notes
 ```
 
 
