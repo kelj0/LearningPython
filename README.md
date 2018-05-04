@@ -393,14 +393,64 @@ class Member(House):       # Member inherits House's methods
     def memberFoo(self):
         print('Function called from Member')
 
+# Testing..
 h = House('h',10)
 >> Constructing house
 m = Member('m',20)
->> Constructing house  # We made only constructor in House so Member inherided House's constructor
+>> Constructing house  # We made constructor only in House so Member inherided House's constructor
 h.name
 >> h
 m.name
 >> m
+h.function()
+>> Function called from House
+m.memberFoo()
+>> Function called from Member
+m.function()
+>> Function called from House
+
+#Lets make little improvements
+
+class House:
+    def __init__(self,name):
+        self.name = name
+        print('Constructor in house!')
+    def tell(self):
+        print('Name: {}'.format(self.name),end=" ")
+
+class Member(House):
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+    def tell(self):
+        House.tell(self)
+        print('Age: {}'.format(self.age))
+ckass Dog(House):
+    def __init__(self,name,color):
+        self.name = name
+        self.color = color
+    def tell(self):
+        House.tell(self)
+        print('Color: {}'.format(self.color))
+
+m = Member('keljo',10)
+d = dog('doggo','Yellow')
+# We make m and d ( as Member and Dog)
+
+members = [m,d]
+# We make list of members 'in' House
+
+for member in members:
+    member.tell()
+>> Name: keljo Age:10
+   Name: doggo Color: Yellow
+   
+# Using for in loop we can easily access all 'members' of House class
+
+# Inheritance is very usefull , we can easily make changes to "House" and it will apply to all inherited members 
+# ect. we can add new methods to House and we could access that methods through Members and Dog( in this case)
+# or even make new class like Cat(House) and it would have all methods that House have
+
 
 
 ```
