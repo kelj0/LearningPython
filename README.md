@@ -1502,14 +1502,14 @@ pyautogui.hotkey('ctrl','c') # Presses keys by order and releases them in revers
 # Keywords(probably changed so look for it online this is just reminder)
 #---------------------------------------------------------------------
 If interpretrer complains about one of your variable names and you dont know wht see this list
-+--------+-------+--------+---------+-------+----------+
-| and    | as    | assert | break   | class | continue |
-| def    | del   | elif   | else    | except| exec     |
-| finally| for   | from   | global  | if    | import   |
-| in     | is    | lambda | nonlocal| not   | or       |
-| pass   | raise | return | try     | while | with     |
-| yield  | True  | False  | None    |       |          |
-+--------+-------+--------+---------+-------+----------+
+# +--------+-------+--------+---------+-------+----------+
+# | and    | as    | assert | break   | class | continue |
+# | def    | del   | elif   | else    | except| exec     |
+# | finally| for   | from   | global  | if    | import   |
+# | in     | is    | lambda | nonlocal| not   | or       |
+# | pass   | raise | return | try     | while | with     |
+# | yield  | True  | False  | None    |       |          |
+# +--------+-------+--------+---------+-------+----------+
 
 
 
