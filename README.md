@@ -382,7 +382,27 @@ p.say_hi()
 #----------------------------------
 # see code Python->Codes->Week6->day38
 
-TODO: Notes
+class House:
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+        print('Constructing House')
+    def function(self):
+        print('Function called from House')
+class Member(House):       # Member inherits House's methods
+    def memberFoo(self):
+        print('Function called from Member')
+
+h = House('h',10)
+>> Constructing house
+m = Member('m',20)
+>> Constructing house  # We made only constructor in House so Member inherided House's constructor
+h.name
+>> h
+m.name
+>> m
+
+
 ```
 
 
