@@ -1495,7 +1495,7 @@ pyautogui.keyDown('shift');pyautogui.press('4');pyautogui.keyUp('shift')
 pyautogui.hotkey('ctrl','c') # Presses keys by order and releases them in reverse
 ```
 
-## Turtle module <a name="#Turtle_module"></a>
+## Turtle module <a name="Turtle_module"></a>
 ```py
 import turtle
 wn = turtle.Screen()   # Creates a playground for turtles
