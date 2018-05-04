@@ -33,6 +33,7 @@ If you want to get input in debugger
 -    [Sending email and Text messages](#Sending_email_and_Text_messages)
 -    [Manipulating Images](#Manipulating_Images)
 -    [Controling Mouse Keyboard with GUI Automation](#Controling_Mouse&Keyboard_with_GUI_Automation)
+-    [Turtle module](#Turtle_module)
 -    [Useful data](#Useful-data)
 
 ---
@@ -1492,6 +1493,26 @@ pyautogui.keyDown('shift');pyautogui.press('4');pyautogui.keyUp('shift')
 # If you want to press ctrl+c ( to copy something) you would need 2 keyDown and 2 keyUp lines
 # you can use this instead
 pyautogui.hotkey('ctrl','c') # Presses keys by order and releases them in reverse
+```
+
+## Turtle module <a name="#Turtle_module"></a>
+```py
+import turtle
+wn = turtle.Screen()   # Creates a playground for turtles
+alex = turtle.Turtle() # Create a turtle, assing to alex
+
+alex.forward(50) # Tell alex to go forward by 50 units
+alex.left(90) # Tell alex to turn by 90 degrees
+wn.mainloop() # Wait for user to close window
+
+
+wn.bgcolor("lightgreen") # Set the window background color
+wn.title("Hello darknes my old friend") # Set the window title
+
+tess = turtle.Turtle()
+tess.color("blue") # Change color of turtle to blue
+tess.pensize(3) # Tell tess to set her pen width
+ 
 ```
 
 
