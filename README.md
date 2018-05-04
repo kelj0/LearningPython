@@ -392,8 +392,9 @@ class House:
 class Member(House):       # Member inherits House's methods
     def memberFoo(self):
         print('Function called from Member')
-
+#----------------------------------
 # Testing..
+#----------------------------------
 h = House('h',10)
 >> Constructing house
 m = Member('m',20)
@@ -409,8 +410,9 @@ m.memberFoo()
 m.function()
 >> Function called from House
 
+#----------------------------------
 #Lets make little improvements
-
+#----------------------------------
 class House:
     def __init__(self,name):
         self.name = name
@@ -447,11 +449,10 @@ for member in members:
    
 # Using for in loop we can easily access all 'members' of House class
 
-# Inheritance is very usefull , we can easily make changes to "House" and it will apply to all inherited members 
-# ect. we can add new methods to House and we could access that methods through Members and Dog( in this case)
-# or even make new class like Cat(House) and it would have all methods that House have
-
-
+# Inheritance is very usefull , we can easily make changes to "House" and it will apply
+# to all inherited members ect. we can add new methods to House and we could access 
+# that methods through Members and Dog( in this case) or even make new class like 
+# Cat(House) and it would have all methods that House have
 
 ```
 
