@@ -33,6 +33,7 @@ If you want to get input in debugger
 -    [Sending email and Text messages](#Sending_email_and_Text_messages)
 -    [Manipulating Images](#Manipulating_Images)
 -    [Controling Mouse Keyboard with GUI Automation](#Controling_Mouse&Keyboard_with_GUI_Automation)
+-    [Useful data](#Useful-data)
 
 ---
 
@@ -41,7 +42,34 @@ Printing text
 ```py
 print("Print text")
 
-#Random
+# Using type we can see what type is something in py
+type("Hello world")
+>> <class 'str'>
+type(19)
+>> <class 'int'>
+
+# Strings
+# If using this type of quotes -> ' then we can use this type -> " inside and vice versa
+# if you use triple quoted(''' or """) string you can store multiple lines and " , ' inside
+
+a = 'Test"test"'
+print(a)
+>> Test"test"
+
+b = "Test'test'"
+print(b)
+>> Test'test'
+
+c = """ This is a multi
+        line 'string'
+        named "c". """
+print(c)
+>> This is a multi
+>> line 'string'
+>> named "c".
+
+
+#Random elements in list
 import random
 a=[1,2,3]
 random.shuffle(a)#Shuffles elements in list 
@@ -1464,4 +1492,26 @@ pyautogui.keyDown('shift');pyautogui.press('4');pyautogui.keyUp('shift')
 # If you want to press ctrl+c ( to copy something) you would need 2 keyDown and 2 keyUp lines
 # you can use this instead
 pyautogui.hotkey('ctrl','c') # Presses keys by order and releases them in reverse
+```
+
+
+## Useful data <a name="Useful-data"></a>
+```py
+
+#---------------------------------------------------------------------
+# Keywords(probably changed so look for it online this is just reminder)
+#---------------------------------------------------------------------
+If interpretrer complains about one of your variable names and you dont know wht see this list
++--------+-------+--------+---------+-------+----------+
+| and    | as    | assert | break   | class | continue |
+| def    | del   | elif   | else    | except| exec     |
+| finally| for   | from   | global  | if    | import   |
+| in     | is    | lambda | nonlocal| not   | or       |
+| pass   | raise | return | try     | while | with     |
+| yield  | True  | False  | None    |       |          |
++--------+-------+--------+---------+-------+----------+
+
+
+
+
 ```
