@@ -1535,13 +1535,11 @@ tess.penup()  # Lifts 'pen' up , that means we can move turtle without drawing a
 tess.forward(90)
 tess.pendown() # We are drawing now
 
-#-------------------------------------
 # Pen shapes
-#-------------------------------------
 tess.shape("turtle") # Yaay we are turtle now 
 
-
- 
+# Leave stamps ( shape on current position)
+tess.stamp() 
 ```
 
 
