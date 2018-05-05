@@ -130,6 +130,15 @@ testFoo(sendingVariable)
 # This calls testFoo and sends "sendingVariable" , function recives variable(makes copy)
 # and calls it "incomingVariable" in his scope 
 
+#--------------------------------
+# Docstrings
+#--------------------------------
+# First comment when making function , it will be displayed when we open-close parenthesis ()
+# Its key feature for documentation as in it explains what function should do ..
+def function():
+        """This is displayed when we type function()"""
+
+
 #---------------------------------------------------------------------
 # Advanced
 #---------------------------------------------------------------------
