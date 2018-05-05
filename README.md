@@ -1497,6 +1497,10 @@ pyautogui.hotkey('ctrl','c') # Presses keys by order and releases them in revers
 
 ## Turtle module <a name="Turtle_module"></a>
 ```py
+
+#-------------------------------------
+# Basics
+#-------------------------------------
 import turtle
 wn = turtle.Screen()   # Creates a playground for turtles
 alex = turtle.Turtle() # Create a turtle, assing to alex
@@ -1505,13 +1509,38 @@ alex.forward(50) # Tell alex to go forward by 50 units
 alex.left(90) # Tell alex to turn by 90 degrees
 wn.mainloop() # Wait for user to close window
 
-
+#-------------------------------------
+# Window
+#-------------------------------------
 wn.bgcolor("lightgreen") # Set the window background color
 wn.title("Hello darknes my old friend") # Set the window title
 
+#-------------------------------------
+# Color,size..
+#-------------------------------------
 tess = turtle.Turtle()
 tess.color("blue") # Change color of turtle to blue
 tess.pensize(3) # Tell tess to set her pen width
+#-------------------------------------
+# More movement
+#-------------------------------------
+tess.forward(-100) # Moves back for 100 units
+tess.left(-30) # turns to right
+tess.backward(-100) # Moves forward for 100 units :D
+
+#-------------------------------------
+# More drawing
+#-------------------------------------
+tess.penup()  # Lifts 'pen' up , that means we can move turtle without drawing any lines on board
+tess.forward(90)
+tess.pendown() # We are drawing now
+
+#-------------------------------------
+# Pen shapes
+#-------------------------------------
+tess.shape("turtle") # Yaay we are turtle now 
+
+
  
 ```
 
