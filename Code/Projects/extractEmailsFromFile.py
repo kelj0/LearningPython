@@ -1,4 +1,4 @@
-# Extract emails from txt file , just replcate file.txt to yourfilename.txt :)
+# Extract emails from txt file , just replace file.txt to yourfilename.txt :)
 # Also if you want to write it to file replace print(e.group())[line 12] to something like file.write...
 import re
 
