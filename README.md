@@ -90,7 +90,7 @@ print(c)
 #---------------------------------------------------------------------
 #If
 if True:    # This is always True, so this is always executed,
-    pass    # But it does nothing cause we put pass in body ( pass is placeholder)
+    pass    # But it does nothing cause we put pass in body (pass is placeholder)
 else:
     pass
 
