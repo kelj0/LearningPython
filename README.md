@@ -69,6 +69,23 @@ print(c)
 >> line 'string'
 >> named "c".
 
+#If
+if True:    # This is always True, so this is always executed,
+    pass    # But it does nothing cause we put pass in body ( pass is placeholder)
+else:
+    pass
+
+if x<0:
+    print("The negative number ", x ," is not valid here!")
+    x = 4
+    print("I've decided t ouse the number 4 instead")
+print("The square root of ", x , "is", math.sqrt(x)) # Note this will give error if we dont import math
+# Above code checks if its negative and changes it to 4 if it is < 0
+
+# We can also type something like this 
+if x is 10:  # 'is' can be used as ==
+    print("X has value of 10")
+
 
 #Random elements in list
 import random
