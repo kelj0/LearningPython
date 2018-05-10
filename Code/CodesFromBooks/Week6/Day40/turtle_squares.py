@@ -18,3 +18,5 @@ for i in range(15):
     size=size+10
     tess.forward(10)
     tess.right(18)
+
+wn.mainloop()

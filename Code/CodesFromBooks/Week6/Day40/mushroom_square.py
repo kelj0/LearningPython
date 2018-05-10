@@ -10,3 +10,4 @@ for i in range(70):
     tess.forward(size)
     tess.right(90)
     size+=2
+wn.mainloop()
