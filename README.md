@@ -1566,6 +1566,16 @@ tess.shape("turtle") # Yaay we are turtle now
 
 # Leave stamps ( shape on current position)
 tess.stamp() 
+
+
+# Writing
+tess.write("Hello!")
+# displays Hello! at the turtle's position
+
+# We can fill shapes (circle,semicircle,triangle...)
+tess.color("blue","red") # blue is pen color and red is fill color 
+tess.begin_fill() # We call this method , then draw shape
+tess.end_fill()   # then call this method to 'fill' drawed shape
 ```
 
 
