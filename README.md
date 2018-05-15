@@ -15,17 +15,17 @@ If you want to get input in debugger
 ## Table of contents
 
 -    [Basics](#Basics)
--    [Data types](#Data-Types)
--    [OOP](#Object-Oriented-programming)
--    [Web Scraping](#Web-Scraping)
--    [Bat](#Bat)
 -    [Strings](#Strings)
+-    [Data types](#Data-Types)
+-    [Bat](#Bat)
 -    [Assertions](#Assertions)
 -    [Logging](#Logging)
 -    [Working with files](#Working-with-files)
+-    [OOP](#Object-Oriented-programming)
 -    [ZIP FILES](#ZIP-FILES)
 -    [Excel](#Excel)
 -    [Shutil](#Shutil)
+-    [Web Scraping](#Web-Scraping)
 -    [Regex](#Regex)
 -    [Time](#Time)
 -    [Multithreading](#Multithreading)
@@ -198,6 +198,50 @@ def foo(*arg):
 >>type(foo('a','b','c'))
 <class 'tuple'>
 ```
+
+## Strings<a name="Strings"></a>
+```py
+#---------------------------------------------------------------------
+#Basics
+#---------------------------------------------------------------------
+#CONVERTING LIST TO STRING
+some_list=["k","a","r","l","o"]
+names=''.join(some_list)
+
+# default spaces in rjust ljust in second parametar 
+'hello'.rjust(10,'*')
+#prints '*****hello'
+'hello'.ljust(10,'*')
+#prints 'hello*****'
+'hello'.center(10,'=')
+#prints '==hello==='
+#---------------------------------------------------------------------
+#Checks
+#---------------------------------------------------------------------
+name = 'Swaroop'
+if name.startswith('Swa'):
+  print('Yes, the string starts with "Swa"')
+'hello'.isalpha()   #returns True if the string consists only of letters and is not blank
+'hello'.isalnum()   #returns True if the string consists only of letters and numbers and is not blank
+'hello'.isdecimal() #returns True if the string consists only of numeric characters and is not blank
+'hello'.isspace()   #returns True if the string consists only of spaces, tabs, and newlines and is not blank
+'hello'.istitle()   #returns True that begin with an uppercase letter followed by only lowercase letters.
+
+if 'a' in name:
+    print('Yes , it contains "a"')
+if name.find('war')!= -1:
+    print('Yes it conaints the string "war"')
+#---------------------------------------------------------------------
+delimiter='_*_'
+mylist=['Brazil','Russia','India','China']
+print(delimiter.join(mylist))#prints mylist[0] delimiter then mylist[1] ..
+#---------------------------------------------------------------------
+fruit  = "banana"
+list(enumerate(fruit))
+[(0, ’b’), (1, ’a’), (2, ’n’), (3, ’a’), (4, ’n’), (5, ’a’)]
+
+```
+
 
 ## Data types<a name="Data-Types"></a>
 ```py
@@ -404,6 +448,109 @@ print("List by i+=X",shopinglist[::X]
 #lists all seq but every X item
 ```
 
+## Bat<a name="Bat"></a>
+```
+#---------------------------------------------------------------------
+To run python scripts
+#---------------------------------------------------------------------
+@py.exe C:\path\to\your\pythonScript.py %*
+python must be in sys PATH, advice: put all bat files in one folder and add folder to sys PATH 
+you will be able to run your bat files with run (win+r on windows)
+```
+
+## Assertions<a name="Assertions"></a>
+```py
+#---------------------------------------------------------------------
+#Basics
+#---------------------------------------------------------------------
+#You can see where is bug in your program if you include them
+# 1st "Paramar to chech if false then when problem happens you can write feedback to see what is the problem"
+# 2nd "Feedback to output when problem occures
+assert "red" in stoplight.values() , "Neither light is red!"+str(stoplight)
+#if there is no red in dic keys then program writes this:
+#AssertionError : Neither light is red! {'key1':'blue','key2':'green'}
+#As you can see i would immediately assume that error is in dictionary
+```
+
+## Logging<a name="Logging"></a>
+```py
+#---------------------------------------------------------------------
+#Basics
+#---------------------------------------------------------------------
+import logging
+logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
+#basic syntax for logging , its usefull when debugging to see what is happening in program
+#if you want to write logs in file just pass KEYWORD filename="nameoffile.txt" as one of parametars
+logging.basicConfig(filename="log.txt",level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
+
+logging.debug('Msg')
+#Prints 2018-03-25 16:51:35,172 - DEBUG - Msg
+#if debug is succesful then you can skip printing msg's with 
+logging.disable(logging.CRITICAL)
+#you simply pass logging.disable() a logging level , and it will suppress all log msg at that lvl and lower 
+
+```
+
+## Working with files<a name="Working-with-files"></a>
+```py
+import os
+#---------------------------------------------------------------------
+#Getting basic info
+#---------------------------------------------------------------------
+os.getcwd() #Current working directory in string format
+os.path.abspath(path) #returns string of apsolute path
+os.path.relpath(path,start) #Will return string of a path from start to path
+
+os.chdir("C:\\Windows\\System32") #Changes working dir
+os.makedirs("C:\\delicious\\walnut\\waffles") #Makes dir delicious folder, then inside delicious walnut,
+#then inside walnut waffles folder
+#---------------------------------------------------------------------
+#Checks
+#---------------------------------------------------------------------
+os.path.isabs(path) #Returns True if is absolute
+os.path.exists(path) # returns True if refered file in path exists
+os.path.isfile(path) #returns True if path argument exists and is file
+os.path.isdir(path)  #returns True if path argument exists and is folder
+#---------------------------------------------------------------------
+#Delete files,folders(permanent or send to trash)
+#---------------------------------------------------------------------
+os.unlink(path) #will delete FILE a path
+os.rmdir(path) # will delete FOLDER at path
+shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
+
+import send2trash
+send2trash.send2trash(path) #sends "path" to TRASH
+
+#Prints folders,subfolders and files in folders (os.walk returns name of folder in path
+#second parametar is name of subfolder and 3rd parametar is filenames in subfolders
+for folderName,subfolders,filenames in os.walk(path):
+    print('The current folder is' + folderName)
+    for subfolder in subfolders:
+        print('SUBFOLDER OF' + folderName + ': '+subfolder)
+    for filename in filenames:
+        print('FILE INSIDE ' + folderName+': '+ filename)
+    print('')
+#---------------------------------------------------------------------
+#Basics(r/w to files)
+#---------------------------------------------------------------------
+baconFile=open('bacon.txt','w') #second argument in open is 'w'(overwrites file with new contet)
+#if there is no file named 'bacon.txt' then it will create it 
+baconFile.write('Hello world!\n') #it returns num of chars written including newline
+#dont forget to close file after writing/reading to it
+baconFile.close()
+
+baconFile=open('bacon.txt','a') #second arg is 'a' unlike 'w'  it appends contet
+baconFile.write('Bacon is not a vegetable.')
+#dont forget to close 
+baconFile.close()
+
+baconFile.open('bacon.txt')
+contet=baconFile.read()
+baconFile.close()
+print(conte)
+#prints contet of baconFile(Hello world!\nBacon is not a vegetable)
+```
+
 ## Object Oriented Programming<a name="Object-Oriented-programming"></a>
 ```py
 #The 'self' in Python is equivalent to the 'this' pointer in C++
@@ -525,6 +672,137 @@ for member in members:
 # that methods through Members and Dog( in this case) or even make new class like 
 # Cat(House) and it would have all methods that House have
 
+```
+
+
+## ZIP FILES<a name="ZIP-FILES"></a>
+```py
+#---------------------------------------------------------------------
+#Basics
+#---------------------------------------------------------------------
+import zipfile
+#navigate to foldere where is zip you wanna work with
+exampleZip = zipfile.ZipFile('testzip.zip') #exampleZip is testzip.zip now
+exampleZip.namelist() 
+#prints all folders/subfolders and files of zip file
+#---------------------------------------------------------------------
+#Getting size,compressing size..extracting..
+#---------------------------------------------------------------------
+fileinsidezip.file_size() #prints size of file in bytes
+fileinsidezip.compress_size #prints compressed size in bytes
+exampleZip.extractall(path(optional)) # extracts files in zip in current working dir
+#if no folder called like path extractall will make it
+exampleZip.extract(file/folder,path(optional))#extracts specific file/folder to working dir | (optional) path
+exampleZip.close() #When you finish working with file
+#---------------------------------------------------------------------
+#creating new zip files
+#---------------------------------------------------------------------
+newZip = zipfile.ZipFile('new.zip','w') #opens zipfile object in write('w') mode , also has append('a') mode
+newZip.write('spam.txt',compress_type=zipfile.ZIP_DEFLATED)
+newZip.close()
+```
+
+## Excel<a name="Excel"></a>
+```py
+#---------------------------------------------------------------------
+#Basics
+#---------------------------------------------------------------------
+import openpyxl
+wb = openpyxl.load_workbook('example.xlsx')
+type(wb)
+>> <class 'openpyxl.workbook.workbook.Workbook'>
+wb.get_sheet_names() #prints list of sheets
+sheet = wb.get_sheet_by_name('Sheet3')
+sheet #prints <Worksheet "Sheet3">
+sheet['A1'] #returns <Cell Sheet3.A1>
+sheet['A1'].value #Gets value of A1
+c = sheet['B1']
+c.value # gets value of c -> value of sheet['B1]
+c.row #prints 1
+c.column #prints B
+c.coordinate #prints B1
+
+sheet.cell(row = 1 , column = 2).value #Gets value at 1st row and 2nd column
+for i in range (1,6,2):
+        print(i, sheet.cell(row = i , column = 2).value)
+#prints following..
+1 Apples
+3 Pears
+5 Strawberries
+#---------------------------------------------------------------------
+#Getting full table printed
+#---------------------------------------------------------------------
+sheet = wb.get_sheet_by_name('Sheet1')
+tuple(sheet['A1':'C3'])
+#should write sth like this ((<Cell Sheet1.A1>, <Cell Sheet1.B1>, <Cell Sheet1.C1>),
+#(<Cell Sheet1.A2>,#<Cell Sheet1.B2>, <Cell Sheet1.C2>), (<Cell Sheet1.A3>,
+#<Cell Sheet1.B3>,<Cell Sheet1.C3>))
+
+for row in sheet['A1':'C3']):
+        for cell in row:
+                print(cell.coordinate, cell.value)
+        print('--- END OF ROW ---')
+        
+#outputs following 
+#A1 2015-04-05 13:34:02
+#B1 Apples
+#C1 73
+#--- END OF ROW ---
+#A2 2015-04-05 03:41:23
+#B2 Cherries
+#C2 85
+#--- END OF ROW ---
+#A3 2015-04-06 12:46:51
+#B3 Pears
+#C3 14
+#--- END OF ROW ---
+
+#---------------------------------------------------------------------
+#Create/remove Sheet, save file ..
+#---------------------------------------------------------------------
+sheet = wb.worksheets[0]
+sheet.max_row #returns max row, good for for iterations..
+
+>>wb.get_sheet_names()
+['Sheet']
+>>sheet = wb.get_active_sheet()
+>>sheet.title
+'Sheet'
+>>sheet.title = 'Spam Bacon Eggs Sheet' #Every time you change name you need to save file to "make it count"
+>>wb.get_sheet_names()
+['Spam Bacon Eggs Sheet']
+>>wb.save('example_copy.xlsx') #Saves new changed file in example_copy.xlsx
+
+>>wb.create_sheet()
+<Worksheet Sheet1>
+>>wb.get_sheet_names()
+['Sheet','Sheet1']
+>>wb.create_sheet(index=0,title = 'First Sheet')
+<Worksheet "First Sheet">
+>>wb.get_sheet_names()
+['First Sheet','Sheet','Sheet1']
+>>wb.remove_sheet(wb.get_sheet_by_name('Sheet'))
+>>wb.get_sheet_names()
+['First Sheet','Sheet1']
+#---------------------------------------------------------------------
+#Adding new content to tables..
+#---------------------------------------------------------------------
+>>sheet = wb.get_sheet_by_name('Sheet')
+>>sheet['A1'] = 'Test' #Writes Test to A1 cell in 'Sheet'
+>>sheet['A1'].value
+'Test'
+
+
+```
+
+## Shutil<a name="Shutil"></a>
+```py
+import shutil
+shutil.copy('source','destination')#it will copy source file to destination folder
+shutil.copytree('source','destination')#it will copy everything from bacon to bacon_backup
+shutil.move('source','destination')#move source to destination folder(if source exists it overwrites),you can
+#also rename it if you put diferend name in destination ('C:\\bacon.txt','C:\\eggs\\new_bacon.txt')
+shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
 ```
 
 
@@ -662,276 +940,6 @@ browser.quit()
 #---------------------------------------------------------------------
 ```
 
-## Bat<a name="Bat"></a>
-```
-#---------------------------------------------------------------------
-To run python scripts
-#---------------------------------------------------------------------
-@py.exe C:\path\to\your\pythonScript.py %*
-python must be in sys PATH, advice: put all bat files in one folder and add folder to sys PATH 
-you will be able to run your bat files with run (win+r on windows)
-```
-
-## Strings<a name="Strings"></a>
-```py
-#---------------------------------------------------------------------
-#Basics
-#---------------------------------------------------------------------
-#CONVERTING LIST TO STRING
-some_list=["k","a","r","l","o"]
-names=''.join(some_list)
-
-# default spaces in rjust ljust in second parametar 
-'hello'.rjust(10,'*')
-#prints '*****hello'
-'hello'.ljust(10,'*')
-#prints 'hello*****'
-'hello'.center(10,'=')
-#prints '==hello==='
-#---------------------------------------------------------------------
-#Checks
-#---------------------------------------------------------------------
-name = 'Swaroop'
-if name.startswith('Swa'):
-  print('Yes, the string starts with "Swa"')
-'hello'.isalpha()   #returns True if the string consists only of letters and is not blank
-'hello'.isalnum()   #returns True if the string consists only of letters and numbers and is not blank
-'hello'.isdecimal() #returns True if the string consists only of numeric characters and is not blank
-'hello'.isspace()   #returns True if the string consists only of spaces, tabs, and newlines and is not blank
-'hello'.istitle()   #returns True that begin with an uppercase letter followed by only lowercase letters.
-
-if 'a' in name:
-    print('Yes , it contains "a"')
-if name.find('war')!= -1:
-    print('Yes it conaints the string "war"')
-#---------------------------------------------------------------------
-delimiter='_*_'
-mylist=['Brazil','Russia','India','China']
-print(delimiter.join(mylist))#prints mylist[0] delimiter then mylist[1] ..
-```
-
-## Assertions<a name="Assertions"></a>
-```py
-#---------------------------------------------------------------------
-#Basics
-#---------------------------------------------------------------------
-#You can see where is bug in your program if you include them
-# 1st "Paramar to chech if false then when problem happens you can write feedback to see what is the problem"
-# 2nd "Feedback to output when problem occures
-assert "red" in stoplight.values() , "Neither light is red!"+str(stoplight)
-#if there is no red in dic keys then program writes this:
-#AssertionError : Neither light is red! {'key1':'blue','key2':'green'}
-#As you can see i would immediately assume that error is in dictionary
-```
-
-## Logging<a name="Logging"></a>
-```py
-#---------------------------------------------------------------------
-#Basics
-#---------------------------------------------------------------------
-import logging
-logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
-#basic syntax for logging , its usefull when debugging to see what is happening in program
-#if you want to write logs in file just pass KEYWORD filename="nameoffile.txt" as one of parametars
-logging.basicConfig(filename="log.txt",level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
-
-logging.debug('Msg')
-#Prints 2018-03-25 16:51:35,172 - DEBUG - Msg
-#if debug is succesful then you can skip printing msg's with 
-logging.disable(logging.CRITICAL)
-#you simply pass logging.disable() a logging level , and it will suppress all log msg at that lvl and lower 
-
-```
-
-## Working with files<a name="Working-with-files"></a>
-```py
-import os
-#---------------------------------------------------------------------
-#Getting basic info
-#---------------------------------------------------------------------
-os.getcwd() #Current working directory in string format
-os.path.abspath(path) #returns string of apsolute path
-os.path.relpath(path,start) #Will return string of a path from start to path
-
-os.chdir("C:\\Windows\\System32") #Changes working dir
-os.makedirs("C:\\delicious\\walnut\\waffles") #Makes dir delicious folder, then inside delicious walnut,
-#then inside walnut waffles folder
-#---------------------------------------------------------------------
-#Checks
-#---------------------------------------------------------------------
-os.path.isabs(path) #Returns True if is absolute
-os.path.exists(path) # returns True if refered file in path exists
-os.path.isfile(path) #returns True if path argument exists and is file
-os.path.isdir(path)  #returns True if path argument exists and is folder
-#---------------------------------------------------------------------
-#Delete files,folders(permanent or send to trash)
-#---------------------------------------------------------------------
-os.unlink(path) #will delete FILE a path
-os.rmdir(path) # will delete FOLDER at path
-shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
-
-import send2trash
-send2trash.send2trash(path) #sends "path" to TRASH
-
-#Prints folders,subfolders and files in folders (os.walk returns name of folder in path
-#second parametar is name of subfolder and 3rd parametar is filenames in subfolders
-for folderName,subfolders,filenames in os.walk(path):
-    print('The current folder is' + folderName)
-    for subfolder in subfolders:
-        print('SUBFOLDER OF' + folderName + ': '+subfolder)
-    for filename in filenames:
-        print('FILE INSIDE ' + folderName+': '+ filename)
-    print('')
-#---------------------------------------------------------------------
-#Basics(r/w to files)
-#---------------------------------------------------------------------
-baconFile=open('bacon.txt','w') #second argument in open is 'w'(overwrites file with new contet)
-#if there is no file named 'bacon.txt' then it will create it 
-baconFile.write('Hello world!\n') #it returns num of chars written including newline
-#dont forget to close file after writing/reading to it
-baconFile.close()
-
-baconFile=open('bacon.txt','a') #second arg is 'a' unlike 'w'  it appends contet
-baconFile.write('Bacon is not a vegetable.')
-#dont forget to close 
-baconFile.close()
-
-baconFile.open('bacon.txt')
-contet=baconFile.read()
-baconFile.close()
-print(conte)
-#prints contet of baconFile(Hello world!\nBacon is not a vegetable)
-```
-
-## ZIP FILES<a name="ZIP-FILES"></a>
-```py
-#---------------------------------------------------------------------
-#Basics
-#---------------------------------------------------------------------
-import zipfile
-#navigate to foldere where is zip you wanna work with
-exampleZip = zipfile.ZipFile('testzip.zip') #exampleZip is testzip.zip now
-exampleZip.namelist() 
-#prints all folders/subfolders and files of zip file
-#---------------------------------------------------------------------
-#Getting size,compressing size..extracting..
-#---------------------------------------------------------------------
-fileinsidezip.file_size() #prints size of file in bytes
-fileinsidezip.compress_size #prints compressed size in bytes
-exampleZip.extractall(path(optional)) # extracts files in zip in current working dir
-#if no folder called like path extractall will make it
-exampleZip.extract(file/folder,path(optional))#extracts specific file/folder to working dir | (optional) path
-exampleZip.close() #When you finish working with file
-#---------------------------------------------------------------------
-#creating new zip files
-#---------------------------------------------------------------------
-newZip = zipfile.ZipFile('new.zip','w') #opens zipfile object in write('w') mode , also has append('a') mode
-newZip.write('spam.txt',compress_type=zipfile.ZIP_DEFLATED)
-newZip.close()
-```
-
-## Excel<a name="Excel"></a>
-```py
-#---------------------------------------------------------------------
-#Basics
-#---------------------------------------------------------------------
-import openpyxl
-wb = openpyxl.load_workbook('example.xlsx')
-type(wb)
->> <class 'openpyxl.workbook.workbook.Workbook'>
-wb.get_sheet_names() #prints list of sheets
-sheet = wb.get_sheet_by_name('Sheet3')
-sheet #prints <Worksheet "Sheet3">
-sheet['A1'] #returns <Cell Sheet3.A1>
-sheet['A1'].value #Gets value of A1
-c = sheet['B1']
-c.value # gets value of c -> value of sheet['B1]
-c.row #prints 1
-c.column #prints B
-c.coordinate #prints B1
-
-sheet.cell(row = 1 , column = 2).value #Gets value at 1st row and 2nd column
-for i in range (1,6,2):
-        print(i, sheet.cell(row = i , column = 2).value)
-#prints following..
-1 Apples
-3 Pears
-5 Strawberries
-#---------------------------------------------------------------------
-#Getting full table printed
-#---------------------------------------------------------------------
-sheet = wb.get_sheet_by_name('Sheet1')
-tuple(sheet['A1':'C3'])
-#should write sth like this ((<Cell Sheet1.A1>, <Cell Sheet1.B1>, <Cell Sheet1.C1>),
-#(<Cell Sheet1.A2>,#<Cell Sheet1.B2>, <Cell Sheet1.C2>), (<Cell Sheet1.A3>,
-#<Cell Sheet1.B3>,<Cell Sheet1.C3>))
-
-for row in sheet['A1':'C3']):
-        for cell in row:
-                print(cell.coordinate, cell.value)
-        print('--- END OF ROW ---')
-        
-#outputs following 
-#A1 2015-04-05 13:34:02
-#B1 Apples
-#C1 73
-#--- END OF ROW ---
-#A2 2015-04-05 03:41:23
-#B2 Cherries
-#C2 85
-#--- END OF ROW ---
-#A3 2015-04-06 12:46:51
-#B3 Pears
-#C3 14
-#--- END OF ROW ---
-
-#---------------------------------------------------------------------
-#Create/remove Sheet, save file ..
-#---------------------------------------------------------------------
-sheet = wb.worksheets[0]
-sheet.max_row #returns max row, good for for iterations..
-
->>wb.get_sheet_names()
-['Sheet']
->>sheet = wb.get_active_sheet()
->>sheet.title
-'Sheet'
->>sheet.title = 'Spam Bacon Eggs Sheet' #Every time you change name you need to save file to "make it count"
->>wb.get_sheet_names()
-['Spam Bacon Eggs Sheet']
->>wb.save('example_copy.xlsx') #Saves new changed file in example_copy.xlsx
-
->>wb.create_sheet()
-<Worksheet Sheet1>
->>wb.get_sheet_names()
-['Sheet','Sheet1']
->>wb.create_sheet(index=0,title = 'First Sheet')
-<Worksheet "First Sheet">
->>wb.get_sheet_names()
-['First Sheet','Sheet','Sheet1']
->>wb.remove_sheet(wb.get_sheet_by_name('Sheet'))
->>wb.get_sheet_names()
-['First Sheet','Sheet1']
-#---------------------------------------------------------------------
-#Adding new content to tables..
-#---------------------------------------------------------------------
->>sheet = wb.get_sheet_by_name('Sheet')
->>sheet['A1'] = 'Test' #Writes Test to A1 cell in 'Sheet'
->>sheet['A1'].value
-'Test'
-
-
-```
-
-## Shutil<a name="Shutil"></a>
-```py
-import shutil
-shutil.copy('source','destination')#it will copy source file to destination folder
-shutil.copytree('source','destination')#it will copy everything from bacon to bacon_backup
-shutil.move('source','destination')#move source to destination folder(if source exists it overwrites),you can
-#also rename it if you put diferend name in destination ('C:\\bacon.txt','C:\\eggs\\new_bacon.txt')
-shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
-```
 
 ## Regex<a name="Regex"></a>
 ```py
