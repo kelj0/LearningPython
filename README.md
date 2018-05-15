@@ -42,6 +42,22 @@ If you want to get input in debugger
 Printing text
 ```py
 print("Print text")
+>>Print text
+# Important note * print default uses \n after calling so if im using for loop it will look like this
+for i in range(3):
+    print(i)
+>0
+>1
+>2
+# To put all parametars in same line ( remove default for print)
+for i in range(3):
+    print(i, end=" ")
+>0 1 2
+#IMPORTANT NOTE IF YOU ARE USING PY 2.6+ (untill py3)
+# you need to import print function like this
+from __future__ import print_function
+#This will allow you to use end in print while using python that is 2.6-py3 :)
+
 
 # Using type we can see what type is something in py
 type("Hello world")
