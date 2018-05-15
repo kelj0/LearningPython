@@ -240,6 +240,13 @@ fruit  = "banana"
 list(enumerate(fruit))
 [(0, ’b’), (1, ’a’), (2, ’n’), (3, ’a’), (4, ’n’), (5, ’a’)]
 
+# Using format as alignment in print 
+n1 = "test1"
+n2= "test2
+n3= "test3
+print("|||{0:<8}|||{1:^9}|||{2:>8}|||{3}|||".format(n1,n2,n3,0000))
+>>|||test1   |||  test1  |||   test3|||0000|||
+
 ```
 
 
