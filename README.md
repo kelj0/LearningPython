@@ -416,7 +416,22 @@ Quick read, important if implementing lists!
 #Same like list but without extensive funcionality  (they are immutable also)
 tuple=("Car",1,0,5)
 print(tuple)
-#>> car 1 0.5
+>Car 1 0.5
+# If you want to create tuple with 1 element
+tup = (5,)   # You need to put comma after element, if you dont you will make int 
+type(tup)
+> <class 'tuple'>
+
+# Tuple packing and unpacking 
+b = ("Bob",19,"CS")
+(name,age,studies) = b
+name
+>Bob
+age
+>19
+studies
+>CS
+
 
 #---------------------------------------------------------------------
 # DICTIONARY
