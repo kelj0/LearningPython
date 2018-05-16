@@ -258,6 +258,41 @@ print("|||{0:<8}|||{1:^9}|||{2:>8}|||{3}|||".format(n1,n2,n3,0000))
 list=["item1","item2","item3"]
 #printing it
 print(list)
+> [item1,item2,item3]
+
+# Slicing and updating to list 
+a_list = ['a', 'b', 'c', 'd', 'e', 'f']
+a_list[1:3] = ["x","y"]
+print(a_list)
+>>[a, x, y, d, e, f]
+# You can also add to list with empty slice
+a_list = ['a','d','e']
+a_list[1:1] = ['b','c']
+print(a_list)
+>[a,b,c,d,e]
+
+# List deletion
+a = [1,2,3]
+del a[1] # You can also use slicing here ( a[0:2] would delete [1,2])
+print(a)
+>[1,3]
+
+# Aliasing
+a = [1,2,3]
+b=a
+a is b
+> True
+b[0]=5
+print(a)
+>[5,2,3]
+
+# Cloning lists
+# Easyest way to clone lists is by slicing them
+list1=[1,2,3]
+list2=list1[:] # list2 is COPY of list1
+# if you change list2 ,list1 will not change
+
+
 #---------------------------------------------------------------------
 # Making own nodes
 #---------------------------------------------------------------------
