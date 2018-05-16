@@ -1627,6 +1627,8 @@ tess.end_fill()   # then call this method to 'fill' drawed shape
 # Events
 #-------------------------------------
 # Im not writing all code, just snippet that refers to event
+
+# Key presses
 wn.onkey(tess.forward(30),"Up")
 wn.onkey(tess.left(45),"Left")
 wn.onkey(tess.right(45),"Right")
@@ -1634,13 +1636,19 @@ wn.onkey(tess.bye(),"q")
 wn.listen() # This tells window to start listening for events,if any of the keys that we're monitoring
 # is presses ,its handler will be called
 
+# Mouse clicks
 def click(x, y):
     tess.goto(x,y)
 
 wn.onclick(click)   # When you click tess moves on that position
 wn.mainloop()  
 
+# Timing
 
+def h1():
+    tess.forward(100)
+    tess.left(12)
+wn.ontimer(h1,2000)  # Set timer and after 2000 miliseconds(2s) it will execute h1()
 ```
 
 
