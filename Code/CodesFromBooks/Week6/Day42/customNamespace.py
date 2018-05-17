@@ -1,0 +1,1 @@
+namespaceVariable = "Hello from customNamespace.py"
