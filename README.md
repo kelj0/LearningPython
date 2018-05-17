@@ -17,6 +17,7 @@ If you want to get input in debugger
 -    [Basics](#Basics)
 -    [Strings](#Strings)
 -    [Data types](#Data-Types)
+-    [Random](#Random)
 -    [Bat](#Bat)
 -    [Assertions](#Assertions)
 -    [Logging](#Logging)
@@ -101,13 +102,6 @@ print("The square root of ", x , "is", math.sqrt(x)) # Note this will give error
 # We can also type something like this 
 if x is 10:  # 'is' can be used as ==
     print("X has value of 10")
-
-
-#Random elements in list
-import random
-a=[1,2,3]
-random.shuffle(a)#Shuffles elements in list 
-random.sample(a,2)#Takes random 2 elements in list 
 
 #While
 while True:
@@ -503,6 +497,78 @@ print("List from 0-2",shopinglist[0:3])
 print("List all",shopinglist[:]
 print("List by i+=X",shopinglist[::X]
 #lists all seq but every X item
+```
+
+## Random<a name="Random"></a>
+```py
+#---------------------------------------------------------------------
+# If you need more info about pseudorandom https://en.wikipedia.org/wiki/Pseudorandomness
+#---------------------------------------------------------------------
+# Basics
+#---------------------------------------------------------------------
+import random
+rng = random.Random()  # create a black box obj that generates random numbers
+dice_throw = rng.randrange(1,7) # Return and int, one of 1,2,3,4,5,6
+randomODD = rng.randrange(1,100,2) #random odd number from 1 to 98
+ #---------------------------------------------------------------------
+# You can also do random like this
+randomNumber = random.randrange(1,10) # [1,10>  it means 1 is included and 10 is not
+ 
+#---------------------------------------------------------------------
+#Random elements in list
+#---------------------------------------------------------------------
+import random
+a=[1,2,3]
+random.shuffle(a)#Shuffles elements in list 
+random.sample(a,2)#Takes random 2 elements in list 
+# Note: it cant take same number member times and it returns members randomly so in this example
+# if it returns 2 and 3 it can return [2,3] or [3,2]
+#---------------------------------------------------------------------
+# For testing
+drng = random.Random(123) # This is seed , if you are debugging use something like this so you know
+# What will happen and you can see if its same as last time regarding random(its same random like last time)
+
+
+#---------------------------------------------------------------------
+# Example how to generate a list containing n random ints between [min,max>
+#---------------------------------------------------------------------
+import random
+
+def make_random_ints(num,lower_bound,upper_bound):
+    rng = random.Random()
+    result = []
+    for i in range (num):
+        result.append(rng.randrange(lower_bound,upper_bound))
+    return result
+
+make_random_ints(4,1,10)  # make 4 random ints from 1 to 10(not including)
+>[2,3,2,6]
+# If you dont want duplicates returned use this (good for small lists!)
+xs = list(range(1,13)) # make list [1,13>
+rng = random.Random() #rng box
+rng.shuffle(xs)
+result = xs[:5] #first 4 elements
+
+# For bigger lists , lets say ten milion items first algorithm is very bad , making 10mil items, shuffling,slicing..
+# lets make better one
+
+def make_random_ints_no_dups(num,lower_bound,upper_bound):
+    result = []
+    rng = random.Random()
+    for i in range(num):
+        while True:
+            candidate = rng.randrange(lower_bound,upper_bound)
+            if candidate not in result:
+                break
+        result.append(candidate)
+    return result
+    
+xs = make_random_ints_no_dups(5,1,10000000)
+print(xs)
+[12312,421412,4123122,5214123,123124]
+# Note: dont put bigger requests than you make list ( ect make_ran..(10,1,5))
+# how can you take 10 elements from len(list)==5
+
 ```
 
 ## Bat<a name="Bat"></a>
