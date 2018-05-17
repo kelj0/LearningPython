@@ -768,7 +768,7 @@ class Member(House):
     def tell(self):
         House.tell(self)
         print('Age: {}'.format(self.age))
-ckass Dog(House):
+class Dog(House):
     def __init__(self,name,color):
         self.name = name
         self.color = color
@@ -858,8 +858,8 @@ for i in range (1,6,2):
 sheet = wb.get_sheet_by_name('Sheet1')
 tuple(sheet['A1':'C3'])
 #should write sth like this ((<Cell Sheet1.A1>, <Cell Sheet1.B1>, <Cell Sheet1.C1>),
-#(<Cell Sheet1.A2>,#<Cell Sheet1.B2>, <Cell Sheet1.C2>), (<Cell Sheet1.A3>,
-#<Cell Sheet1.B3>,<Cell Sheet1.C3>))
+>>(<Cell Sheet1.A2>,#<Cell Sheet1.B2>, <Cell Sheet1.C2>), (<Cell Sheet1.A3>,
+>><Cell Sheet1.B3>,<Cell Sheet1.C3>))
 
 for row in sheet['A1':'C3']):
         for cell in row:
@@ -867,18 +867,18 @@ for row in sheet['A1':'C3']):
         print('--- END OF ROW ---')
         
 #outputs following 
-#A1 2015-04-05 13:34:02
-#B1 Apples
-#C1 73
-#--- END OF ROW ---
-#A2 2015-04-05 03:41:23
-#B2 Cherries
-#C2 85
-#--- END OF ROW ---
-#A3 2015-04-06 12:46:51
-#B3 Pears
-#C3 14
-#--- END OF ROW ---
+>>A1 2015-04-05 13:34:02
+>>B1 Apples
+>>C1 73
+>>--- END OF ROW ---
+>>A2 2015-04-05 03:41:23
+>>B2 Cherries
+>>C2 85
+>>--- END OF ROW ---
+>>A3 2015-04-06 12:46:51
+>>B3 Pears
+>>C3 14
+>>--- END OF ROW ---
 
 #---------------------------------------------------------------------
 #Create/remove Sheet, save file ..
@@ -886,34 +886,34 @@ for row in sheet['A1':'C3']):
 sheet = wb.worksheets[0]
 sheet.max_row #returns max row, good for for iterations..
 
->>wb.get_sheet_names()
-['Sheet']
->>sheet = wb.get_active_sheet()
->>sheet.title
-'Sheet'
->>sheet.title = 'Spam Bacon Eggs Sheet' #Every time you change name you need to save file to "make it count"
->>wb.get_sheet_names()
-['Spam Bacon Eggs Sheet']
->>wb.save('example_copy.xlsx') #Saves new changed file in example_copy.xlsx
+wb.get_sheet_names()
+>>['Sheet']
+sheet = wb.get_active_sheet()
+sheet.title
+>>'Sheet'
+sheet.title = 'Spam Bacon Eggs Sheet' #Every time you change name you need to save file to "make it count"
+wb.get_sheet_names()
+>>['Spam Bacon Eggs Sheet']
+wb.save('example_copy.xlsx') #Saves new changed file in example_copy.xlsx
 
->>wb.create_sheet()
-<Worksheet Sheet1>
->>wb.get_sheet_names()
-['Sheet','Sheet1']
->>wb.create_sheet(index=0,title = 'First Sheet')
-<Worksheet "First Sheet">
->>wb.get_sheet_names()
-['First Sheet','Sheet','Sheet1']
->>wb.remove_sheet(wb.get_sheet_by_name('Sheet'))
->>wb.get_sheet_names()
-['First Sheet','Sheet1']
+wb.create_sheet()
+>> <Worksheet Sheet1>
+wb.get_sheet_names()
+>>['Sheet','Sheet1']
+wb.create_sheet(index=0,title = 'First Sheet')
+>><Worksheet "First Sheet">
+wb.get_sheet_names()
+>>['First Sheet','Sheet','Sheet1']
+wb.remove_sheet(wb.get_sheet_by_name('Sheet'))
+wb.get_sheet_names()
+>>['First Sheet','Sheet1']
 #---------------------------------------------------------------------
 #Adding new content to tables..
 #---------------------------------------------------------------------
->>sheet = wb.get_sheet_by_name('Sheet')
->>sheet['A1'] = 'Test' #Writes Test to A1 cell in 'Sheet'
->>sheet['A1'].value
-'Test'
+sheet = wb.get_sheet_by_name('Sheet')
+sheet['A1'] = 'Test' #Writes Test to A1 cell in 'Sheet'
+sheet['A1'].value
+>>'Test'
 
 
 ```
