@@ -6,7 +6,6 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 import time
 
-
 browser = webdriver.Firefox()
 browser.get('https://gabrielecirulli.github.io/2048/')
 
