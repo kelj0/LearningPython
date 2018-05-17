@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+#!/usr/bin/python3
 def copyFile(inFile,outFile):
     inf = open(inFile,"r")
     out = open(outFile,"w")

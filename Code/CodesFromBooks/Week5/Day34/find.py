@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def find(target,items):
     return occurrences(target,items)>0
 

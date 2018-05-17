@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def array123(nums):
    i=0
    while i<len(nums):

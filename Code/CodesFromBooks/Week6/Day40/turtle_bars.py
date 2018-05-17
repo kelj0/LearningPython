@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import turtle
 
 def draw_bar(t,height):

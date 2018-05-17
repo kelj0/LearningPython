@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+#!/usr/bin/python3
 import turtle
 import msvcrt
 

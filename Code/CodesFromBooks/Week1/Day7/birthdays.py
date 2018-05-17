@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 birthdays = {'Karlo': '21.11','Goga': '1.3','Vanja': '10.03'}
 
 while True:

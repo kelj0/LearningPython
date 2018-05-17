@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def is_palindrome(text):
     return text==text[::-1]
 

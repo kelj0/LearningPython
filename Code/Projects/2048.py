@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # 2048.py script automaticly plays game 2048
 
 from selenium import webdriver

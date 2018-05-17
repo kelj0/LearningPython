@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def maximum(x,y):
     if x>y:
         return "X is bigger({})".format(x)

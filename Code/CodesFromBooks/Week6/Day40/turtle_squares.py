@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+#!/usr/bin/python3
 import turtle
 
 def draw_multicolor_square(t,sz):

@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+#!/usr/bin/python3
 # sendDuesReminders.py - Sends emails based on payment status in spreadsheet
 # Usage-> When Running script first arg is email second is password :)
 

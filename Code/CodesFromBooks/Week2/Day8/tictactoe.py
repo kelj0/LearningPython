@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 win_condition=(['TL','TM','TR'],['ML','MM','MR'],['LL','LM','LR'],
                ['TL','ML','LL'],['TM','MM','LM'],['TR','MR','LR'],
                ['TL','MM','LR'],['LL','MM','TR'])

@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+#!/usr/bin/python3
 import random
 guess = ''
 while guess not in ('heads', 'tails'):

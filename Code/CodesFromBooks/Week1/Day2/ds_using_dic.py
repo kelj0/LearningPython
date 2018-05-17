@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 ab={
     'Karlo':'kegljevickarlo@gmail.com',
     'jedan':'jedanmail',

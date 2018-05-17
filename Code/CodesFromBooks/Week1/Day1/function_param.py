@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def print_max(a,b):
     a=a+1
     if a>b:

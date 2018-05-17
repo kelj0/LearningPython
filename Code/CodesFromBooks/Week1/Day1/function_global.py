@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 x=10
 
 def change_x():

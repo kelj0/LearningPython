@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 number = 23
 guess = int(input('Enter an integer :'))
 

@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def total(a,*numbers,**phonebook):
     print('a',a)
 

@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 a=[1,9,7]
 b=[3,8,0]
 if (a[0]>a[1] and a[0]<a[2]) or (a[0]<a[1] and a[0]>a[2]):

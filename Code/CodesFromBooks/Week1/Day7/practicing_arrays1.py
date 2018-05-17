@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def printing(spam):
     for i in range (0,len(spam)):
         if i==(len(spam)-1):

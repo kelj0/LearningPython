@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+#!/usr/bin/python3
 def replace(str):
     a=str[0]
     str=str.replace(a,"*")

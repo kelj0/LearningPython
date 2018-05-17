@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def func(a,b=2,c=3):
     print("a is {} , b is {}, c is {}".format(a,b,c))
 

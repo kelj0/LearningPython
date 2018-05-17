@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+#!/usr/bin/python3
 # mouseNow.py - Prints current position of mouse
 
 import pyautogui,time,os

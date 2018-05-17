@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+#!/usr/bin/python3
 poem='''\
 Programming is fun
 When the work is done

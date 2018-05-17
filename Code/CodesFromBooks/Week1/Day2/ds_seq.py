@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 shoplist = ['apple', 'mango', 'carrot', 'banana']
 name = 'swaroop'
 counter=0

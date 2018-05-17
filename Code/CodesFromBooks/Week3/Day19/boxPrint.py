@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+#!/usr/bin/python3
 def boxPrint (symbol,width,height):
     if len(symbol)!= 1:
         raise Exception('Symbol must be a single character string.')

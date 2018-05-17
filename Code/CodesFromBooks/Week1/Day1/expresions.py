@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 lenght = 5
 width = 2
 

@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 names={"imena":["karlo","pero","duro"],"prezimena":["kegljevic","peric","duric"]}
 
 for i in range(3):

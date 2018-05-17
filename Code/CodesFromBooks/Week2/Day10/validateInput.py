@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 while True:
     age=input("Enter your age:")
     if age.isdecimal():

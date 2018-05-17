@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 number = 20
 running=True
 

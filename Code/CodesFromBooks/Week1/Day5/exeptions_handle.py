@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 try:
     text=input('enter something --> ')
 except EOFError:
