@@ -21,8 +21,8 @@ If you want to get input in debugger
 -    [Bat](#Bat)
 -    [Assertions](#Assertions)
 -    [Logging](#Logging)
--    [Working with files](#Working-with-files)
 -    [OOP](#Object-Oriented-programming)
+-    [Working with files](#Working-with-files)
 -    [ZIP FILES](#ZIP-FILES)
 -    [Excel](#Excel)
 -    [Shutil](#Shutil)
@@ -35,6 +35,7 @@ If you want to get input in debugger
 -    [Manipulating Images](#Manipulating_Images)
 -    [Controling Mouse Keyboard with GUI Automation](#Controling_Mouse&Keyboard_with_GUI_Automation)
 -    [Turtle module](#Turtle_module)
+-    [Pygame](#Pygame)
 -    [Useful data](#Useful-data)
 
 ---
@@ -239,7 +240,7 @@ n1 = "test1"
 n2= "test2
 n3= "test3
 print("|||{0:<8}|||{1:^9}|||{2:>8}|||{3}|||".format(n1,n2,n3,0000))
->>|||test1   |||  test1  |||   test3|||0000|||
+#>>|||test1   |||  test1  |||   test3|||0000|||
 
 ```
 
@@ -614,66 +615,6 @@ logging.disable(logging.CRITICAL)
 
 ```
 
-## Working with files<a name="Working-with-files"></a>
-```py
-import os
-#---------------------------------------------------------------------
-#Getting basic info
-#---------------------------------------------------------------------
-os.getcwd() #Current working directory in string format
-os.path.abspath(path) #returns string of apsolute path
-os.path.relpath(path,start) #Will return string of a path from start to path
-
-os.chdir("C:\\Windows\\System32") #Changes working dir
-os.makedirs("C:\\delicious\\walnut\\waffles") #Makes dir delicious folder, then inside delicious walnut,
-#then inside walnut waffles folder
-#---------------------------------------------------------------------
-#Checks
-#---------------------------------------------------------------------
-os.path.isabs(path) #Returns True if is absolute
-os.path.exists(path) # returns True if refered file in path exists
-os.path.isfile(path) #returns True if path argument exists and is file
-os.path.isdir(path)  #returns True if path argument exists and is folder
-#---------------------------------------------------------------------
-#Delete files,folders(permanent or send to trash)
-#---------------------------------------------------------------------
-os.unlink(path) #will delete FILE a path
-os.rmdir(path) # will delete FOLDER at path
-shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
-
-import send2trash
-send2trash.send2trash(path) #sends "path" to TRASH
-
-#Prints folders,subfolders and files in folders (os.walk returns name of folder in path
-#second parametar is name of subfolder and 3rd parametar is filenames in subfolders
-for folderName,subfolders,filenames in os.walk(path):
-    print('The current folder is' + folderName)
-    for subfolder in subfolders:
-        print('SUBFOLDER OF' + folderName + ': '+subfolder)
-    for filename in filenames:
-        print('FILE INSIDE ' + folderName+': '+ filename)
-    print('')
-#---------------------------------------------------------------------
-#Basics(r/w to files)
-#---------------------------------------------------------------------
-baconFile=open('bacon.txt','w') #second argument in open is 'w'(overwrites file with new contet)
-#if there is no file named 'bacon.txt' then it will create it 
-baconFile.write('Hello world!\n') #it returns num of chars written including newline
-#dont forget to close file after writing/reading to it
-baconFile.close()
-
-baconFile=open('bacon.txt','a') #second arg is 'a' unlike 'w'  it appends contet
-baconFile.write('Bacon is not a vegetable.')
-#dont forget to close 
-baconFile.close()
-
-baconFile.open('bacon.txt')
-contet=baconFile.read()
-baconFile.close()
-print(conte)
-#prints contet of baconFile(Hello world!\nBacon is not a vegetable)
-```
-
 ## Object Oriented Programming<a name="Object-Oriented-programming"></a>
 ```py
 #The 'self' in Python is equivalent to the 'this' pointer in C++
@@ -823,6 +764,65 @@ for member in members:
 
 ```
 
+## Working with files<a name="Working-with-files"></a>
+```py
+import os
+#---------------------------------------------------------------------
+#Getting basic info
+#---------------------------------------------------------------------
+os.getcwd() #Current working directory in string format
+os.path.abspath(path) #returns string of apsolute path
+os.path.relpath(path,start) #Will return string of a path from start to path
+
+os.chdir("C:\\Windows\\System32") #Changes working dir
+os.makedirs("C:\\delicious\\walnut\\waffles") #Makes dir delicious folder, then inside delicious walnut,
+#then inside walnut waffles folder
+#---------------------------------------------------------------------
+#Checks
+#---------------------------------------------------------------------
+os.path.isabs(path) #Returns True if is absolute
+os.path.exists(path) # returns True if refered file in path exists
+os.path.isfile(path) #returns True if path argument exists and is file
+os.path.isdir(path)  #returns True if path argument exists and is folder
+#---------------------------------------------------------------------
+#Delete files,folders(permanent or send to trash)
+#---------------------------------------------------------------------
+os.unlink(path) #will delete FILE a path
+os.rmdir(path) # will delete FOLDER at path
+shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
+
+import send2trash
+send2trash.send2trash(path) #sends "path" to TRASH
+
+#Prints folders,subfolders and files in folders (os.walk returns name of folder in path
+#second parametar is name of subfolder and 3rd parametar is filenames in subfolders
+for folderName,subfolders,filenames in os.walk(path):
+    print('The current folder is' + folderName)
+    for subfolder in subfolders:
+        print('SUBFOLDER OF' + folderName + ': '+subfolder)
+    for filename in filenames:
+        print('FILE INSIDE ' + folderName+': '+ filename)
+    print('')
+#---------------------------------------------------------------------
+#Basics(r/w to files)
+#---------------------------------------------------------------------
+baconFile=open('bacon.txt','w') #second argument in open is 'w'(overwrites file with new contet)
+#if there is no file named 'bacon.txt' then it will create it 
+baconFile.write('Hello world!\n') #it returns num of chars written including newline
+#dont forget to close file after writing/reading to it
+baconFile.close()
+
+baconFile=open('bacon.txt','a') #second arg is 'a' unlike 'w'  it appends contet
+baconFile.write('Bacon is not a vegetable.')
+#dont forget to close 
+baconFile.close()
+
+baconFile.open('bacon.txt')
+contet=baconFile.read()
+baconFile.close()
+print(conte)
+#prints contet of baconFile(Hello world!\nBacon is not a vegetable)
+```
 
 ## ZIP FILES<a name="ZIP-FILES"></a>
 ```py
@@ -893,18 +893,18 @@ for row in sheet['A1':'C3']):
         print('--- END OF ROW ---')
         
 #outputs following 
->>A1 2015-04-05 13:34:02
->>B1 Apples
->>C1 73
->>--- END OF ROW ---
->>A2 2015-04-05 03:41:23
->>B2 Cherries
->>C2 85
->>--- END OF ROW ---
->>A3 2015-04-06 12:46:51
->>B3 Pears
->>C3 14
->>--- END OF ROW ---
+#>>A1 2015-04-05 13:34:02
+#>>B1 Apples
+#>>C1 73
+#>>--- END OF ROW ---
+#>>A2 2015-04-05 03:41:23
+#>>B2 Cherries
+#>>C2 85
+#>>--- END OF ROW ---
+#>>A3 2015-04-06 12:46:51
+#>>B3 Pears
+#>>C3 14
+#>>--- END OF ROW ---
 
 #---------------------------------------------------------------------
 #Create/remove Sheet, save file ..
@@ -1776,6 +1776,89 @@ def h1():
     tess.forward(100)
     tess.left(12)
 wn.ontimer(h1,2000)  # Set timer and after 2000 miliseconds(2s) it will execute h1()
+```
+
+## Pygame <a name="Pygame"></a>
+```py
+
+#---------------------------------------------------------------------
+# Installing & Basics
+#---------------------------------------------------------------------
+pip3 install pygame
+# More info if here not enough -> https://www.pygame.org/docs/
+
+# Basic skeleton of games
+# Setup game
+# goto:
+#      Poll and handle events  (if exit() -> close down game)
+#      Update game events
+#      Draw surface
+#      Show surface
+#      goto()
+
+
+import pygame
+
+def main():
+    #----------setup game----------
+    pygame.init()     # Prepare the pygame module for use
+    surface_sz = 480  # Desired physical surface size, in pixels
+    
+    # Create surface of (width,height) , and its window
+    main_surface = pygame.display.set_mode((surface_sz,surface_sz))
+    
+    # Set up some data to describe a small rectangle and its color
+    small_rect = (300,200,150,90)
+    some_color = (255,0,0)   # RGB
+
+    while True:  # goto
+        #---------Poll and handle events------------
+        ev = pygame.event.poll()
+        if ev.type==pygame.QUIT: # Window close button clicker?
+            break              # ...leave game loop
+
+        #----------Update your game objects and data structures here------
+        #....
+        #------------Draw surface----------------
+        # we draw everything from scrath on each frame
+        # So first fill everything with the background color
+        main_surface.fill((0,200,255))
+        
+        # Overpaint a smaller rectangle on the main surface
+        main_surface.fill(some_color, small_rect)
+        
+        #------------Show surface-----------------
+        # Now the surface is ready, tell pygame to display it!
+        pygame.display.flip()
+        # goto()
+        
+    pygame.quit() # Once we leave the loop, close the window
+
+#---------------------------------------------------------------------
+# Drawing pictures,text..
+#---------------------------------------------------------------------
+
+#-------------------------
+# Pictures
+#-------------------------
+import pygame
+# In setup game part you need to load image
+ball = pygame.image.load("ball.png")
+
+# In draw surface
+main_surface.blit(ball, (100,120))  # blit- widely used in computer graphic,means to make 
+#blit(what_to_display,(position))           |_ a fast copy of pixels from one area of memory to another
+#-------------------------
+# Text
+#-------------------------
+# Setup game part
+my_font = pygame.font.SysFont('Courier',16) # Self explanation
+
+# Draw surface part
+the_text = my_font.render("Hello, world!",True,(0,0,0))
+main_surface.blit(the_text,(10,10))
+
+
 ```
 
 
