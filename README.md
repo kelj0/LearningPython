@@ -714,9 +714,35 @@ p = Person('keljo')
 p.say_hi()
 >> Hello keljo
 
+# Default init values
+
+class Person:
+    def __init__(self,name="Unknown")
+        self.name=name
+               
+p = Person()
+p.name
+>> Unknown
+p=Person("github")
+p.name
+>> github
+
 # If you use data members with names using the double underscore prefix such as __private Python uses
 # name-mangling to effectively make it a private variable
 
+#----------------------------------
+# __doc__
+#----------------------------------
+# You can write here explanation of your implemented class 
+class Test():
+    """This is doc"""
+    def __init__(self):
+        print("yo")
+
+t = Test()
+>> yo
+t.__doc__
+>> This is doc
 
 #----------------------------------
 # Inheritance
