@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 import pygame
 
 def draw_board(the_board):
