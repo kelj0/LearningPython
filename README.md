@@ -1759,7 +1759,7 @@ tess.end_fill()   # then call this method to 'fill' drawed shape
 wn.onkey(tess.forward(30),"Up")
 wn.onkey(tess.left(45),"Left")
 wn.onkey(tess.right(45),"Right")
-wn.onkey(tess.bye(),"q")
+wn.onkey(wn.bye(),"q")
 wn.listen() # This tells window to start listening for events,if any of the keys that we're monitoring
 # is presses ,its handler will be called
 
