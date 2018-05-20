@@ -118,6 +118,48 @@ for i in range(0,5):
 #prints from 0 to 4(if added 3rd number in brackets(0,5,X) prints every i+X)
 
 #---------------------------------------------------------------------
+# try except
+#---------------------------------------------------------------------
+
+# Simple trying to open a file 
+
+try:
+    f = open("myfile.txt")
+    f.close()
+except:
+    print("Cant open file!")
+    
+    
+# We can use multiple exceptions
+import sys
+try:
+    f = open('myfile.txt')
+    s = f.readline()
+    i = int(s.strip())
+except OSError as err:
+    print("OS error: {0}".format(err))
+except ValueError:
+    print("Could not convert data to an integer.")
+except:
+    print("Unexpected error:", sys.exc_info()[0])
+    raise
+
+# To see how exceptions actualy work lets make ours
+
+try:
+    age = int(input("Please enter your age:")
+    if age <0:
+        my_error = ValueError("something is fishy with entered age".format(age))
+        raise my_error
+except ValueError as v:
+    print(type(v))
+    print(v)
+
+>> <class 'ValueError'>
+>> something is fishy with entered age
+
+
+#---------------------------------------------------------------------
 # Functions
 #---------------------------------------------------------------------
 # Lets make 2 files -> foo.py and test.py
