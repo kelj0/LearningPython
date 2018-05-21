@@ -67,7 +67,9 @@ type("Hello world")
 type(19)
 >> <class 'int'>
 
+#---------------------------------------------------------------------
 # Strings
+#---------------------------------------------------------------------
 # If using this type of quotes -> ' then we can use this type -> " inside and vice versa
 # if you use triple quoted(''' or """) string you can store multiple lines and " , ' inside
 
@@ -86,7 +88,7 @@ print(c)
 >> This is a multi
 >> line 'string'
 >> named "c".
-
+#---------------------------------------------------------------------
 #If
 if True:    # This is always True, so this is always executed,
     pass    # But it does nothing cause we put pass in body ( pass is placeholder)
@@ -103,7 +105,7 @@ print("The square root of ", x , "is", math.sqrt(x)) # Note this will give error
 # We can also type something like this 
 if x is 10:  # 'is' can be used as ==
     print("X has value of 10")
-
+#---------------------------------------------------------------------
 #While
 while True:
     s=input("Enter string")
@@ -111,11 +113,71 @@ while True:
       break
     else:
       print(s)
-
+#---------------------------------------------------------------------
 #For
 for i in range(0,5):
     print(i)
 #prints from 0 to 4(if added 3rd number in brackets(0,5,X) prints every i+X)
+
+#---------------------------------------------------------------------
+# try except
+#---------------------------------------------------------------------
+
+# Simple trying to open a file 
+
+try:
+    f = open("myfile.txt")
+    f.close()
+except:
+    print("Cant open file!")
+    
+    
+# We can use multiple exceptions
+import sys
+try:
+    f = open('myfile.txt')
+    s = f.readline()
+    i = int(s.strip())
+except OSError as err:
+    print("OS error: {0}".format(err))
+except ValueError:
+    print("Could not convert data to an integer.")
+except:
+    print("Unexpected error:", sys.exc_info()[0])
+    raise
+
+# To see how exceptions actualy work lets make ours
+
+try:
+    age = int(input("Please enter your age:")
+    if age <0:
+        my_error = ValueError("something is fishy with entered age".format(age))
+        raise my_error
+except ValueError as v:
+    print(type(v))
+    print(v)
+
+>> <class 'ValueError'>
+>> something is fishy with entered age
+
+# finaly
+import turtle,time
+try:
+    win = turtle.Screen()
+    tess = turtle.Turtle()
+    # Important line below
+    n = int(input("How many sides do you want in your polygon?")
+    angle = 360/n
+    for i in range(n):
+        tess.forward(10)
+        tess.left(angle)
+    time.sleep(3)       # Make program wait a few seconds
+finaly:
+    win.bye()           # Close the turtle's window
+# What if we enteret 's' in input ? we cant cast 's' to int so we would get exception raised, what finaly does
+# It secures execution of that code regarding raised exception and then it crashes and shows exception
+# So we would actualy close window before our program crashes and pops out exception
+
 
 #---------------------------------------------------------------------
 # Functions
@@ -470,22 +532,48 @@ ab={
 'Key1':'Item1',
 'Key2':'Item2'
 }
-#printing
-print(ab['Key1'])#prints Item1
+# printing
+print(ab['Key1'])
+>> Item1
 
-#printing list element as in dict parametar valute()
+print(ab)
+>> {'Key1':'Item1','Key2':'Item2'}
+
+# delete item 
+del ab['Key1']
+print(ab)
+>> {'Key2': 'Item2'}
+
+ab = {"two": "dos", "one": "uno"}
+for k,v in ab.items():
+    print("Key {0} has value {1}".format(k,v))
+>> Key two has value dos
+>> Key one has value uno
+
+
+# printing list element as in dict parametar valute()
 names={"imena":["karlo","pero","duro"],"prezimena":["kegljo","peric","duric"]}
  for i in range(3):
       print("IME:",names['imena'][i])
       print("PREZIME:",names['prezimena'][i])
 
-#Nested dictionary
+# Nested dictionary
 dic={'nested':{'name':karlo,'year':1},'nestedList':[1,2,3]}
 
 print(dic['nested']['name'])
-#'karlo'
+>> 'karlo'
 print(dic['nested']['nestedList'][0])
 '1'
+
+# Counting letters in string
+letters_counts = {} # empty dictionary
+for letter in "Mississippi":
+    letter_counts[letter] = letter_counts.get[letter,0] + 1  # get(key,return_value if no key in dict)/returns value
+letter_counts
+>> {’M’: 1, ’s’: 4, ’p’: 2, ’i’: 4}
+
+
+
 
 #---------------------------------------------------------------------
 #SEQUENCES
