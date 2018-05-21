@@ -532,22 +532,48 @@ ab={
 'Key1':'Item1',
 'Key2':'Item2'
 }
-#printing
-print(ab['Key1'])#prints Item1
+# printing
+print(ab['Key1'])
+>> Item1
 
-#printing list element as in dict parametar valute()
+print(ab)
+>> {'Key1':'Item1','Key2':'Item2'}
+
+# delete item 
+del ab['Key1']
+print(ab)
+>> {'Key2': 'Item2'}
+
+ab = {"two": "dos", "one": "uno"}
+for k,v in ab.items():
+    print("Key {0} has value {1}".format(k,v))
+>> Key two has value dos
+>> Key one has value uno
+
+
+# printing list element as in dict parametar valute()
 names={"imena":["karlo","pero","duro"],"prezimena":["kegljo","peric","duric"]}
  for i in range(3):
       print("IME:",names['imena'][i])
       print("PREZIME:",names['prezimena'][i])
 
-#Nested dictionary
+# Nested dictionary
 dic={'nested':{'name':karlo,'year':1},'nestedList':[1,2,3]}
 
 print(dic['nested']['name'])
-#'karlo'
+>> 'karlo'
 print(dic['nested']['nestedList'][0])
 '1'
+
+# Counting letters in string
+letters_counts = {} # empty dictionary
+for letter in "Mississippi":
+    letter_counts[letter] = letter_counts.get[letter,0] + 1  # get(key,return_value if no key in dict)/returns value
+letter_counts
+>> {’M’: 1, ’s’: 4, ’p’: 2, ’i’: 4}
+
+
+
 
 #---------------------------------------------------------------------
 #SEQUENCES
