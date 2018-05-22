@@ -60,7 +60,6 @@ for i in range(3):
 from __future__ import print_function
 #This will allow you to use end in print while using python that is 2.6-py3 :)
 
-
 # Using type we can see what type is something in py
 type("Hello world")
 >> <class 'str'>
