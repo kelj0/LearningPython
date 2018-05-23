@@ -60,7 +60,6 @@ for i in range(3):
 from __future__ import print_function
 #This will allow you to use end in print while using python that is 2.6-py3 :)
 
-
 # Using type we can see what type is something in py
 type("Hello world")
 >> <class 'str'>
@@ -849,6 +848,22 @@ for member in members:
 # to all inherited members ect. we can add new methods to House and we could access 
 # that methods through Members and Dog( in this case) or even make new class like 
 # Cat(House) and it would have all methods that House have
+
+
+# We can define what ect. '+' means in our class
+#----snippet----
+def __add__ (self,other):
+    return self.value - other.value
+# Now when we call ourClass+ourClass we will subtract values from classes
+
+# We can also define what will print do when we call it in our class
+#------snipet------
+def __str__(self)
+    return "You called print on me wtf??"
+# now every time we write print(ourClass) it will output "You called print on me wtf??"
+# We can define almost everything in our class , i wont post all options, google them xD
+# Example for print https://stackoverflow.com/questions/1535327/how-to-print-a-class-or-objects-of-class-using-print
+
 
 ```
 
