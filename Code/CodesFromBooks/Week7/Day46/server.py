@@ -17,4 +17,3 @@ def my_handler(environ,start_response):
 
 httpd = make_server("127.0.0.1", 8000, my_handler)
 httpd.serve_forever()
-
