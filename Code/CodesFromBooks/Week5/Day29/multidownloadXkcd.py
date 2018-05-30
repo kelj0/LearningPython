@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
 # multidownloadXkcd.py - Downloads XKCD comics using multiple threads
 
 import requests,bs4,threading,os
