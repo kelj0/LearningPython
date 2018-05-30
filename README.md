@@ -145,7 +145,6 @@ except:
     raise
 
 # To see how exceptions actualy work lets make ours
-
 try:
     age = int(input("Please enter your age:")
     if age <0:
