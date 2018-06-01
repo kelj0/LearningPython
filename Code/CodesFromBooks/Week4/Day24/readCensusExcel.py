@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
+
 # readCensusExcel.oy -Tabulates population and nuber of census trats for each country
 
 import openpyxl , pprint

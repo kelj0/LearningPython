@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
 polje=[[0 for x in range(9)]for y in range(5)]
 
 # 012345678XY

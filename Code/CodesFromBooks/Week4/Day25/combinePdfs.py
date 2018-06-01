@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
+
 # combinePdfs.py - Combines all the PDFs in the current working directory
 # into a single PDF
 

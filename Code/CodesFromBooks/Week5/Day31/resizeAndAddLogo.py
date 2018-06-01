@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
+
 # resizeAndAddLogo.py - Resizes all images in current working directory to fit
 # in a 300x300 square, and adds catlogo.png to the lower right corner
 

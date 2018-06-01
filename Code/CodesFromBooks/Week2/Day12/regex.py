@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
+
 import re
 
 phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')

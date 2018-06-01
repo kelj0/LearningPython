@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
+
 from selenium import webdriver
 
 browser = webdriver.Firefox()

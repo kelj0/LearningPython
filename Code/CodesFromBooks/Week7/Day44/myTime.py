@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 
 class MyTime:
     def __init__(self,hrs =0, mins=0, secs=0):

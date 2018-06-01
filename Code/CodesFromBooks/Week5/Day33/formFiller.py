@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
+
 # formFiller.py Automatically fills in the form
 
 import pyautogui,time

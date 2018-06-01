@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
+
 def printPicnic(itemsDict,leftWidth,rightWidth):
     print('PICNIC ITEMS'.center(leftWidth+rightWidth,'-'))
     for k, v in itemsDict.items():
