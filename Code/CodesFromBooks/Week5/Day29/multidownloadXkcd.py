@@ -1,5 +1,8 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6684d87dba63cfd78404dbbc56347c1e84cb5f01
 # multidownloadXkcd.py - Downloads XKCD comics using multiple threads
 
 import requests,bs4,threading,os
