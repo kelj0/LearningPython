@@ -14,30 +14,42 @@ If you want to get input in debugger
 
 ## Table of contents
 
+### Basics
+
 -    [Basics](#Basics)
 -    [Strings](#Strings)
 -    [Data types](#Data-Types)
+
+
+### Usefull stuff
 -    [Random](#Random)
+-    [Time](#Time)
+-    [Multithreading](#Multithreading)
+-    [Regex](#Regex)
+-    [Launching Programs](#Launching_Programs)
+-    [Useful data](#Useful-data)
+-    [OOP](#Object-Oriented-programming)
+
+### Working with files
 -    [Bat](#Bat)
 -    [Assertions](#Assertions)
 -    [Logging](#Logging)
--    [OOP](#Object-Oriented-programming)
 -    [Working with files](#Working-with-files)
 -    [ZIP FILES](#ZIP-FILES)
 -    [Excel](#Excel)
 -    [Shutil](#Shutil)
--    [Web Scraping](#Web-Scraping)
--    [Regex](#Regex)
--    [Time](#Time)
--    [Multithreading](#Multithreading)
--    [Launching Programs](#Launching_Programs)
--    [Sending email and Text messages](#Sending_email_and_Text_messages)
 -    [Manipulating Images](#Manipulating_Images)
--    [Controling Mouse Keyboard with GUI Automation](#Controling_Mouse&Keyboard_with_GUI_Automation)
+
+### Working online
+-    [Web Scraping](#Web-Scraping)
+-    [Sending email and Text messages](#Sending_email_and_Text_messages)
+
+### Random libs
 -    [Turtle module](#Turtle_module)
 -    [Pygame](#Pygame)
--    [Useful data](#Useful-data)
 
+### Controling GUI
+-    [Controling Mouse Keyboard with GUI Automation](#Controling_Mouse&Keyboard_with_GUI_Automation)
 ---
 
 ## Basic <a name="Basics"></a>
