@@ -1,14 +1,6 @@
 # NOTES FOR PYTHON
 
-### DEBUGGER
 
-If you want to get input in debugger 
-
->go in launch.json file (ctrl+shitf+D)
-
->in first part add python path to pythonPath
-
->below add "console":"externalTerminal" (dont forget to put ',' after line)
 
 ---
 
@@ -32,8 +24,6 @@ If you want to get input in debugger
 
 ### Working with files
 -    [Bat](#Bat)
--    [Assertions](#Assertions)
--    [Logging](#Logging)
 -    [Working with files](#Working-with-files)
 -    [ZIP FILES](#ZIP-FILES)
 -    [Excel](#Excel)
@@ -44,12 +34,23 @@ If you want to get input in debugger
 -    [Web Scraping](#Web-Scraping)
 -    [Sending email and Text messages](#Sending_email_and_Text_messages)
 
+### DEBUGGING
+`If you want to get input in debugger 
+>go in launch.json file (ctrl+shitf+D)
+>in first part add python path to pythonPath
+>below add "console":"externalTerminal" (dont forget to put ',' after line)`
+-    [Assertions](#Assertions)
+-    [Logging](#Logging)
+
+
+### Controling GUI
+-    [Controling Mouse Keyboard with GUI Automation](#Controling_Mouse&Keyboard_with_GUI_Automation)
+
 ### Random libs
 -    [Turtle module](#Turtle_module)
 -    [Pygame](#Pygame)
 
-### Controling GUI
--    [Controling Mouse Keyboard with GUI Automation](#Controling_Mouse&Keyboard_with_GUI_Automation)
+
 ---
 
 ## Basic <a name="Basics"></a>
