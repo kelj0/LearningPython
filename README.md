@@ -35,10 +35,12 @@
 -    [Sending email and Text messages](#Sending_email_and_Text_messages)
 
 ### DEBUGGING
-`If you want to get input in debugger 
+```
+If you want to get input in debugger 
 >go in launch.json file (ctrl+shitf+D)
 >in first part add python path to pythonPath
->below add "console":"externalTerminal" (dont forget to put ',' after line)`
+>below add "console":"externalTerminal" (dont forget to put ',' after line)
+```
 -    [Assertions](#Assertions)
 -    [Logging](#Logging)
 
