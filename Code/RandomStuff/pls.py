@@ -1,7 +1,6 @@
 #! /usr/bin/python3
 # python pls.py this text will be changed
 # changes text in ThIs tExT WiLl bE ChAnGeD
-
 import sys
 
 pls = ' '.join(sys.argv[1:])
