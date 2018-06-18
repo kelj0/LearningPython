@@ -1,42 +1,57 @@
 # NOTES FOR PYTHON
 
-### DEBUGGER
 
-If you want to get input in debugger 
-
->go in launch.json file (ctrl+shitf+D)
-
->in first part add python path to pythonPath
-
->below add "console":"externalTerminal" (dont forget to put ',' after line)
 
 ---
 
 ## Table of contents
 
+### Basics
+
 -    [Basics](#Basics)
 -    [Strings](#Strings)
 -    [Data types](#Data-Types)
+
+
+### Usefull stuff
 -    [Random](#Random)
--    [Bat](#Bat)
--    [Assertions](#Assertions)
--    [Logging](#Logging)
+-    [Time](#Time)
+-    [Multithreading](#Multithreading)
+-    [Regex](#Regex)
+-    [Launching Programs](#Launching_Programs)
+-    [Useful data](#Useful-data)
 -    [OOP](#Object-Oriented-programming)
+
+### Working with files
+-    [Bat](#Bat)
 -    [Working with files](#Working-with-files)
 -    [ZIP FILES](#ZIP-FILES)
 -    [Excel](#Excel)
 -    [Shutil](#Shutil)
--    [Web Scraping](#Web-Scraping)
--    [Regex](#Regex)
--    [Time](#Time)
--    [Multithreading](#Multithreading)
--    [Launching Programs](#Launching_Programs)
--    [Sending email and Text messages](#Sending_email_and_Text_messages)
 -    [Manipulating Images](#Manipulating_Images)
+
+### Working online
+-    [Web Scraping](#Web-Scraping)
+-    [Sending email and Text messages](#Sending_email_and_Text_messages)
+
+### DEBUGGING
+```
+If you want to get input in debugger 
+>go in launch.json file (ctrl+shitf+D)
+>in first part add python path to pythonPath
+>below add "console":"externalTerminal" (dont forget to put ',' after line)
+```
+-    [Assertions](#Assertions)
+-    [Logging](#Logging)
+
+
+### Controling GUI
 -    [Controling Mouse Keyboard with GUI Automation](#Controling_Mouse&Keyboard_with_GUI_Automation)
+
+### Random libs
 -    [Turtle module](#Turtle_module)
 -    [Pygame](#Pygame)
--    [Useful data](#Useful-data)
+
 
 ---
 
