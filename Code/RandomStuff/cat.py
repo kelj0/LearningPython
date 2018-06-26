@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import sys
-# cat.py -f file [> file] [-n 5] 
+# cat.py -f file [toFile] [-n 5] 
 
 
 #Make description and print it if bad args
@@ -30,7 +30,7 @@ def openFileW(fileName):
         print("Cant open file!")
 
 
-# write to file
+# writing from file to file
 def writeFiletoFile(readFile,writeFile):
     """writeFiletoFile(fromFile,toFile),writes content of fromFile to toFile"""
     fromFile = openFileR(readFile)
