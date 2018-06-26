@@ -30,7 +30,7 @@ def openFileW(fileName):
         print("Cant open file!")
 
 
-# writing from file to file
+# write from file to file
 def writeFiletoFile(readFile,writeFile):
     """writeFiletoFile(fromFile,toFile),writes content of fromFile to toFile"""
     fromFile = openFileR(readFile)
