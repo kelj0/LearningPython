@@ -883,6 +883,35 @@ def __str__(self)
 
 ## Working with files<a name="Working-with-files"></a>
 ```py
+#---------------------------------------------------------------------
+#Basics(r/w to files)
+#---------------------------------------------------------------------
+baconFile=open('bacon.txt','w') #second argument in open is 'w'(overwrites file with new contet)
+#if there is no file named 'bacon.txt' then it will create it 
+baconFile.write('Hello world!\n') #it returns num of chars written including newline
+#dont forget to close file after writing/reading to it
+baconFile.close()
+
+baconFile=open('bacon.txt','a') #second arg is 'a' unlike 'w'  it appends contet
+baconFile.write('Bacon is not a vegetable.')
+#dont forget to close 
+baconFile.close()
+
+baconFile.open('bacon.txt')
+contet=baconFile.read()
+baconFile.close()
+print(conte)
+#prints contet of baconFile(Hello world!\nBacon is not a vegetable)
+#---------------------------------------------------------------------
+#Print content of 1 file reversed to another file
+#---------------------------------------------------------------------
+out = open("output.txt")
+f = open ("input.txt")
+out.writelines(reversed(f.readlines())
+# This prints 'f' reversed to 'out'
+
+
+# Using os
 import os
 #---------------------------------------------------------------------
 #Getting basic info
@@ -920,25 +949,7 @@ for folderName,subfolders,filenames in os.walk(path):
     for filename in filenames:
         print('FILE INSIDE ' + folderName+': '+ filename)
     print('')
-#---------------------------------------------------------------------
-#Basics(r/w to files)
-#---------------------------------------------------------------------
-baconFile=open('bacon.txt','w') #second argument in open is 'w'(overwrites file with new contet)
-#if there is no file named 'bacon.txt' then it will create it 
-baconFile.write('Hello world!\n') #it returns num of chars written including newline
-#dont forget to close file after writing/reading to it
-baconFile.close()
-
-baconFile=open('bacon.txt','a') #second arg is 'a' unlike 'w'  it appends contet
-baconFile.write('Bacon is not a vegetable.')
-#dont forget to close 
-baconFile.close()
-
-baconFile.open('bacon.txt')
-contet=baconFile.read()
-baconFile.close()
-print(conte)
-#prints contet of baconFile(Hello world!\nBacon is not a vegetable)
+    
 ```
 
 ## ZIP FILES<a name="ZIP-FILES"></a>
