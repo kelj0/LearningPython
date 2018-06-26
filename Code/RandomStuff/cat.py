@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import sys
-# cat.py -f file [toFile] [-n 5] 
+# cat.py file [toFile] [-n 5] 
 
 
 #Make description and print it if bad args
