@@ -1,7 +1,5 @@
 # NOTES FOR PYTHON
 
-
-
 ---
 
 ## Table of contents
