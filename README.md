@@ -360,6 +360,42 @@ list1=[1,2,3]
 list2=list1[:] # list2 is COPY of list1
 # if you change list2 ,list1 will not change
 
+# Printing lists
+list = [1,2,3,4]
+for number in list:
+    print(number,end=' ')
+>> 1 2 3 4
+
+# Print list but skip first member
+for number in list[1:]:
+    print(number,end=' ')
+>> 2 3 4
+
+# Print last member of list
+for number in list[-1:]:
+    print(number,end=' ')
+>> 4
+
+# Print every second member of a list
+for number in list[::2]:
+    print(number,end=' ')
+>> 1 3
+
+# Print every second member of a list but start from second 
+for number in list[1::2]:
+    print(number,end=' ')
+>> 2 4
+
+# Print list backwards
+for number in list[::-1]:
+    print(number,end=' ')
+>> 4 3 2 1
+
+# Print list backwards but dont print first member
+for number in list[:0:-1]:
+    print(number,end=' ')
+>> 4 3 2 
+
 
 #---------------------------------------------------------------------
 # TUPLES
@@ -431,20 +467,6 @@ for letter in "Mississippi":
 letter_counts
 >> {’M’: 1, ’s’: 4, ’p’: 2, ’i’: 4}
 
-
-
-
-#---------------------------------------------------------------------
-#SEQUENCES
-#---------------------------------------------------------------------
-#same ase list but with aditional foo
-#first parameter is where to begin(if not it begins from start)
-#second parametar is where to end(if not it ends on end)
-#third parametar is jump ( if 2 then 1,3 from seq[1,2,3,4]
-print("List from 0-2",shopinglist[0:3])
-print("List all",shopinglist[:]
-print("List by i+=X",shopinglist[::X]
-#lists all seq but every X item
 ```
 
 ## Random<a name="Random"></a>
