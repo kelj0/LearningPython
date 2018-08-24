@@ -128,15 +128,18 @@ def main():
     curses.cbreak()
     stdscr.keypad(1)
     stdscr.nodelay(True)
-    stdscr.addstr(20,0,"Press 'q' to quit")
+    stdscr.addstr(21,0,"Press 'q' to quit")
 
     while not dead(snake):
         drawBoard(snake)
         checkFood()
         moveSnake()
         click()
-        time.sleep(0.15)
-
+        if snake.direction=='UP' or snake.direction == 'DOWN':
+            time.sleep(0.13)
+        else:
+            time.sleep(0.11)
+        stdscr.addstr(20,0,"Score: "+str(snake.size()-1))
         if key == ord('q'):
             break
     curses.endwin()
