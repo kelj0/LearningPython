@@ -135,7 +135,7 @@ def main():
         checkFood()
         moveSnake()
         click()
-        if snake.direction=='UP' or snake.direction == 'DOWN':
+        if snake.direction == 'UP' or snake.direction == 'DOWN':
             time.sleep(0.13)
         else:
             time.sleep(0.11)
