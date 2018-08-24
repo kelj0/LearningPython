@@ -54,8 +54,8 @@ def drawBoard(snake):
                 stdscr.addch(y,x," ")
     stdscr.refresh()
 
-# Check if you pressed buttons
 def click():
+    """Check if you pressed buttons"""
     global key
     global snake
     
@@ -71,10 +71,12 @@ def click():
         snake.setDirection('RIGHT')
 
 
-# Move snake
-def moveSnake():
-    global snake
 
+def moveSnake():
+    """Move snake"""
+    global snake
+    # Move body[last] to position of body[last-1]
+    #tail[0] is X and [1] is Y
     snake.t[0][0] = snake.x
     snake.t[0][1] = snake.y
 
@@ -93,8 +95,9 @@ def moveSnake():
         snake.x+=1
 
 
-# Check if you died
+
 def dead(snake):
+    """Check if you died, param: snake"""
     if snake.x==0 or snake.x==39 or snake.y == 0 or snake.y==19:
         return True
     if snake.size() > 1:
@@ -102,16 +105,17 @@ def dead(snake):
             return True
     return False
 
-
 def checkFood():
+    """Check if snake's head is on food coordinates,
+	increment snake size if it is and spawn new food"""
     global foodY,foodX,snake
     if snake.x == foodX and snake.y == foodY:
         snake.size(1)
         snake.t.append([0,0])
         SpawnNewFood()
 
-
 def SpawnNewFood():
+    """Spawn new food on random x and y coordinates""" 
     global foodX,foodY
     foodX = random.randint(1,38)
     foodY = random.randint(1,18)
