@@ -117,6 +117,17 @@ print("The square root of ", x , "is", math.sqrt(x)) # Note this will give error
 # We can also type something like this 
 if x is 10:  # 'is' can be used as ==
     print("X has value of 10")
+    
+
+value = 2
+if value % 2 == 0:
+    print("even")
+else:
+    print("odd")
+# or you can do something like this
+value = 2 
+print("even") if value % 2 == 0 else "odd"
+
 #---------------------------------------------------------------------
 #While
 while True:
@@ -130,6 +141,11 @@ while True:
 for i in range(0,5):
     print(i)
 #prints from 0 to 4(if added 3rd number in brackets(0,5,X) prints every i+X)
+
+something = ["k","a","r","l","o"]
+for letter in something:
+    print(letter,end=" ")
+> k a r l o
 
 #---------------------------------------------------------------------
 # try except
@@ -338,6 +354,13 @@ a_list = ['a','d','e']
 a_list[1:1] = ['b','c']
 print(a_list)
 >[a,b,c,d,e]
+
+# Making lists
+a_list = [] #empty list
+a_list = [1,2,3,4]
+a_list = range(1,5) # type(a_list) <class 'range'> but you can still for i in range(a) to get 1 2 3 4 outputed
+a_list = [i for i in range(1,5)] #one-liner "iterator", print(a_list) outputs [1,2,3,4]
+
 
 # List deletion
 a = [1,2,3]
