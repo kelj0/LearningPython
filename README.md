@@ -343,6 +343,27 @@ n3= "test3
 print("|||{0:<8}|||{1:^9}|||{2:>8}|||{3}|||".format(n1,n2,n3,0000))
 #>>|||test1   |||  test1  |||   test3|||0000|||
 
+# String Formatting Method 
+>> print('{} am {}'.format('I','Karlo'))
+'I am Karlo'
+>> print('{1} am {0}'.format('I','Karlo'))
+'Karlo am I'
+
+>> template = '%s, %s and %s'
+>> template % ('spam', 'ham', 'eggs')
+spam, ham and eggs
+
+>> template = '%(motto)s, %(pork)s and %(food)s'
+>> template % dict(motto='spam', pork='ham', food='eggs')
+'spam, ham and eggs'
+
+>> import sys
+>> print('My {map[kind]} runs {sys.platform}'.format(sys=sys, map={'kind': 'computer'}))
+My computer runs linux
+
+>> somelist = list('SPAM')
+>> print('first={0[0]}, third={0[2]}'.format(somelist))
+first=S, third=A
 
 
 #---------------------------------------------------------------------
@@ -512,6 +533,20 @@ for letter in "Mississippi":
     letter_counts[letter] = letter_counts.get[letter,0] + 1  # get(key,return_value if no key in dict)/returns value
 >> letter_counts
 {’M’: 1, ’s’: 4, ’p’: 2, ’i’: 4}
+
+# Dictionary-Based Formatting Expressions
+>> '%(qty)d more %(food)s' % {'qty': 1, 'food': 'spam'}
+'1 more spam'
+
+>> reply = """
+%(b)s u beton, planet stane
+%(b)s u sunce, planet tame
+"""
+>> values = {'b': 'Besa'}
+>>print(reply % values)
+Besa u beton planet stane
+Besa u sunce planet tame
+
 
 
 #---------------------------------------------------------------------
