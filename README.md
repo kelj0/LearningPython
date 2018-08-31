@@ -283,10 +283,16 @@ def foo(*arg):
 <class 'tuple'>
 ```
 
-## Strings<a name="Strings"></a>
+
+## Data types<a name="Data-Types"></a>
 ```py
+# Every object in Python is classified as either immutable or not.
+# In terms of the core types "numbers", "strings" and "tuples", are immutable;"lists", "dictionaries", and sets are not 
+
+
+
 #---------------------------------------------------------------------
-#Basics
+# STRING
 #---------------------------------------------------------------------
 #CONVERTING LIST TO STRING
 some_list=["k","a","r","l","o"]
@@ -299,9 +305,9 @@ names=''.join(some_list)
 #prints 'hello*****'
 'hello'.center(10,'=')
 #prints '==hello==='
-#---------------------------------------------------------------------
+#-------------------------------
 #Checks
-#---------------------------------------------------------------------
+#-------------------------------
 name = 'Swaroop'
 if name.startswith('Swa'):
   print('Yes, the string starts with "Swa"')
@@ -315,11 +321,17 @@ if 'a' in name:
     print('Yes , it contains "a"')
 if name.find('war')!= -1:
     print('Yes it conaints the string "war"')
-#---------------------------------------------------------------------
+    
+name = 'Swaroop'
+>>name.replace('Swa','??')
+'??roop'  # despite the names of these string methods, we are not changing
+          # the original strings here,but creating new strings as the result
+
+#-------------------------------
 delimiter='_*_'
 mylist=['Brazil','Russia','India','China']
 print(delimiter.join(mylist))#prints mylist[0] delimiter then mylist[1] ..
-#---------------------------------------------------------------------
+#-------------------------------
 fruit  = "banana"
 list(enumerate(fruit))
 [(0, ’b’), (1, ’a’), (2, ’n’), (3, ’a’), (4, ’n’), (5, ’a’)]
@@ -331,11 +343,8 @@ n3= "test3
 print("|||{0:<8}|||{1:^9}|||{2:>8}|||{3}|||".format(n1,n2,n3,0000))
 #>>|||test1   |||  test1  |||   test3|||0000|||
 
-```
 
 
-## Data types<a name="Data-Types"></a>
-```py
 #---------------------------------------------------------------------
 # LIST
 #---------------------------------------------------------------------
@@ -446,28 +455,42 @@ studies
 #---------------------------------------------------------------------
 # DICTIONARY
 #---------------------------------------------------------------------
+# Creating
 ab={
 'Key1':'Item1',
 'Key2':'Item2'
 }
-# printing
-print(ab['Key1'])
->> Item1
+# or
+ab = dict(Key1='Item1',Key2='Item2')
+# or
+ab = dict(zip(['Key1', 'Key2'] , ['Item1', 'Item2'])) # "Zipping"
+# Note: left-to-right order of dictionary keys is scrambled. Mappings are not positionally ordered
+# so unless you're lucky, they'll come back in different order than you typed them
 
-print(ab)
->> {'Key1':'Item1','Key2':'Item2'}
+# printing
+>> print(ab['Key1'])
+Item1
+# or
+>> ab.get("Key1")
+Item1
+>> test = ab.get("Key1")  # test == "Item1", if there is no key named "Key1" in dictionary test will be NoneType,
+# You can pass second parametar to get
+>> test = ab.get("Key999",0) 
+# - now if there is no Key999 in dict , test == 0 
+
+>> print(ab)
+{'Key1':'Item1','Key2':'Item2'}
 
 # delete item 
-del ab['Key1']
-print(ab)
->> {'Key2': 'Item2'}
+>> del ab['Key1']
+>> print(ab)
+{'Key2': 'Item2'}
 
 ab = {"two": "dos", "one": "uno"}
-for k,v in ab.items():
-    print("Key {0} has value {1}".format(k,v))
->> Key two has value dos
->> Key one has value uno
-
+>> for k,v in ab.items():
+      print("Key {0} has value {1}".format(k,v))
+Key two has value dos
+Key one has value uno
 
 # printing list element as in dict parametar valute()
 names={"imena":["karlo","pero","duro"],"prezimena":["kegljo","peric","duric"]}
@@ -478,17 +501,71 @@ names={"imena":["karlo","pero","duro"],"prezimena":["kegljo","peric","duric"]}
 # Nested dictionary
 dic={'nested':{'name':karlo,'year':1},'nestedList':[1,2,3]}
 
-print(dic['nested']['name'])
->> 'karlo'
-print(dic['nested']['nestedList'][0])
+>> print(dic['nested']['name'])
+'karlo'
+>> print(dic['nested']['nestedList'][0])
 '1'
 
 # Counting letters in string
 letters_counts = {} # empty dictionary
 for letter in "Mississippi":
     letter_counts[letter] = letter_counts.get[letter,0] + 1  # get(key,return_value if no key in dict)/returns value
-letter_counts
->> {’M’: 1, ’s’: 4, ’p’: 2, ’i’: 4}
+>> letter_counts
+{’M’: 1, ’s’: 4, ’p’: 2, ’i’: 4}
+
+
+#---------------------------------------------------------------------
+# BYTEARRAY
+#---------------------------------------------------------------------
+# supports in-place changes for text, but only for text whose characters are all at most 8-bits wide(e.g.,ASCII)
+# available in Pythons 2.6, 3.0, and later
+
+B = bytearray(b'spam')  # A bytes/list hybrid
+B
+>>bytearray(b'spam')    # 'b' needed in 3.X, not 2.X
+B[0] = ord('d')         
+>>B                     # chr(B[i]) also works -B[i] returns ASCII value
+bytearray(b'dpam')
+>>B.extend(b'e')       
+>>B
+bytearray(b'dpame')
+>>B.decode()             # Translate to normal
+'dpame'
+>>new = B.decode()
+>>type(new)
+<class 'str'>
+
+#---------------------------------------------------------------------
+# SET
+#---------------------------------------------------------------------
+X = set('spam')      # Make a set out of a sequence in 2.X and 3.X
+Y = {'h', 'a', 'm'}  # Make a set with set literals in 3.X and 2.7
+
+>> X, Y   # A tuple of two sets without parentheses
+({'m', 'a', 'p', 's'}, {'m', 'a', 'h'})
+
+>> X & Y  # Intersection
+{'m','a'}
+
+>> X | Y  # Union
+{'m','h', 'a', 'p', 's'}
+
+>> X - Y  # Difference
+{'p', 's'}
+
+# Set comprehensions in 3.X and 2.7
+>> { n ** 2 for n in [1,2,3,4]}
+{16, 1, 4, 9}
+
+#---------
+# Filter out duplicates (possibly reordered!) 
+test = [1,2,3,2,4]
+test = list(set(test))
+
+# Order-neutral equality tests
+>> set("karlo") == set("rloka")
+True
+#--------
 
 ```
 
