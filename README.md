@@ -208,24 +208,24 @@ finaly:
 #---------------------------------------------------------------------
 # Functions
 #---------------------------------------------------------------------
-# Lets make 2 files -> foo.py and test.py
-def foo():
+# Lets make 2 files -> function.py and test.py
+def function():
     print('Hello from function!')
-# Save it as foo.py in same dir as test.py
+# Save it as function.py in same dir as test.py
 # in test.py write following
 
-from foo import *
-foo() # Prints "Hello from funciton!"
-# Read as from file foo.py import all 
+from function import *
+function() # Prints "Hello from funciton!"
+# Read as from file function.py import all 
 # This is usefull for making your code cleaner :)
 
-# Getting values to foo
+# Getting values to function
 def changeA(a):
     a=5
     return a
 a=1
 changeA(a)
-# If we call this foo it will change "scoped a" that means that every variable in
+# If we call this function it will change "scoped a" that means that every variable in
 # function is diferend from variables in other functions
 # a is still 1 after function, if we want to change global variables write following
 
@@ -238,12 +238,12 @@ def changeA(a):
 changeA(a)
 # This indeed changes a to 20 :)
 
-def testFoo(incomingVariable):
+def testfunction(incomingVariable):
     return incomingVariable
 
 sendingVariable = "Here comes nothing"
-testFoo(sendingVariable)
-# This calls testFoo and sends "sendingVariable" , function recives variable(makes copy)
+testfunction(sendingVariable)
+# This calls testfunction and sends "sendingVariable" , function recives variable(makes copy)
 # and calls it "incomingVariable" in his scope 
 
 #--------------------------------
@@ -271,11 +271,11 @@ a(1)
 # Feed function with any number of arg
 #---------------------------------------------------------------------
 # Basicly it this function returns tuple of all given arg
-def foo(*arg):
+def function(*arg):
     return arg
->>foo('a','b','c')
+>>function('a','b','c')
 ('a', 'b', 'c')
->>type(foo('a','b','c'))
+>>type(function('a','b','c'))
 <class 'tuple'>
 ```
 
@@ -347,8 +347,8 @@ print("|||{0:<8}|||{1:^9}|||{2:>8}|||{3}|||".format(n1,n2,n3,0000))
 >> template % ('spam', 'ham', 'eggs')
 spam, ham and eggs
 
->> template = '%(motto)s, %(pork)s and %(food)s'
->> template % dict(motto='spam', pork='ham', food='eggs')
+>> template = '%(motto)s, %(pork)s and %(functiond)s'
+>> template % dict(motto='spam', pork='ham', functiond='eggs')
 'spam, ham and eggs'
 
 >> import sys
@@ -529,7 +529,7 @@ for letter in "Mississippi":
 {’M’: 1, ’s’: 4, ’p’: 2, ’i’: 4}
 
 # Dictionary-Based Formatting Expressions
->> '%(qty)d more %(food)s' % {'qty': 1, 'food': 'spam'}
+>> '%(qty)d more %(functiond)s' % {'qty': 1, 'functiond': 'spam'}
 '1 more spam'
 
 >> reply = """
@@ -796,7 +796,7 @@ class House:
     def function(self):
         print('Function called from House')
 class Member(House):       # Member inherits House's methods
-    def memberFoo(self):
+    def memberfunction(self):
         print('Function called from Member')
 #----------------------------------
 # Testing..
@@ -811,7 +811,7 @@ m.name
 >> m
 h.function()
 >> Function called from House
-m.memberFoo()
+m.memberfunction()
 >> Function called from Member
 m.function()
 >> Function called from House
@@ -1265,7 +1265,7 @@ mo4 == None
 #NEGATIVE CHAR CLASS
 #---------------------------------------------------------------------
 constantRegex = re.compile(r'[^aeiouAEIOU])
-constantRegex.findall("Robocop eats baby food.BabyFood.")
+constantRegex.findall("Robocop eats baby functiond.Babyfunctiond.")
 #it will output all chars that are != from constantRegex
 
 #also you can use it to find first(^) or last match($)
