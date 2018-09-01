@@ -7,7 +7,6 @@
 ### Basics
 
 -    [Basics](#Basics)
--    [Strings](#Strings)
 -    [Data types](#Data-Types)
 
 
@@ -256,9 +255,6 @@ def function():
         """This is displayed when we type function()"""
 
 
-#---------------------------------------------------------------------
-# Advanced
-#---------------------------------------------------------------------
 def makeLine(a,b):
     def y(x):
         return x*5
@@ -268,13 +264,13 @@ a = makeLine(5,2)
 a(1)
 # returns 5
 
-# This is called creating functions on the fly, this makes foo that RETURNS FOO!
+# This is called creating functions on the fly, this makes function that RETURNS function!
 # You can now call a ,pass parametar and it will return parametar multiplyed by 5
-# C,C++ and many other languages dont allow you to define foo that retunrs foo
+# C,C++ and many other languages dont allow you to define function that retunrs function
 #---------------------------------------------------------------------
-# Feed foo with any number of arg
+# Feed function with any number of arg
 #---------------------------------------------------------------------
-# Basicly it this foo returns tuple of all given arg
+# Basicly it this function returns tuple of all given arg
 def foo(*arg):
     return arg
 >>foo('a','b','c')
@@ -288,8 +284,6 @@ def foo(*arg):
 ```py
 # Every object in Python is classified as either immutable or not.
 # In terms of the core types "numbers", "strings" and "tuples", are immutable;"lists", "dictionaries", and sets are not 
-
-
 
 #---------------------------------------------------------------------
 # STRING
