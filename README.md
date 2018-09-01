@@ -1,14 +1,11 @@
 # NOTES FOR PYTHON
-
 ---
-
 ## Table of contents
 
 ### Basics
 
 -    [Basics](#Basics)
 -    [Data types](#Data-Types)
-
 
 ### Usefull stuff
 -    [Random](#Random)
@@ -53,30 +50,30 @@ If you want to get input in debugger
 ---
 
 ## Basic <a name="Basics"></a>
-Printing text
 ```py
+# Printing text
 print("Print text")
 >>Print text
 # Important note * print default uses \n after calling so if im using for loop it will look like this
-for i in range(3):
-    print(i)
->0
->1
->2
+>>for i in range(3):
+      print(i)
+0
+1
+2
 # To put all parametars in same line ( remove default for print)
-for i in range(3):
-    print(i, end=" ")
->0 1 2
+>>for i in range(3):
+      print(i, end=" ")
+0 1 2
 #IMPORTANT NOTE IF YOU ARE USING PY 2.6+ (untill py3)
 # you need to import print function like this
 from __future__ import print_function
 #This will allow you to use end in print while using python that is 2.6-py3 :)
 
 # Using type we can see what type is something in py
-type("Hello world")
->> <class 'str'>
-type(19)
->> <class 'int'>
+>>type("Hello world")
+<class 'str'>
+>>type(19)
+<class 'int'>
 
 #---------------------------------------------------------------------
 # Strings
@@ -85,20 +82,20 @@ type(19)
 # if you use triple quoted(''' or """) string you can store multiple lines and " , ' inside
 
 a = 'Test"test"'
-print(a)
->> Test"test"
+>>print(a)
+Test"test"
 
-b = "Test'test'"
-print(b)
->> Test'test'
+>> b = "Test'test'"
+>>print(b)
+Test'test'
 
 c = """ This is a multi
         line 'string'
         named "c". """
-print(c)
->> This is a multi
->> line 'string'
->> named "c".
+>> print(c)
+This is a multi
+line 'string'
+named "c".
 #---------------------------------------------------------------------
 #If
 if True:    # This is always True, so this is always executed,
@@ -294,6 +291,8 @@ names=''.join(some_list)
 
 # default spaces in rjust ljust in second parametar 
 'hello'.rjust(10,'*')
+# Working with files
+
 #prints '*****hello'
 'hello'.ljust(10,'*')
 #prints 'hello*****'
@@ -598,6 +597,8 @@ True
 
 ```
 
+# Usefull stuff
+
 ## Random<a name="Random"></a>
 ```py
 #---------------------------------------------------------------------
@@ -670,48 +671,207 @@ print(xs)
 
 ```
 
-## Bat<a name="Bat"></a>
-```
-#---------------------------------------------------------------------
-To run python scripts
-#---------------------------------------------------------------------
-@py.exe C:\path\to\your\pythonScript.py %*
-python must be in sys PATH, advice: put all bat files in one folder and add folder to sys PATH 
-you will be able to run your bat files with run (win+r on windows)
-```
 
-## Assertions<a name="Assertions"></a>
+## Regex<a name="Regex"></a>
 ```py
 #---------------------------------------------------------------------
 #Basics
 #---------------------------------------------------------------------
-#You can see where is bug in your program if you include them
-# 1st "Paramar to chech if false then when problem happens you can write feedback to see what is the problem"
-# 2nd "Feedback to output when problem occures
-assert "red" in stoplight.values() , "Neither light is red!"+str(stoplight)
-#if there is no red in dic keys then program writes this:
-#AssertionError : Neither light is red! {'key1':'blue','key2':'green'}
-#As you can see i would immediately assume that error is in dictionary
+import re
+#\d stands for a digit character(0-9)
+
+phoneNumRegex=re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')#makes search "term"
+mo= phoneNumRegex.search('My number is 123-123-1234')#searches for "term" in string, and puts it* 
+print('Phone number found: ' + mo.group())#mo.group() prints finded "term"             *in mo if it finds it
+#you can also group items in phoneNumRegex-> phoneNumRegex=re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
+#and then you can use mo.group(1) to print first group of phoneNumRegex(3digits) .group(0) prints all ,
+# .groups() returns tuple of groups (3digits,3digs-4digs)
+# you can add names to grouped parametars ( first,second = mo.groups()) first will be 3digs , 
+# second will be 3digs-4digs
+#---------------------------------------------------------------------
+
+batRegex = re.compile(r'Bat(wo)?man')
+mo1= batRegex.search('The adventures of Batman')
+mo1.group()
+# 'Batman'
+
+mo2=batRegex.search('The adventure of Batwoman')
+mo2.group()
+# 'Batwoman'
+
+batRegex = re.compile(r'Bat(wo)*man')
+mo3 = batRegex.search('The Adventures of Batwowowowoman')
+mo3.group()
+# 'Batwowowowoman'
+
+
+batRegex = re.compile(r'Bat(wo)+man')
+mo4 = batRegex.search('The Adventures of Batman')
+mo4 == None
+# True
+#---------------------------------------------------------------------
+#SHORTHAND CODES FOR COMMON CHARACTER CLASSES
+#---------------------------------------------------------------------
+# \d Any numeric digit from 0 to 9.
+# \D Any character that is not a numeric digit from 0 to 9.
+# \w Any letter, numeric digit, or the underscore character.(Think of this as matching “word” characters.)
+# \W Any character that is not a letter, numeric digit, or the underscore character.
+# \s Any space, tab, or newline character. (Think of this as matching “space” characters.)
+# \S Any character that is not a space, tab, or newline.
+#---------------------------------------------------------------------
+#NEGATIVE CHAR CLASS
+#---------------------------------------------------------------------
+constantRegex = re.compile(r'[^aeiouAEIOU])
+constantRegex.findall("Robocop eats baby food.Babyfunctiond.")
+#it will output all chars that are != from constantRegex
+
+#also you can use it to find first(^) or last match($)
+beginingHello=re.compile(r'^Hello')
+beginsWithHello.search('Hello world!')
+# <_sre.SRE_Match object; span=(0, 5), match='Hello'>
+beginingHello.search('He said hello.') == None
+#True
+
+endsWithNumber = re.compile(r'\d$')
+endsWithNumber.search('Your number is 42')
+#<_sre.SRE_Match object; span=(16, 17), match='2'>
+
+#Findin all chars exept newline
+atRegex = re.compile(r'.at')
+atRegex.findall('The cat in the hat sat on the flat mat.')
+# ['cat', 'hat', 'sat', 'lat', 'mat']
 ```
 
-## Logging<a name="Logging"></a>
+## Time <a name="Time"></a>
 ```py
 #---------------------------------------------------------------------
-#Basics
+#Basics TIME
 #---------------------------------------------------------------------
-import logging
-logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
-#basic syntax for logging , its usefull when debugging to see what is happening in program
-#if you want to write logs in file just pass KEYWORD filename="nameoffile.txt" as one of parametars
-logging.basicConfig(filename="log.txt",level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
+import time
+time.time() #Returns number of seconds(float) since 1.1.1970(Unix epoch)
+#Calculating script time
+startTime = time.time()
+#----code----
+endTime = time.time()
+print(endTime-startTime) # prints time in seconds
 
-logging.debug('Msg')
-#Prints 2018-03-25 16:51:35,172 - DEBUG - Msg
-#if debug is succesful then you can skip printing msg's with 
-logging.disable(logging.CRITICAL)
-#you simply pass logging.disable() a logging level , and it will suppress all log msg at that lvl and lower 
+#cProfile.run() much more informative level of detail that time.time()
+#Read doc here -> https://docs.python.org/3/library/profile.html
 
+time.sleep(1) #pass number of seconds you want your program to stay paused
+#You cant interrupt program while "sleeping" , ADVICE: dont sleep for 30 seconds , rather for do a for loop
+# that sleeps for 1 second every iteration , you can than press CTRL+C to raise KeyboardInterrupt exception
+
+#Rounding Numbers
+now = time.time()
+round(now)# rounds time to int(clears all decimals),you can pass 2nd arg to round to specify
+# number of rounded decimals
+
+#---------------------------------------------------------------------
+#Basics DATE&time
+#---------------------------------------------------------------------
+import datetime
+daterime.datetime.now()
+#returns datetime obj ( year,month,day,hour,minute,second,microsecond)
+
+#you can compare dates
+newYear2016 = datetime.datetime(2016,1,1,0,0,0)
+newYear2015 = datetime.datetime(2015,1,1,0,0,0)
+newYear2015<newYear2016
+>>True
+
+delta = datetime.timedelta(days=11, hours=10, minutes=9, seconds=8)
+delta.days,delta.seconds,delta.microseconds
+>>(11,36548,0)
+delta.total_seconds()
+>>986948.0
+str(delta)
+>>'11 days, 10:09:08'
+
+#---------------------------------------------------------------------
+#Converting datetime obj to string
+#---------------------------------------------------------------------
+oct21st = datetime.datetime(2015,10,21,16,29,0)
+oct21st.strftime('%Y/%m/%d %H:%M:%S')
+>>'2015/10/21 16:29:00'
+#If you want all of %Y,%m..-> go to http://strftime.org/
+
+#---------------------------------------------------------------------
+#Converting string to datetime obj
+#---------------------------------------------------------------------
+#custom format string using the same directives
+#as strftime() must be passed so that strptime() knows how to parse
+#and understand the string.
+datetime.datetime.strptime('October 21, 2015', '%B %d, %Y')
+>>datetime.datetime(2015,10,21,0,0,0)
 ```
+
+
+## Multithreading <a name="Multithreading"></a>
+```py
+#---------------------------------------------------------------------
+#Bacics
+#---------------------------------------------------------------------
+import threading,time
+print('Start of program.')
+
+def takeANap():
+    time.sleep(5)
+    print('Wake up!')
+    
+threadObj = threading.Thread(targer=takeANap)
+threadObj.start()
+print('End of program.')
+>>Start of program
+>>End of program
+>>Wake up!
+
+#---------------------------------------------------------------------
+#Passing arg to thread obj , kwargs stands for keyword argument 
+#---------------------------------------------------------------------
+#THIS IS INCORRECT WAY!
+threadObj = threading.Thread(target=print('cats','dogs',sep=' & '))
+#---------------------------------------------------------------------
+
+#This is de wai xD
+#---------------------------------------------------------------------
+threadObj = threading.Thread(target=print, args=['Cats','Dogs'],kwargs={'sep':' & '})
+threadObj.start()
+>>Cats & Dogs
+```
+
+## Launching_Programs <a name="Launching_Programs"></a>
+```py
+#---------------------------------------------------------------------
+#Bacics
+#---------------------------------------------------------------------
+import subprocess
+subprocess.Popen('C:\\Windows\\System32\\calc.exe')
+# The return value is a Popen obj, which has 2 useful methods: poll() and wait()
+# poll() method-> returns None if the process is still runing at the time poll() is called
+#              -> if program has terminated it will return process's integer exit code
+# You can use exit code to see if process terminated without errors(exit code == 0) if
+# there is a error caused the process to terminate(exit code !=0(generally 1))
+# wait() method -> Will block until the launched process has terminated
+#               -> return value of wait() is exit code
+
+#---------------------------------------------------------------------
+#Passing command line arguments to Popen()
+#---------------------------------------------------------------------
+subprocess.Popen(['C:\\Windows\\notepad.exe','C:\\hello.txt'])
+# Launches notepad.exe but also open hello.txt with it
+# Can also do with other programs like ect. 
+# in hello.py writes print('Hello')
+subprocess.Popen(['FULL_PATH_TO_PYTHON.exe','D:\\hello.py'])
+>>Hello
+
+subprocess.Popen(['start','hello.txt'],shell=True)
+# This should open hello.txt with associated application that opens .txt file extensions 
+# in my case this is notepad
+# 'start' means open with application associated with .txt in this example
+# shell=True is needed only on windows!
+```
+
 
 ## Object Oriented Programming<a name="Object-Oriented-programming"></a>
 ```py
@@ -876,6 +1036,17 @@ def __str__(self)
 # Example for print https://stackoverflow.com/questions/1535327/how-to-print-a-class-or-objects-of-class-using-print
 
 
+```
+# Working with files
+
+## Bat<a name="Bat"></a>
+```
+#---------------------------------------------------------------------
+To run python scripts
+#---------------------------------------------------------------------
+@py.exe C:\path\to\your\pythonScript.py %*
+python must be in sys PATH, advice: put all bat files in one folder and add folder to sys PATH 
+you will be able to run your bat files with run (win+r on windows)
 ```
 
 ## Working with files<a name="Working-with-files"></a>
@@ -1065,8 +1236,6 @@ sheet = wb.get_sheet_by_name('Sheet')
 sheet['A1'] = 'Test' #Writes Test to A1 cell in 'Sheet'
 sheet['A1'].value
 >>'Test'
-
-
 ```
 
 ## Shutil<a name="Shutil"></a>
@@ -1079,6 +1248,148 @@ shutil.move('source','destination')#move source to destination folder(if source 
 shutil.rmtree(path) # will remove folder at path, and all files and folder it contains will also be deleted
 ```
 
+
+## Manipulating_Images <a name="Manipulating_Images"></a>
+```py
+#---------------------------------------------------------------------
+# Basics
+#---------------------------------------------------------------------
+from PIL import ImageColor
+>>ImageColor.getcolor('red','RGBA')
+(255,0,0,255) 
+# Basicly getcolor returns RGBA tuple (its case INsensitive->'red'=='RED')
+
+# Loading image 
+from PIL import Image
+catIm = Image.open('zophie.png')
+# If img is not in cur working dir just import os and os.chdir('C:\\folder_with_image_file')
+
+#---------------------------------------------------------------------
+# Working with Image Data Type
+#---------------------------------------------------------------------
+>>catIm.size
+(816,1088)
+>>width,height = catIm.size
+
+>>width
+816
+>>height
+1088
+
+>>catIm.filename
+'zophie.png'
+>>catIm.format
+'PNG'
+>>catIm.format_description
+'Portable network graphic'
+>>catIm.save('zophie.jpg')
+# Saves zophie.jpg on hdd(now you have zophie.jpg and zophie.png)
+
+im = Image.new('RGBA',(100,200),'purple') # Creates im obj(purple color 100x200 pix)
+im.save('purpleImage.png') # Saves im obj as purpleImage in cur working dir 
+
+#---------------------------------------------------------------------
+# Cropping Images,Copying and Pasting images onto Other Images
+#---------------------------------------------------------------------
+catIm = image.open('zophie.png')
+#---------------------------------------------------------------------
+faceIm = catIm.crop((335,345,565,560)) # Crops and saves it to faceIm (catIm is still same)
+# 1st parametar = left side,if ++ crop "goes" to left
+# 2nd parametar = top side,++ == top side goes down
+# 3 == (right side)+1, ++ == right side goes left
+# 4 == (bottom side)+1 , ++ == bottom side goes down
+>>faceIm.size
+(230,215)
+#---------------------------------------------------------------------
+catCopyIm = catIm.copy() # Creates catCopyIm (copy of catIm)
+catCopyIm = paste(faceIm,(0,0))
+catCopyIm = paste(faceIm,(400,500))
+catCopyIm.save('pasted.png')
+
+# This code above opened cat img, cropped from it and saved to faceIm , pasted faceIm 2 times
+# On copy of catIm (catCopyIm) on coordinates in (x,y)
+
+# Making "matrix" of crops
+catImWidth, catImHeight = catIm.size
+faceImWidth, faceImHeight = faceIm.size
+catCopy = catIm.copy() # Get copy so you dont mess with originaly photo :P
+for left in range(0,catImWidth,faceImWidth):# For from left side to right "jumping" for len of crop width
+    for top in range(0,catImHeight, faceimHeight): # For from top to bottom for crop height
+        print(left,top) # Printing this is just for info
+        catCopyTwo.paste(faceIm,(left,top) # Paste crop on picture on location(left,top)
+        
+#---------------------------------------------------------------------
+# Resizing
+#---------------------------------------------------------------------
+W,H=catIm.size
+quartersizedIm = catim.resize(( int(H/2) , int(W/2) ))
+quartersizedIm.save('quartersized.png)
+
+#---------------------------------------------------------------------
+# Rotating,Flipping..
+#---------------------------------------------------------------------
+catIm.rotate(90).save('rotated90.png')
+catIm.rotate(270).save('rotated270.png')
+
+catIm.rotate(6).save('cat.png') # Edges will be "cut off" cause of rotation
+catIm.rotate(6,expand=True).save('cat_expand.png') # Picture will fit to rotation(it will be bigger)
+
+#---------------------------------------------------------------------
+# Mirroring
+#---------------------------------------------------------------------
+catIm.transpose(Image.FLIP_LEFT_RIGHT).save('horizontal_flip.png')
+catIm.transpose(Image.FLIP_TOP_BOTTOM).save('vertical_flip.png')
+
+#---------------------------------------------------------------------
+# Changing Individual Pixels
+#---------------------------------------------------------------------
+im = Image.new('RGBA',(100,100))
+>>im.getpixel((0,0))
+(0,0,0,0)
+for x in range(100):
+    for y in range(50):
+        im.putpixel((x,y),(210,210,210))
+        
+#---------------------------------------------------------------------
+# Drawing on Images
+#---------------------------------------------------------------------
+from PIL import Image, ImageDraw
+im = Image.new('RGBA', (200,200), 'white')
+draw = ImageDraw.Draw(im) # Pass image obj to draw to create image draw obj
+
+#---------------------------------------------------------------------
+# Drawing Shapes
+#---------------------------------------------------------------------
+https://pillow.readthedocs.io/en/3.1.x/reference/ImageDraw.html
+# Pointless to make notes of this, just throw look at this link above ,
+# if link is broken when you are reading this google for python PIL drawing :)  
+
+#---------------------------------------------------------------------
+# Drawing Text
+#---------------------------------------------------------------------
+from PIL import ImageFont
+# ImageFont is imported now , you can call ImageFont.truetype() ->takes 2 arg
+# 1. is string for the font's TrueType file(.ttf)
+# 2. is size :D
+# Here's example!
+#-----------------------------
+from PIL import Image, ImageDraw, ImageFont
+import os
+#-----------------------------
+im = Image.new('RGBA', (200,200), 'white')
+draw = ImageDraw.Draw(im)
+draw.text((20,150), 'Hello', fill='purple')
+#-----------------------------
+fontsFolder = 'FONT_FOLDER' # e.g. 'C:\Windows\Fonts'
+arialFont = ImageFont.truetype(os.path.join(fontsFolder, 'arial.ttf'), 32)
+draw.text((100,150), 'Howday', fill='gray', font=arialFont)
+#-----------------------------
+im.save('text.png')
+# This should make png with printed Hello and Howdy in diferend fonts and on diferend positions
+# I showed there 2 ways of Drawing text
+```
+
+# Working online
 
 ## Web Scraping<a name="Web-Scraping"></a>
 ```py
@@ -1212,206 +1523,6 @@ browser.forward()
 browser.refresh()
 browser.quit()
 #---------------------------------------------------------------------
-```
-
-
-## Regex<a name="Regex"></a>
-```py
-#---------------------------------------------------------------------
-#Basics
-#---------------------------------------------------------------------
-import re
-#\d stands for a digit character(0-9)
-
-phoneNumRegex=re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')#makes search "term"
-mo= phoneNumRegex.search('My number is 123-123-1234')#searches for "term" in string, and puts it* 
-print('Phone number found: ' + mo.group())#mo.group() prints finded "term"             *in mo if it finds it
-#you can also group items in phoneNumRegex-> phoneNumRegex=re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
-#and then you can use mo.group(1) to print first group of phoneNumRegex(3digits) .group(0) prints all ,
-# .groups() returns tuple of groups (3digits,3digs-4digs)
-# you can add names to grouped parametars ( first,second = mo.groups()) first will be 3digs , 
-# second will be 3digs-4digs
-#---------------------------------------------------------------------
-
-batRegex = re.compile(r'Bat(wo)?man')
-mo1= batRegex.search('The adventures of Batman')
-mo1.group()
-# 'Batman'
-
-mo2=batRegex.search('The adventure of Batwoman')
-mo2.group()
-# 'Batwoman'
-
-batRegex = re.compile(r'Bat(wo)*man')
-mo3 = batRegex.search('The Adventures of Batwowowowoman')
-mo3.group()
-# 'Batwowowowoman'
-
-
-batRegex = re.compile(r'Bat(wo)+man')
-mo4 = batRegex.search('The Adventures of Batman')
-mo4 == None
-# True
-#---------------------------------------------------------------------
-#SHORTHAND CODES FOR COMMON CHARACTER CLASSES
-#---------------------------------------------------------------------
-# \d Any numeric digit from 0 to 9.
-# \D Any character that is not a numeric digit from 0 to 9.
-# \w Any letter, numeric digit, or the underscore character.(Think of this as matching “word” characters.)
-# \W Any character that is not a letter, numeric digit, or the underscore character.
-# \s Any space, tab, or newline character. (Think of this as matching “space” characters.)
-# \S Any character that is not a space, tab, or newline.
-#---------------------------------------------------------------------
-#NEGATIVE CHAR CLASS
-#---------------------------------------------------------------------
-constantRegex = re.compile(r'[^aeiouAEIOU])
-constantRegex.findall("Robocop eats baby functiond.Babyfunctiond.")
-#it will output all chars that are != from constantRegex
-
-#also you can use it to find first(^) or last match($)
-beginingHello=re.compile(r'^Hello')
-beginsWithHello.search('Hello world!')
-# <_sre.SRE_Match object; span=(0, 5), match='Hello'>
-beginingHello.search('He said hello.') == None
-#True
-
-endsWithNumber = re.compile(r'\d$')
-endsWithNumber.search('Your number is 42')
-#<_sre.SRE_Match object; span=(16, 17), match='2'>
-
-#Findin all chars exept newline
-atRegex = re.compile(r'.at')
-atRegex.findall('The cat in the hat sat on the flat mat.')
-# ['cat', 'hat', 'sat', 'lat', 'mat']
-```
-
-## Time <a name="Time"></a>
-```py
-#---------------------------------------------------------------------
-#Basics TIME
-#---------------------------------------------------------------------
-import time
-time.time() #Returns number of seconds(float) since 1.1.1970(Unix epoch)
-#Calculating script time
-startTime = time.time()
-#----code----
-endTime = time.time()
-print(endTime-startTime) # prints time in seconds
-
-#cProfile.run() much more informative level of detail that time.time()
-#Read doc here -> https://docs.python.org/3/library/profile.html
-
-time.sleep(1) #pass number of seconds you want your program to stay paused
-#You cant interrupt program while "sleeping" , ADVICE: dont sleep for 30 seconds , rather for do a for loop
-# that sleeps for 1 second every iteration , you can than press CTRL+C to raise KeyboardInterrupt exception
-
-#Rounding Numbers
-now = time.time()
-round(now)# rounds time to int(clears all decimals),you can pass 2nd arg to round to specify
-# number of rounded decimals
-
-#---------------------------------------------------------------------
-#Basics DATE&time
-#---------------------------------------------------------------------
-import datetime
-daterime.datetime.now()
-#returns datetime obj ( year,month,day,hour,minute,second,microsecond)
-
-#you can compare dates
-newYear2016 = datetime.datetime(2016,1,1,0,0,0)
-newYear2015 = datetime.datetime(2015,1,1,0,0,0)
-newYear2015<newYear2016
->>True
-
-delta = datetime.timedelta(days=11, hours=10, minutes=9, seconds=8)
-delta.days,delta.seconds,delta.microseconds
->>(11,36548,0)
-delta.total_seconds()
->>986948.0
-str(delta)
->>'11 days, 10:09:08'
-
-#---------------------------------------------------------------------
-#Converting datetime obj to string
-#---------------------------------------------------------------------
-oct21st = datetime.datetime(2015,10,21,16,29,0)
-oct21st.strftime('%Y/%m/%d %H:%M:%S')
->>'2015/10/21 16:29:00'
-#If you want all of %Y,%m..-> go to http://strftime.org/
-
-#---------------------------------------------------------------------
-#Converting string to datetime obj
-#---------------------------------------------------------------------
-#custom format string using the same directives
-#as strftime() must be passed so that strptime() knows how to parse
-#and understand the string.
-datetime.datetime.strptime('October 21, 2015', '%B %d, %Y')
->>datetime.datetime(2015,10,21,0,0,0)
-```
-
-## Multithreading <a name="Multithreading"></a>
-```py
-#---------------------------------------------------------------------
-#Bacics
-#---------------------------------------------------------------------
-import threading,time
-print('Start of program.')
-
-def takeANap():
-    time.sleep(5)
-    print('Wake up!')
-    
-threadObj = threading.Thread(targer=takeANap)
-threadObj.start()
-print('End of program.')
->>Start of program
->>End of program
->>Wake up!
-
-#---------------------------------------------------------------------
-#Passing arg to thread obj , kwargs stands for keyword argument 
-#---------------------------------------------------------------------
-#THIS IS INCORRECT WAY!
-threadObj = threading.Thread(target=print('cats','dogs',sep=' & '))
-#---------------------------------------------------------------------
-
-#This is de wai xD
-#---------------------------------------------------------------------
-threadObj = threading.Thread(target=print, args=['Cats','Dogs'],kwargs={'sep':' & '})
-threadObj.start()
->>Cats & Dogs
-```
-
-## Launching_Programs <a name="Launching_Programs"></a>
-```py
-#---------------------------------------------------------------------
-#Bacics
-#---------------------------------------------------------------------
-import subprocess
-subprocess.Popen('C:\\Windows\\System32\\calc.exe')
-# The return value is a Popen obj, which has 2 useful methods: poll() and wait()
-# poll() method-> returns None if the process is still runing at the time poll() is called
-#              -> if program has terminated it will return process's integer exit code
-# You can use exit code to see if process terminated without errors(exit code == 0) if
-# there is a error caused the process to terminate(exit code !=0(generally 1))
-# wait() method -> Will block until the launched process has terminated
-#               -> return value of wait() is exit code
-
-#---------------------------------------------------------------------
-#Passing command line arguments to Popen()
-#---------------------------------------------------------------------
-subprocess.Popen(['C:\\Windows\\notepad.exe','C:\\hello.txt'])
-# Launches notepad.exe but also open hello.txt with it
-# Can also do with other programs like ect. 
-# in hello.py writes print('Hello')
-subprocess.Popen(['FULL_PATH_TO_PYTHON.exe','D:\\hello.py'])
->>Hello
-
-subprocess.Popen(['start','hello.txt'],shell=True)
-# This should open hello.txt with associated application that opens .txt file extensions 
-# in my case this is notepad
-# 'start' means open with application associated with .txt in this example
-# shell=True is needed only on windows!
 ```
 
 ## Sending_email_and_Text_messages <a name="Sending_email_and_Text_messages"></a>
@@ -1571,145 +1682,7 @@ imapObj.expunge() #Permanently deletes messages with /Deleted flag
 imapObj.logout()
 ```
 
-## Manipulating_Images <a name="Manipulating_Images"></a>
-```py
-#---------------------------------------------------------------------
-# Basics
-#---------------------------------------------------------------------
-from PIL import ImageColor
->>ImageColor.getcolor('red','RGBA')
-(255,0,0,255) 
-# Basicly getcolor returns RGBA tuple (its case INsensitive->'red'=='RED')
-
-# Loading image 
-from PIL import Image
-catIm = Image.open('zophie.png')
-# If img is not in cur working dir just import os and os.chdir('C:\\folder_with_image_file')
-
-#---------------------------------------------------------------------
-# Working with Image Data Type
-#---------------------------------------------------------------------
->>catIm.size
-(816,1088)
->>width,height = catIm.size
-
->>width
-816
->>height
-1088
-
->>catIm.filename
-'zophie.png'
->>catIm.format
-'PNG'
->>catIm.format_description
-'Portable network graphic'
->>catIm.save('zophie.jpg')
-# Saves zophie.jpg on hdd(now you have zophie.jpg and zophie.png)
-
-im = Image.new('RGBA',(100,200),'purple') # Creates im obj(purple color 100x200 pix)
-im.save('purpleImage.png') # Saves im obj as purpleImage in cur working dir 
-
-#---------------------------------------------------------------------
-# Cropping Images,Copying and Pasting images onto Other Images
-#---------------------------------------------------------------------
-catIm = image.open('zophie.png')
-#---------------------------------------------------------------------
-faceIm = catIm.crop((335,345,565,560)) # Crops and saves it to faceIm (catIm is still same)
-# 1st parametar = left side,if ++ crop "goes" to left
-# 2nd parametar = top side,++ == top side goes down
-# 3 == (right side)+1, ++ == right side goes left
-# 4 == (bottom side)+1 , ++ == bottom side goes down
->>faceIm.size
-(230,215)
-#---------------------------------------------------------------------
-catCopyIm = catIm.copy() # Creates catCopyIm (copy of catIm)
-catCopyIm = paste(faceIm,(0,0))
-catCopyIm = paste(faceIm,(400,500))
-catCopyIm.save('pasted.png')
-
-# This code above opened cat img, cropped from it and saved to faceIm , pasted faceIm 2 times
-# On copy of catIm (catCopyIm) on coordinates in (x,y)
-
-# Making "matrix" of crops
-catImWidth, catImHeight = catIm.size
-faceImWidth, faceImHeight = faceIm.size
-catCopy = catIm.copy() # Get copy so you dont mess with originaly photo :P
-for left in range(0,catImWidth,faceImWidth):# For from left side to right "jumping" for len of crop width
-    for top in range(0,catImHeight, faceimHeight): # For from top to bottom for crop height
-        print(left,top) # Printing this is just for info
-        catCopyTwo.paste(faceIm,(left,top) # Paste crop on picture on location(left,top)
-        
-#---------------------------------------------------------------------
-# Resizing
-#---------------------------------------------------------------------
-W,H=catIm.size
-quartersizedIm = catim.resize(( int(H/2) , int(W/2) ))
-quartersizedIm.save('quartersized.png)
-
-#---------------------------------------------------------------------
-# Rotating,Flipping..
-#---------------------------------------------------------------------
-catIm.rotate(90).save('rotated90.png')
-catIm.rotate(270).save('rotated270.png')
-
-catIm.rotate(6).save('cat.png') # Edges will be "cut off" cause of rotation
-catIm.rotate(6,expand=True).save('cat_expand.png') # Picture will fit to rotation(it will be bigger)
-
-#---------------------------------------------------------------------
-# Mirroring
-#---------------------------------------------------------------------
-catIm.transpose(Image.FLIP_LEFT_RIGHT).save('horizontal_flip.png')
-catIm.transpose(Image.FLIP_TOP_BOTTOM).save('vertical_flip.png')
-
-#---------------------------------------------------------------------
-# Changing Individual Pixels
-#---------------------------------------------------------------------
-im = Image.new('RGBA',(100,100))
->>im.getpixel((0,0))
-(0,0,0,0)
-for x in range(100):
-    for y in range(50):
-        im.putpixel((x,y),(210,210,210))
-        
-#---------------------------------------------------------------------
-# Drawing on Images
-#---------------------------------------------------------------------
-from PIL import Image, ImageDraw
-im = Image.new('RGBA', (200,200), 'white')
-draw = ImageDraw.Draw(im) # Pass image obj to draw to create image draw obj
-
-#---------------------------------------------------------------------
-# Drawing Shapes
-#---------------------------------------------------------------------
-https://pillow.readthedocs.io/en/3.1.x/reference/ImageDraw.html
-# Pointless to make notes of this, just throw look at this link above ,
-# if link is broken when you are reading this google for python PIL drawing :)  
-
-#---------------------------------------------------------------------
-# Drawing Text
-#---------------------------------------------------------------------
-from PIL import ImageFont
-# ImageFont is imported now , you can call ImageFont.truetype() ->takes 2 arg
-# 1. is string for the font's TrueType file(.ttf)
-# 2. is size :D
-# Here's example!
-#-----------------------------
-from PIL import Image, ImageDraw, ImageFont
-import os
-#-----------------------------
-im = Image.new('RGBA', (200,200), 'white')
-draw = ImageDraw.Draw(im)
-draw.text((20,150), 'Hello', fill='purple')
-#-----------------------------
-fontsFolder = 'FONT_FOLDER' # e.g. 'C:\Windows\Fonts'
-arialFont = ImageFont.truetype(os.path.join(fontsFolder, 'arial.ttf'), 32)
-draw.text((100,150), 'Howday', fill='gray', font=arialFont)
-#-----------------------------
-im.save('text.png')
-# This should make png with printed Hello and Howdy in diferend fonts and on diferend positions
-# I showed there 2 ways of Drawing text
-```
+# Controling GUI
 
 ## Controling_Mouse&Keyboard_with_GUI_Automation <a name="Controling_Mouse&Keyboard_with_GUI_Automation"></a>
 ```py
@@ -1818,6 +1791,8 @@ pyautogui.keyDown('shift');pyautogui.press('4');pyautogui.keyUp('shift')
 # you can use this instead
 pyautogui.hotkey('ctrl','c') # Presses keys by order and releases them in reverse
 ```
+
+# Random libs
 
 ## Turtle module <a name="Turtle_module"></a>
 ```py
@@ -1982,14 +1957,45 @@ my_font = pygame.font.SysFont('Courier',16) # Self explanation
 # Draw surface part
 the_text = my_font.render("Hello, world!",True,(0,0,0))
 main_surface.blit(the_text,(10,10))
-
-
 ```
 
 
+#  Debugging
+
+## Assertions<a name="Assertions"></a>
+```py
+#---------------------------------------------------------------------
+#Basics
+#---------------------------------------------------------------------
+#You can see where is bug in your program if you include them
+# 1st "Paramar to chech if false then when problem happens you can write feedback to see what is the problem"
+# 2nd "Feedback to output when problem occures
+assert "red" in stoplight.values() , "Neither light is red!"+str(stoplight)
+#if there is no red in dic keys then program writes this:
+#AssertionError : Neither light is red! {'key1':'blue','key2':'green'}
+#As you can see i would immediately assume that error is in dictionary
+```
+
+## Logging<a name="Logging"></a>
+```py
+#---------------------------------------------------------------------
+#Basics
+#---------------------------------------------------------------------
+import logging
+logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
+#basic syntax for logging , its usefull when debugging to see what is happening in program
+#if you want to write logs in file just pass KEYWORD filename="nameoffile.txt" as one of parametars
+logging.basicConfig(filename="log.txt",level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
+
+logging.debug('Msg')
+#Prints 2018-03-25 16:51:35,172 - DEBUG - Msg
+#if debug is succesful then you can skip printing msg's with 
+logging.disable(logging.CRITICAL)
+#you simply pass logging.disable() a logging level , and it will suppress all log msg at that lvl and lower 
+```
+
 ## Useful data <a name="Useful-data"></a>
 ```py
-
 #---------------------------------------------------------------------
 # Keywords(probably changed so look for it online this is just reminder)
 #---------------------------------------------------------------------
@@ -2002,8 +2008,4 @@ If interpretrer complains about one of your variable names and you dont know wht
 # | pass   | raise | return | try     | while | with     |
 # | yield  | True  | False  | None    |       |          |
 # +--------+-------+--------+---------+-------+----------+
-
-
-
-
 ```
