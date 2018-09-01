@@ -43,15 +43,15 @@ def drawBoard(snake):
     for y in range(0,20):
         for x in range(0,40):
             if y == 0 or y == 19 or x==0 or x==39:
-                stdscr.addch(y,x,"*")
+                stdscr.addstr(y,x,"*",curses.color_pair(2))
             elif snake.x == x and snake.y == y:
-                stdscr.addch(y,x,"@")
+                stdscr.addstr(y,x,"@",curses.color_pair(1))
             elif snake.tail(x,y):
-                stdscr.addch(y,x,"o")
+                stdscr.addstr(y,x,"o",curses.color_pair(1))
             elif foodX ==x and foodY == y:
-                stdscr.addch(y,x,'$')
+                stdscr.addstr(y,x,'$',curses.color_pair(3))
             else:
-                stdscr.addch(y,x," ")
+                stdscr.addstr(y,x," ")
     stdscr.refresh()
 
 def click():
@@ -127,6 +127,10 @@ def main():
     global key
     curses.cbreak()
     stdscr.keypad(1)
+    curses.start_color()
+    curses.init_pair(1,curses.COLOR_RED,curses.COLOR_BLACK)
+    curses.init_pair(2,curses.COLOR_GREEN,curses.COLOR_BLACK)
+    curses.init_pair(3,curses.COLOR_BLACK,curses.COLOR_WHITE)
     stdscr.nodelay(True)
     stdscr.addstr(21,0,"Press 'q' to quit")
 
@@ -135,7 +139,7 @@ def main():
         checkFood()
         moveSnake()
         click()
-        if snake.direction == 'UP' or snake.direction == 'DOWN':
+        if snake.direction=='UP' or snake.direction == 'DOWN':
             time.sleep(0.13)
         else:
             time.sleep(0.11)
