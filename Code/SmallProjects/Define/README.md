@@ -1,0 +1,1 @@
+## Copy word and get instantaneous information about it
