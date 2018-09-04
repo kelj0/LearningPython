@@ -1999,7 +1999,7 @@ logging.disable(logging.CRITICAL)
 #---------------------------------------------------------------------
 # Keywords(probably changed so look for it online this is just reminder)
 #---------------------------------------------------------------------
-If interpretrer complains about one of your variable names and you dont know wht see this list
+If interpretrer complains about one of your variable names and you dont know what see this list
 # +--------+-------+--------+---------+-------+----------+
 # | and    | as    | assert | break   | class | continue |
 # | def    | del   | elif   | else    | except| exec     |
