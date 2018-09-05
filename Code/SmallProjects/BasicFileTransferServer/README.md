@@ -3,9 +3,9 @@
 Requirements flask,werkzeug.utils,python3.X
 
 Start:
--python3 server.py
--go to localhost:5000 or 127.0.0.1:5000
--you're done
+- `python3 server.py`
+- go to localhost:5000 or 127.0.0.1:5000
+- you're done
 
 [x] - create local server
 [x] - make simple file upload/download possible
