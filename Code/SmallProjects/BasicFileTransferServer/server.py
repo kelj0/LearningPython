@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 
 
 UPLOAD_FOLDER = os.getcwd()+'/FILES'
-ALLOWED_EXTENSIONS = set(['txt','pdf','zip','png','jpeg','jpg','gif','mp3','mp4',])
+ALLOWED_EXTENSIONS = set(['txt','pdf','zip','png','jpeg','jpg','gif','mp3','mp4'])
 STORED_FILES = [f for f in os.listdir(UPLOAD_FOLDER)\
             if os.path.isfile(os.path.join(UPLOAD_FOLDER, f))]
 # Create Flash application
