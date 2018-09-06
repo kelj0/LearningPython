@@ -12,6 +12,7 @@ Start:
 - [x] - make simple html page to upload file
 - [x] - really simple login page (user:admin pass:admin)
 - [x] - implement simple file deleting system
+
 TODO:
 - [ ] - make advanced file transfer
 - [ ] - implement sending files from account to account not visible to other users 
