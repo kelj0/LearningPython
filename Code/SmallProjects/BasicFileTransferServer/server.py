@@ -3,12 +3,11 @@
 import os,fileinput,re
 from flask import Flask, flash, request, redirect, url_for, render_template, send_from_directory, session
 from werkzeug.utils import secure_filename
-
-
+from registration import RegistrationFrom
 
 # =========GLOBALS=========
 UPLOAD_FOLDER = os.getcwd()+'/FILES'
-ALLOWED_EXTENSIONS = set(['txt','pdf','zip','png','jpeg','jpg','gif','mp3','mp4','py','cpp'])
+ALLOWED_EXTENSIONS = set(['txt','pdf','zip','7z','tar','png','jpeg','jpg','gif','mp3','mp4','py','cpp'])
 STORED_FILES = [f for f in os.listdir(UPLOAD_FOLDER)\
             if os.path.isfile(os.path.join(UPLOAD_FOLDER, f))]
 
@@ -79,18 +78,27 @@ def show_files():
     """Generates html code based on uploaded 
     files and returns render_template(show_files.html)
     """
-
+    noFiles = False
     with open("./templates/show_files.html", "w") as f:
-        t = '<title>Show Files</title>\n<p><a href="{{ url_for(\'home\') }}">Go back</a>\n<h1>Files:(opens in new tab)</h1>\n'
+        if len(STORED_FILES) is 0:
+            t = '<!doctype html>\n<title>Show Files</title>\n<p>\
+            <a href="{{ url_for(\'home\') }}">Go back</a>\n<h2>There are 0 stored files</h2>\n'
+            noFiles = True
+        else:
+            t = '<!doctype html>\n<title>Show Files</title>\n<p>\
+            <a href="{{ url_for(\'home\') }}">Go back</a>\n<h2>Files:(opens in new tab)</h2>\n'
         f.write(t)
-    with open("./templates/show_files.html", "a") as f:
-        for name in STORED_FILES:
-            f.write('<p><a target="_blank" rel="noopener noreferrer"  href="/files/{0}">{0}</a>\n'.format(name))
-        f.write("""<div class="dropdown">\n  <button class="dropbtn">Delete file\
-        (just select file below to delete it)</button>\n  <div class="dropdown-content">""")
-        for name in STORED_FILES:
-            f.write("""    <a href="/delete/{0}">{0}</a>\n""".format(name))
-        f.write("  </div>\n</div>")
+    if not noFiles:
+        with open("./templates/show_files.html", "a") as f:
+            css = open("./templates/dropdowncss.txt").read()
+            f.write(css)
+            for name in STORED_FILES:
+                f.write('<p><a target="_blank" rel="noopener noreferrer"  href="/files/{0}">{0}</a>\n'.format(name))
+            f.write("""<div class="dropdown">\n  <button class="dropbtn">Delete files\
+            </button>\n  <div class="dropdown-content">""")
+            for name in STORED_FILES:
+                f.write("""    <a href="/delete/{0}">{0}</a>\n""".format(name))
+            f.write("  </div>\n</div>")
     return render_template('show_files.html')
 
 
@@ -102,8 +110,6 @@ def download(filename):
 
 @app.route('/delete/<path:filename>',methods=['GET','POST'])
 def delete(filename):
-    """@param:filename
-    Deletes file from folder and updates delete.html"""
     global STORED_FILES
     with open('./templates/delete.html') as f:
         filedata = f.read()
@@ -125,6 +131,17 @@ def login():
         return render_template('wrongpassword.html')
     return home()
 
+
+@app.route('/registration',methods=['GET','POST'])
+def reg():
+    form = RegistrationFrom()
+    if request.method == 'POST':
+        if form.validate() == False:
+            return render_template('RegForm/registration.html',form = form)
+        else:
+            return render_template('RegForm/success.html')
+    else:
+        return render_template('RegForm/registration.html',form = form)
 
 @app.route('/logout')
 def logout():
