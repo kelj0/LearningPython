@@ -13,10 +13,10 @@ Start:
 - [x] - really simple login page (user:admin pass:admin)
 - [x] - implement simple file deleting system
 - [x] - implement simple registration form
+- [x] - connect to db
+- [x] - implement admin page (can see all users)
 
 TODO:
-- [ ] - connect to db
 - [ ] - make advanced file transfer
 - [ ] - implement sending files from account to account not visible to other users
-- [ ] - implement admin page (can see all uploaded files)
-
+- [ ] - implement user files ( files are linked to user and only that user can see them) 

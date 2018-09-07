@@ -1,9 +1,14 @@
 #! /usr/bin/python3
 
-import os,fileinput,re
+import os, fileinput, re, flask_login
 from flask import Flask, flash, request, redirect, url_for, render_template, send_from_directory, session
 from werkzeug.utils import secure_filename
-from registration import RegistrationFrom
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import check_password_hash, generate_password_hash
+from flask_wtf import Form
+from wtforms import TextField, TextAreaField, SubmitField, validators, ValidationError, PasswordField
+
+
 
 # =========GLOBALS=========
 UPLOAD_FOLDER = os.getcwd()+'/FILES'
@@ -15,12 +20,68 @@ STORED_FILES = [f for f in os.listdir(UPLOAD_FOLDER)\
 # Create Flash application
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['DATABASE_FILE'] = 'users.sqlite'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite'
+
+login_manager = flask_login.LoginManager()
+login_manager.init_app(app)
+db = SQLAlchemy(app)
+
+# =========CLASSES=========
+class User(db.Model):
+    id = db.Column('user_id',db.Integer,primary_key=True)
+    username = db.Column(db.String(16), unique=True)
+    email = db.Column(db.String(32),unique=True)
+    password = db.Column(db.String(64))
+
+    def __init__(self,username,password,email=""):
+        self.username = username
+        self.email = email
+        self.password = password
+    
+    # methods for Flask_login
+    def is_authenticated(self):
+        return True
+    
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+	
+    def get_id(self):
+        return self.id
+
+	
+
+class LoginForm(Form):
+    username = TextField("Username")
+    password = PasswordField("Password")
+
+
+class RegistrationFrom(Form):
+    """Registration class with validators"""
+    username = TextField("Enter username",[validators.Required("Please enter your name.")])
+    email = TextField("Enter your email",[validators.Required("Please enter your email address"),\
+    validators.Email("Please enter your email address")])
+    password = PasswordField("Enter your password")
+    rpassword = PasswordField("Confirm your password")
+    submit = SubmitField("Send")
+
 
 # =========FUNCTIONS=========
 def allowed_file(filename):
     '''Returns true if file is valid to be uploaded'''
     return '.' in filename and \
-        filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+def test_db():
+    db.drop_all()
+    db.create_all()
+    test = User(username="test",password=generate_password_hash("test")[20:],email="test@test.com")
+    db.session.add(test)
+    db.session.commit()
 
 
 # =========APP.ROUTE=========
@@ -90,7 +151,7 @@ def show_files():
         f.write(t)
     if not noFiles:
         with open("./templates/show_files.html", "a") as f:
-            css = open("./templates/dropdowncss.txt").read()
+            css = open("./templates/dropdown.css").read()
             f.write(css)
             for name in STORED_FILES:
                 f.write('<p><a target="_blank" rel="noopener noreferrer"  href="/files/{0}">{0}</a>\n'.format(name))
@@ -125,11 +186,16 @@ def delete(filename):
 
 @app.route('/login',methods=['POST'])
 def login():
+
     if request.form['password'] == 'admin' and request.form['username'] == 'admin':
         session['logged_in'] = True
     else:
         return render_template('wrongpassword.html')
     return home()
+
+@app.route('/show_users')
+def show_users():
+    return render_template('show_users.html',User=User.query.all())
 
 
 @app.route('/registration',methods=['GET','POST'])
@@ -139,6 +205,9 @@ def reg():
         if form.validate() == False:
             return render_template('RegForm/registration.html',form = form)
         else:
+            usr = User(username=form.username.data,password=generate_password_hash(form.password.data)[20:],email=form.email.data)
+            db.session.add(usr)
+            db.session.commit()
             return render_template('RegForm/success.html')
     else:
         return render_template('RegForm/registration.html',form = form)
@@ -158,7 +227,14 @@ def page_not_found(e):
 # ===========================
 
 def main():
-    print("Starting server..")
+    print("Starting server...")
+    app_dir = os.path.realpath(os.path.dirname(__file__))
+    db_path = os.path.join(app_dir,app.config['DATABASE_FILE'])
+    
+    if not os.path.exists(db_path):
+        print("Cannot find db..Building test base..")
+        test_db()
+
     app.secret_key = os.urandom(12)
     app.run(host='0.0.0.0',debug=True)
 
