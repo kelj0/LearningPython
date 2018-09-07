@@ -8,6 +8,12 @@
 <p>You're logged in already!</p>
 <p>Redirecting to home...</p>
 {% else %}
+<head>
+<style>
+body {background-color: powderblue;}
+p   {color: blue;}
+</style>
+</head>
 <form action="/login" method="POST">
   <input type="username" name="username" placeholder="Username">
   <input type="password" name="password" placeholder="Password">
