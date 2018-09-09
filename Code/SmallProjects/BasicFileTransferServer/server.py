@@ -3,7 +3,7 @@
 import os, fileinput, re, flask_login
 from flask import Flask, flash, request, redirect, url_for, render_template, send_from_directory, session, abort, flash
 from werkzeug.utils import secure_filename
-from flask_sqlalchemy import SQLAlchemy,SessionBase
+from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_wtf import Form
 from wtforms import TextField, TextAreaField, SubmitField, validators, ValidationError, PasswordField
@@ -26,7 +26,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite'
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 db = SQLAlchemy(app)
-s = SessionBase()
 # =========CLASSES=========
 class User(db.Model):
     id = db.Column('user_id',db.Integer,primary_key=True)
@@ -90,7 +89,6 @@ def home():
 
 
 @app.route('/upload',methods=['GET','POST'])
-@flask_login.login_required
 def upload_file():
     global STORED_FILES
     if request.method == 'POST':
@@ -117,7 +115,6 @@ def upload_file():
 
 
 @app.route('/uploaded')
-@flask_login.login_required
 def uploaded_file():
     return render_template('upload_complete.html')
 
@@ -128,13 +125,11 @@ def bad_file():
 
 
 @app.route('/stored')
-@flask_login.login_required
 def stored():
     return render_template('stored.html')
 
 
 @app.route('/files', methods=['GET'])
-@flask_login.login_required
 def show_files():
     """Generates html code based on uploaded 
     files and returns render_template(show_files.html)
@@ -164,14 +159,12 @@ def show_files():
 
 
 @app.route('/files/<path:filename>', methods=['GET', 'POST'])
-@flask_login.login_required
 def download(filename):
     uploads = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
     return send_from_directory(directory=uploads, filename=filename)
 
 
 @app.route('/delete/<path:filename>',methods=['GET','POST'])
-@flask_login.login_required
 def delete(filename):
     global STORED_FILES
     with open('./templates/delete.html') as f:
@@ -205,7 +198,6 @@ def login():
         return render_template('wrongpassword.html')
 
 @app.route('/show_users')
-@flask_login.login_required
 def show_users():
     return render_template('show_users.html',User=User.query.all())
 
