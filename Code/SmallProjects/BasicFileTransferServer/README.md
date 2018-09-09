@@ -15,6 +15,8 @@ Start:
 - [x] - implement simple registration form
 - [x] - connect to db
 - [x] - implement admin page (can see all users)
+- [x] - logging in connected to db
+- [x] - login required to access other pages
 
 TODO:
 - [ ] - make advanced file transfer

@@ -1,9 +1,9 @@
 #! /usr/bin/python3
 
 import os, fileinput, re, flask_login
-from flask import Flask, flash, request, redirect, url_for, render_template, send_from_directory, session
+from flask import Flask, flash, request, redirect, url_for, render_template, send_from_directory, session, abort, flash
 from werkzeug.utils import secure_filename
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy,SessionBase
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_wtf import Form
 from wtforms import TextField, TextAreaField, SubmitField, validators, ValidationError, PasswordField
@@ -26,19 +26,17 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite'
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 db = SQLAlchemy(app)
-
+s = SessionBase()
 # =========CLASSES=========
 class User(db.Model):
     id = db.Column('user_id',db.Integer,primary_key=True)
-    username = db.Column(db.String(16), unique=True)
-    email = db.Column(db.String(32),unique=True)
-    password = db.Column(db.String(64))
+    username = db.Column(db.String(16), unique=True,nullable=False)
+    password = db.Column(db.String(64),nullable=False)
 
-    def __init__(self,username,password,email=""):
-        self.username = username
-        self.email = email
-        self.password = password
-    
+    def __repr__(self):
+        return '<User %r>' % self.username
+
+
     # methods for Flask_login
     def is_authenticated(self):
         return True
@@ -62,8 +60,6 @@ class LoginForm(Form):
 class RegistrationFrom(Form):
     """Registration class with validators"""
     username = TextField("Enter username",[validators.Required("Please enter your name.")])
-    email = TextField("Enter your email",[validators.Required("Please enter your email address"),\
-    validators.Email("Please enter your email address")])
     password = PasswordField("Enter your password")
     rpassword = PasswordField("Confirm your password")
     submit = SubmitField("Send")
@@ -79,7 +75,7 @@ def allowed_file(filename):
 def test_db():
     db.drop_all()
     db.create_all()
-    test = User(username="test",password=generate_password_hash("test")[20:],email="test@test.com")
+    test = User(username="test",password=generate_password_hash("test")[20:])
     db.session.add(test)
     db.session.commit()
 
@@ -94,6 +90,7 @@ def home():
 
 
 @app.route('/upload',methods=['GET','POST'])
+@flask_login.login_required
 def upload_file():
     global STORED_FILES
     if request.method == 'POST':
@@ -120,6 +117,7 @@ def upload_file():
 
 
 @app.route('/uploaded')
+@flask_login.login_required
 def uploaded_file():
     return render_template('upload_complete.html')
 
@@ -130,11 +128,13 @@ def bad_file():
 
 
 @app.route('/stored')
+@flask_login.login_required
 def stored():
     return render_template('stored.html')
 
 
 @app.route('/files', methods=['GET'])
+@flask_login.login_required
 def show_files():
     """Generates html code based on uploaded 
     files and returns render_template(show_files.html)
@@ -164,12 +164,14 @@ def show_files():
 
 
 @app.route('/files/<path:filename>', methods=['GET', 'POST'])
+@flask_login.login_required
 def download(filename):
     uploads = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
     return send_from_directory(directory=uploads, filename=filename)
 
 
 @app.route('/delete/<path:filename>',methods=['GET','POST'])
+@flask_login.login_required
 def delete(filename):
     global STORED_FILES
     with open('./templates/delete.html') as f:
@@ -184,16 +186,26 @@ def delete(filename):
     return render_template('delete.html')
 
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get_id(user_id)
+
+
 @app.route('/login',methods=['POST'])
 def login():
-
-    if request.form['password'] == 'admin' and request.form['username'] == 'admin':
+    formName = request.form['username']
+    formPassword = request.form['password']
+    user = User(username=formName,password=formPassword)
+    t = User.query.filter_by(username=formName).first()
+    if t != None and check_password_hash("pbkdf2:sha256:50000$"+t.password,user.password):
         session['logged_in'] = True
+        flask_login.login_user(user)
+        return home()
     else:
         return render_template('wrongpassword.html')
-    return home()
 
 @app.route('/show_users')
+@flask_login.login_required
 def show_users():
     return render_template('show_users.html',User=User.query.all())
 
@@ -205,8 +217,8 @@ def reg():
         if form.validate() == False:
             return render_template('RegForm/registration.html',form = form)
         else:
-            usr = User(username=form.username.data,password=generate_password_hash(form.password.data)[20:],email=form.email.data)
-            db.session.add(usr)
+            user = User(username=form.username.data,password=generate_password_hash(form.password.data)[20:])
+            db.session.add(user)
             db.session.commit()
             return render_template('RegForm/success.html')
     else:
@@ -224,6 +236,9 @@ def logout():
 def page_not_found(e):
     return render_template('Errors/404.html'),404
 
+@app.errorhandler(401)
+def unauthorized_access(e):
+    return render_template('Errors/401.html'),401
 # ===========================
 
 def main():

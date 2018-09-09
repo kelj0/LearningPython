@@ -8,9 +8,6 @@
          <div>{{ message }}</div>
       {% endfor %}
       
-      {% for message in form.email.errors %}
-         <div>{{ message }}</div>
-      {% endfor %}
       
       <form action = "http://localhost:5000/registration" method = post>
          <fieldset>
@@ -21,11 +18,6 @@
                {{ form.username.label }}<br>
                {{ form.username }}
                <br>
-               
-               {{ form.email.label }}<br>
-               {{ form.email }}
-               <br>
-               
                {{ form.password.label }}<br>
                {{ form.password }}
                <br>
