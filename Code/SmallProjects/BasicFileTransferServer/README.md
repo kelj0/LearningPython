@@ -17,6 +17,7 @@ Start:
 - [x] - implement admin page (can see all users)
 - [x] - logging in connected to db
 - [x] - login required to access other pages
+- [x] - admin view (only admin can access database)
 
 TODO:
 - [ ] - make advanced file transfer
