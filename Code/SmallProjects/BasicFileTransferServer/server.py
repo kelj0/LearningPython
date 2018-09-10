@@ -34,8 +34,6 @@ class User(db.Model):
         return '<User %r>' % self.username
 
 
-	
-
 class LoginForm(Form):
     username = TextField("Username")
     password = PasswordField("Password")
@@ -196,7 +194,9 @@ def login():
     formPassword = request.form['password']
     user = User(username=formName,password=formPassword)
     t = User.query.filter_by(username=formName).first()
-    if t != None and t.admin == "True":
+    if t == None:
+        return render_template('wrongpassword.html')
+    if t.admin == "True" and check_password_hash("pbkdf2:sha256:50000$"+t.password,user.password):
         session['admin'] = True
         session['logged_in'] = True
         return home()
