@@ -1,6 +1,6 @@
 ## Simple local server made to use python in practice
 
-Requirements flask,werkzeug.utils,python3.X
+Requirements flask, werkzeug, flask_wtf, flask_sqlalchemy, wtforms, python3.X
 
 Start:
 - `python3 server.py`
