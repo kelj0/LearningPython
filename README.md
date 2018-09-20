@@ -15,7 +15,7 @@
 -    [Launching Programs](#Launching_Programs)
 -    [Useful data](#Useful-data)
 -    [OOP](#Object-Oriented-programming)
-
+-    [Working with JSON](#JSON)
 ### Working with files
 -    [Bat](#Bat)
 -    [Working with files](#Working-with-files)
@@ -49,7 +49,7 @@ If you want to get input in debugger
 
 ---
 
-## Basic <a name="Basics"></a>
+## Basics <a name="Basics"></a>
 ```py
 # Printing text
 print("Print text")
@@ -1034,9 +1034,38 @@ def __str__(self)
 # now every time we write print(ourClass) it will output "You called print on me wtf??"
 # We can define almost everything in our class , i wont post all options, google them xD
 # Example for print https://stackoverflow.com/questions/1535327/how-to-print-a-class-or-objects-of-class-using-print
-
-
 ```
+## Working with JSON<a name="JSON"></a>
+```py
+#Example getting word from dictionary.com
+import json,requests
+#First get page api
+# https://api-portal.dictionary.com/dcom/pageData/LookingWord
+
+#Use request to get 
+req = requests.get("https://api-portal.dictionary.com/dcom/pageData/LookingWord")
+#Next use json.loads (returns dictionary)
+parsed = json.loads(req.text)
+#Now we can use json.dumps to pretty print it(easyer to find searched item in dictionary)
+print(json.dumps(parsed, indent=4, sort_keys=True))
+
+#And now we can access it
+#for example 
+>> parsed = {"content":[1,2,3],"users":["test","test"]}
+>> print(json.dumps(parsed, indent=2, sort_keys=True))
+# {
+#   "content": [
+#       1,
+#       2,
+#       3
+#   ],
+#   "users": [
+#      "test",
+#       "test"
+#   ]
+# }
+```
+
 # Working with files
 
 ## Bat<a name="Bat"></a>
