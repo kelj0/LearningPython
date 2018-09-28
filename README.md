@@ -257,7 +257,7 @@ a: 1, b: 2
 # def func(*, name=value) | Function | Arguments that must be passed by keyword only in calls (3.X)
 #------------------------------------------------------------------------------------------------------
 
-
+#------------------------------
 # Keyword basics
 def f(a,b,c):print(a,b,c)
 >> f(a=1,b=2,c=3)
@@ -266,7 +266,7 @@ def f(a,b,c):print(a,b,c)
 3,2,1
 >> f(1,b=4,c=10)
 1,4,10
-
+#------------------------------
 # Defaults
 def f(a, b=2, c=3):print(a,b,c)  # a is required , b and c optional
 >> f(1,2,3)
@@ -276,6 +276,7 @@ def f(a, b=2, c=3):print(a,b,c)  # a is required , b and c optional
 >> f(10,b=20)
 10,20,3
 
+#------------------------------
 # Any number of arguments
 def f(*args): print(args)
 >> f()
@@ -288,11 +289,36 @@ def f(*args): print(args)
 def f(**args): print(args)  #** words for keyword arguments- it collects them into a new dictionary
 >> f()
 {}
->> f( a=1, b=2)
+>> f(a=1, b=2)
 {'a': 1, 'b': 2}
 
+#------------------------------
+# Unpacking arguments
+def f(a,b,c,d): print(a,b,c,d)
+>> args = (1,2)
+>> args += (3,4)
+>> f(*args)
+1,2,3,4
 
-
+args = {'a': 1,'b': 2,'c': 3}
+args['d'] = 4
+>> f(**args)
+1,2,3,4
+#------------------------------
+# Keyword-Only arguments
+def kwonly(a,*,b='ham',c='eggs'): print(a,b,c)
+# 'a' may be passed by position or name but 'b' and 'c' MUST by keywords
+>> kwonly(1)
+1 ham eggs
+>> kwonly(1, c=3)
+1 ham 3
+>> kwonly(a=1)
+1 ham eggs
+>> kwonly(c=3,b=2,a=1)
+1 2 3
+>> kwonly(1,2)
+TypeError: kwonly() takes 1 positional argument but 2 were given
+#------------------------------
 # Immutable and mutable passed objects 
 def changer(a, b):
       a = 2
@@ -304,6 +330,7 @@ def changer(a, b):
 >> X,L           # X is unchanged, L is different!
 (1, ['spam', 2])
 
+#------------------------------
 # Avoiding mutable argument changes
 L = [1,2]
 changer(X,L[:])  # Pass a copy , so our 'L' does not change
@@ -313,7 +340,40 @@ def changer(a,b):
       a = 2
       b[0] = 'spam' #Changes our copy list
   
+#------------------------------
+# Ordering rules
+#------------------------------
+def f(a, *b, **d, c=6): print(a, b, c, d)
+SyntaxError: invalid syntax                  # Keyword-only before **!
 
+def f(a, *b, c=6, **d): print(a, b, c, d)    # Collect args in header
+
+>> f(1, 2, 3, x=4, y=5)
+1 (2, 3) 6 {'y': 5, 'x': 4}                  # Default used
+
+>> f(1, 2, 3, x=4, y=5, c=7)
+1 (2, 3) 7 {'y': 5, 'x': 4}                  # Override default
+
+>> f(1, 2, 3, c=7, x=4, y=5)
+1 (2, 3) 7 {'y': 5, 'x': 4}                  # Anywhere in keywords
+>> def f(a, c=6, *b, **d): print(a, b, c, d) # c is not keyword-only here!
+>> f(1, 2, 3, x=4)
+1 (3,) 2 {'x': 4}
+
+def f(a, *b, c=6, **d): print(a, b, c, d) # KW-only between * and **
+>> f(1, *(2, 3), **dict(x=4, y=5))
+1 (2, 3) 6 {'y': 5, 'x': 4}               # Unpack args at call
+>> f(1, *(2, 3), **dict(x=4, y=5), c=7)
+SyntaxError: invalid syntax               # Keywords before **args!
+>> f(1, *(2, 3), c=7, **dict(x=4, y=5))
+1 (2, 3) 7 {'y': 5, 'x': 4}               # Override default
+>> f(1, c=7, *(2, 3), **dict(x=4, y=5))
+1 (2, 3) 7 {'y': 5, 'x': 4}               # After or before *
+>> f(1, *(2, 3), **dict(x=4, y=5, c=7))
+1 (2, 3) 7 {'y': 5, 'x': 4}               # Keyword-only in **
+
+
+#------------------------------------------------------------
 # Lets make 2 files -> function.py and test.py
 def function():
     print('Hello from function!')
@@ -335,6 +395,9 @@ def function():
         """This is displayed when we type function()"""
 
 
+#------------------------------
+# Function that returns function
+#------------------------------
 def makeLine(a,b):
     def y(x):
         return x*5
