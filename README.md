@@ -205,6 +205,115 @@ finaly:
 #---------------------------------------------------------------------
 # Functions
 #---------------------------------------------------------------------
+
+# Basics
+
+def f(x):
+      return x*2
+
+>> f(1)
+2
+>>f('a')
+'aa'
+>> a = 'a'
+>> f(a)
+'aa'
+ 
+def f1(x,y):
+      return x,y # This returns tuple
+def f2(x,y):
+      return [x,y]  # This returns list
+>> f1(1,2)
+(1,2)
+>> f2(1,2)
+[1,2]
+>> a,b = f1(1,2)
+>> print("a: %d, b: %d " % (a,b))
+a: 1, b: 2
+
+#---------------------------------
+# Argument matching syntax
+#------------------------------------------------------------------------------------------------------
+#       /Syntax/          |/Location/|            /Interpretation/                                      
+#------------------------------------------------------------------------------------------------------
+# f(value)                |  Caller  | Normal argument : matched by position                          
+#------------------------------------------------------------------------------------------------------
+# f(name=value)           |  Caller  | Keyword argument: matched by name                              
+#------------------------------------------------------------------------------------------------------
+# func(*iterable)         |  Caller  | Pass all objects in iterable as individual positional arguments 
+#------------------------------------------------------------------------------------------------------
+# func(**dict)            |  Caller  | Pass all key/value pairs in dict as individual keyword arguments
+#------------------------------------------------------------------------------------------------------
+# def func(name)          | Function | Normal argument: matches any passed value by position or name
+#------------------------------------------------------------------------------------------------------
+# def func(name=value)    | Function | Default argument value, if not passed in the call
+#------------------------------------------------------------------------------------------------------
+# def func(*name)         | Function | Matches and collects remaining positional arguments in a tuple
+#------------------------------------------------------------------------------------------------------
+# def func(**name)        | Function | Matches and collects remaining keyword arguments in a dictionary
+#------------------------------------------------------------------------------------------------------
+# def func(*other, name)  | Function | Arguments that must be passed by keyword only in calls (3.X)
+#------------------------------------------------------------------------------------------------------
+# def func(*, name=value) | Function | Arguments that must be passed by keyword only in calls (3.X)
+#------------------------------------------------------------------------------------------------------
+
+
+# Keyword basics
+def f(a,b,c):print(a,b,c)
+>> f(a=1,b=2,c=3)
+1,2,3
+>> f(c=1,b=2,a=3)
+3,2,1
+>> f(1,b=4,c=10)
+1,4,10
+
+# Defaults
+def f(a, b=2, c=3):print(a,b,c)  # a is required , b and c optional
+>> f(1,2,3)
+1,2,3
+>> f(10)
+10,2,3
+>> f(10,b=20)
+10,20,3
+
+# Any number of arguments
+def f(*args): print(args)
+>> f()
+()
+>> f(1)
+(1,)
+>> f(1,2,3,4)
+(1,2,3,4)
+
+def f(**args): print(args)  #** words for keyword arguments- it collects them into a new dictionary
+>> f()
+{}
+>> f( a=1, b=2)
+{'a': 1, 'b': 2}
+
+
+
+# Immutable and mutable passed objects 
+def changer(a, b):
+      a = 2
+      b[0] = 'spam'
+
+>> X = 1
+>> L = [1,2]
+>> changer(X,L)  # Pass immutable and mutable object
+>> X,L           # X is unchanged, L is different!
+(1, ['spam', 2])
+
+# Avoiding mutable argument changes
+L = [1,2]
+changer(X,L[:])  # Pass a copy , so our 'L' does not change
+# We can also copy within the function itself, if we never want to change passed-in objects
+def changer(a,b):
+      b = b[:]
+      a = 2
+      b[0] = 'spam' #Changes our copy list
+  
+
 # Lets make 2 files -> function.py and test.py
 def function():
     print('Hello from function!')
@@ -216,32 +325,6 @@ function() # Prints "Hello from funciton!"
 # Read as from file function.py import all 
 # This is usefull for making your code cleaner :)
 
-# Getting values to function
-def changeA(a):
-    a=5
-    return a
-a=1
-changeA(a)
-# If we call this function it will change "scoped a" that means that every variable in
-# function is diferend from variables in other functions
-# a is still 1 after function, if we want to change global variables write following
-
-a=10
-
-def changeA(a):
-    global a=20
-    return a
-
-changeA(a)
-# This indeed changes a to 20 :)
-
-def testfunction(incomingVariable):
-    return incomingVariable
-
-sendingVariable = "Here comes nothing"
-testfunction(sendingVariable)
-# This calls testfunction and sends "sendingVariable" , function recives variable(makes copy)
-# and calls it "incomingVariable" in his scope 
 
 #--------------------------------
 # Docstrings
@@ -264,16 +347,7 @@ a(1)
 # This is called creating functions on the fly, this makes function that RETURNS function!
 # You can now call a ,pass parametar and it will return parametar multiplyed by 5
 # C,C++ and many other languages dont allow you to define function that retunrs function
-#---------------------------------------------------------------------
-# Feed function with any number of arg
-#---------------------------------------------------------------------
-# Basicly it this function returns tuple of all given arg
-def function(*arg):
-    return arg
->>function('a','b','c')
-('a', 'b', 'c')
->>type(function('a','b','c'))
-<class 'tuple'>
+
 ```
 
 
