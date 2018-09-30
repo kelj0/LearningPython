@@ -394,6 +394,22 @@ function() # Prints "Hello from funciton!"
 def function():
         """This is displayed when we type function()"""
 
+#---------------------------------
+# Function annotations (python 3.X)
+#---------------------------------
+
+# Python 2.x has docstrings, which allow you to attach a metadata string to various 
+# types of object. This is amazingly handy, so Python 3 extends the feature by allowing you to 
+# attach metadata to functions describing their parameters #and return values.
+# More info -> https://www.python.org/dev/peps/pep-3107/
+
+def f(a: 'spam', b: (1, 10), c: float) -> int:
+      return a + b + c
+>> f(1,2,3)
+6
+>> f.__annotations__
+{'c': <class 'float'>, 'b': (1, 10), 'a': 'spam', 'return': <class 'int'>}
+
 
 #------------------------------
 # Function that returns function
@@ -411,6 +427,16 @@ a(1)
 # You can now call a ,pass parametar and it will return parametar multiplyed by 5
 # C,C++ and many other languages dont allow you to define function that retunrs function
 
+#-----------------------------\
+# Function Design Concept     |
+#/----------------------------|----------------------------------\
+#| - use arguments for inputs and return for outputs              |
+#| - use global variables only when truly necessary               |
+#| - don’t change mutable arguments unless the caller expects it  |
+#| - each function should have a single, unified purpose          |
+#| - each function should be relatively small                     |
+#| - avoid changing variables in another module file directly     |
+#\---------------------------------------------------------------/
 ```
 
 
