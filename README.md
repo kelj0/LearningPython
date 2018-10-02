@@ -1046,9 +1046,9 @@ subprocess.Popen(['start','hello.txt'],shell=True)
 # Lets make simple class
 class Person:
     pass # An empty block
-p = Person()
-print(p)
->> <__main__.Person object at 0x07124850> # We print something like this(This tells us we have instance
+>> p = Person()
+>> print(p)
+<__main__.Person object at 0x07124850> # We print something like this(This tells us we have instance
 # of the Person class in the __main__ module
 
 #---------------------------------------------------------------------
@@ -1057,9 +1057,9 @@ print(p)
 class Person:
     def say_hi(self):
         print('Hello')
-p = Person()
-p.say_hi()
->> Hello
+>> p = Person()
+>> p.say_hi()
+Hello
 # We can also write this as Person().say_hi()
 
 #----------------------------------
@@ -1072,9 +1072,9 @@ class Person:
     def say_hi(self):
         print('Hello',self.name)
     
-p = Person('keljo')
-p.say_hi()
->> Hello keljo
+>> p = Person('keljo')
+>> p.say_hi()
+Hello keljo
 
 # Default init values
 
@@ -1082,12 +1082,12 @@ class Person:
     def __init__(self,name="Unknown")
         self.name=name
                
-p = Person()
-p.name
->> Unknown
-p=Person("github")
-p.name
->> github
+>> p = Person()
+>> p.name
+Unknown
+>> p=Person("github")
+>> p.name
+github
 
 # If you use data members with names using the double underscore prefix such as __private Python uses
 # name-mangling to effectively make it a private variable
@@ -1101,10 +1101,10 @@ class Test():
     def __init__(self):
         print("yo")
 
-t = Test()
->> yo
-t.__doc__
->> This is doc
+>> t = Test()
+yo
+>> t.__doc__
+This is doc
 
 #----------------------------------
 # Inheritance
@@ -1128,9 +1128,9 @@ class Engineer(Employ):               # Specialized subclass
 >> company = [Bob,Sue,Tom]
 >> for emp in company:
         print("{0}({1}$)".format(emp.name,emp.computeSalary(160)))
-Bob(3200$)
-Sue(3200$)
-Tom(8000$)
+#Bob(3200$)
+#Sue(3200$)
+#Tom(8000$)
 
 
 #------
@@ -1158,17 +1158,18 @@ class Dog(House):
         House.tell(self)
         print('Color: {}'.format(self.color))
 
-m = Member('keljo',10)
-d = dog('doggo','Yellow')
+>> m = Member('keljo',10)
+>> d = dog('doggo','Yellow')
 # We make m and d ( as Member and Dog)
 
-members = [m,d]
+>> members = [m,d]
 # We make list of members 'in' House
 
-for member in members:
-    member.tell()
->> Name: keljo Age:10
-   Name: doggo Color: Yellow
+
+>> for member in members:
+       member.tell()
+Name: keljo Age:10
+Name: doggo Color: Yellow
    
 # Using for in loop we can easily access all 'members' of House class
 
