@@ -1109,39 +1109,33 @@ t.__doc__
 #----------------------------------
 # Inheritance
 #----------------------------------
-# see code Python->Codes->Week6->day38
+class Employ():   # General supeclass
+      def __init__(self,name):       # - 
+            self.name = name         # | Common or default behaviors
+      def computeSalary(self,hours): # |
+            return 20*hours          # -
+            
+class Engineer(Employ):               # Specialized subclass
+      def computeSalary(self,hours):  # Custom behavior ( Engineer is same like Employ but it has better salary )
+            return 50*hours           # we can inherid rather than make "new class" and repeat everything we did for Employ 
+                                      # basicly that is ingeritance, Engineer has same methods like Employ but we can edit 
+                                      # some if we want .. This is usefull if you have class with 10 methods and want to make
+                                      # similar class with few diferend methods
 
-class House:
-    def __init__(self,name,age):
-        self.name = name
-        self.age = age
-        print('Constructing House')
-    def function(self):
-        print('Function called from House')
-class Member(House):       # Member inherits House's methods
-    def memberfunction(self):
-        print('Function called from Member')
-#----------------------------------
-# Testing..
-#----------------------------------
-h = House('h',10)
->> Constructing house
-m = Member('m',20)
->> Constructing house  # We made constructor only in House so Member inherided House's constructor
-h.name
->> h
-m.name
->> m
-h.function()
->> Function called from House
-m.memberfunction()
->> Function called from Member
-m.function()
->> Function called from House
+>> Bob = Employ("Bob")
+>> Sue = Employ("Sue")
+>> Tom = Engineer("Tom")
+>> company = [Bob,Sue,Tom]
+>> for emp in company:
+        print("{0}({1}$)".format(emp.name,emp.computeSalary(160)))
+Bob(3200$)
+Sue(3200$)
+Tom(8000$)
 
-#----------------------------------
-#Lets make little improvements
-#----------------------------------
+
+#------
+# More Examples of inheritance
+#-----
 class House:
     def __init__(self,name):
         self.name = name
