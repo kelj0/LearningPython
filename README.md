@@ -257,7 +257,7 @@ a: 1, b: 2
 # def func(*, name=value) | Function | Arguments that must be passed by keyword only in calls (3.X)
 #------------------------------------------------------------------------------------------------------
 
-
+#------------------------------
 # Keyword basics
 def f(a,b,c):print(a,b,c)
 >> f(a=1,b=2,c=3)
@@ -266,7 +266,7 @@ def f(a,b,c):print(a,b,c)
 3,2,1
 >> f(1,b=4,c=10)
 1,4,10
-
+#------------------------------
 # Defaults
 def f(a, b=2, c=3):print(a,b,c)  # a is required , b and c optional
 >> f(1,2,3)
@@ -276,6 +276,7 @@ def f(a, b=2, c=3):print(a,b,c)  # a is required , b and c optional
 >> f(10,b=20)
 10,20,3
 
+#------------------------------
 # Any number of arguments
 def f(*args): print(args)
 >> f()
@@ -288,11 +289,36 @@ def f(*args): print(args)
 def f(**args): print(args)  #** words for keyword arguments- it collects them into a new dictionary
 >> f()
 {}
->> f( a=1, b=2)
+>> f(a=1, b=2)
 {'a': 1, 'b': 2}
 
+#------------------------------
+# Unpacking arguments
+def f(a,b,c,d): print(a,b,c,d)
+>> args = (1,2)
+>> args += (3,4)
+>> f(*args)
+1,2,3,4
 
-
+args = {'a': 1,'b': 2,'c': 3}
+args['d'] = 4
+>> f(**args)
+1,2,3,4
+#------------------------------
+# Keyword-Only arguments
+def kwonly(a,*,b='ham',c='eggs'): print(a,b,c)
+# 'a' may be passed by position or name but 'b' and 'c' MUST by keywords
+>> kwonly(1)
+1 ham eggs
+>> kwonly(1, c=3)
+1 ham 3
+>> kwonly(a=1)
+1 ham eggs
+>> kwonly(c=3,b=2,a=1)
+1 2 3
+>> kwonly(1,2)
+TypeError: kwonly() takes 1 positional argument but 2 were given
+#------------------------------
 # Immutable and mutable passed objects 
 def changer(a, b):
       a = 2
@@ -304,6 +330,7 @@ def changer(a, b):
 >> X,L           # X is unchanged, L is different!
 (1, ['spam', 2])
 
+#------------------------------
 # Avoiding mutable argument changes
 L = [1,2]
 changer(X,L[:])  # Pass a copy , so our 'L' does not change
@@ -313,7 +340,40 @@ def changer(a,b):
       a = 2
       b[0] = 'spam' #Changes our copy list
   
+#------------------------------
+# Ordering rules
+#------------------------------
+def f(a, *b, **d, c=6): print(a, b, c, d)
+SyntaxError: invalid syntax                  # Keyword-only before **!
 
+def f(a, *b, c=6, **d): print(a, b, c, d)    # Collect args in header
+
+>> f(1, 2, 3, x=4, y=5)
+1 (2, 3) 6 {'y': 5, 'x': 4}                  # Default used
+
+>> f(1, 2, 3, x=4, y=5, c=7)
+1 (2, 3) 7 {'y': 5, 'x': 4}                  # Override default
+
+>> f(1, 2, 3, c=7, x=4, y=5)
+1 (2, 3) 7 {'y': 5, 'x': 4}                  # Anywhere in keywords
+>> def f(a, c=6, *b, **d): print(a, b, c, d) # c is not keyword-only here!
+>> f(1, 2, 3, x=4)
+1 (3,) 2 {'x': 4}
+
+def f(a, *b, c=6, **d): print(a, b, c, d) # KW-only between * and **
+>> f(1, *(2, 3), **dict(x=4, y=5))
+1 (2, 3) 6 {'y': 5, 'x': 4}               # Unpack args at call
+>> f(1, *(2, 3), **dict(x=4, y=5), c=7)
+SyntaxError: invalid syntax               # Keywords before **args!
+>> f(1, *(2, 3), c=7, **dict(x=4, y=5))
+1 (2, 3) 7 {'y': 5, 'x': 4}               # Override default
+>> f(1, c=7, *(2, 3), **dict(x=4, y=5))
+1 (2, 3) 7 {'y': 5, 'x': 4}               # After or before *
+>> f(1, *(2, 3), **dict(x=4, y=5, c=7))
+1 (2, 3) 7 {'y': 5, 'x': 4}               # Keyword-only in **
+
+
+#------------------------------------------------------------
 # Lets make 2 files -> function.py and test.py
 def function():
     print('Hello from function!')
@@ -334,7 +394,26 @@ function() # Prints "Hello from funciton!"
 def function():
         """This is displayed when we type function()"""
 
+#---------------------------------
+# Function annotations (python 3.X)
+#---------------------------------
 
+# Python 2.x has docstrings, which allow you to attach a metadata string to various 
+# types of object. This is amazingly handy, so Python 3 extends the feature by allowing you to 
+# attach metadata to functions describing their parameters #and return values.
+# More info -> https://www.python.org/dev/peps/pep-3107/
+
+def f(a: 'spam', b: (1, 10), c: float) -> int:
+      return a + b + c
+>> f(1,2,3)
+6
+>> f.__annotations__
+{'c': <class 'float'>, 'b': (1, 10), 'a': 'spam', 'return': <class 'int'>}
+
+
+#------------------------------
+# Function that returns function
+#------------------------------
 def makeLine(a,b):
     def y(x):
         return x*5
@@ -348,6 +427,16 @@ a(1)
 # You can now call a ,pass parametar and it will return parametar multiplyed by 5
 # C,C++ and many other languages dont allow you to define function that retunrs function
 
+#-----------------------------\
+# Function Design Concept     |
+#/----------------------------|----------------------------------\
+#| - use arguments for inputs and return for outputs              |
+#| - use global variables only when truly necessary               |
+#| - don’t change mutable arguments unless the caller expects it  |
+#| - each function should have a single, unified purpose          |
+#| - each function should be relatively small                     |
+#| - avoid changing variables in another module file directly     |
+#\---------------------------------------------------------------/
 ```
 
 
@@ -903,11 +992,11 @@ print('End of program.')
 #---------------------------------------------------------------------
 #Passing arg to thread obj , kwargs stands for keyword argument 
 #---------------------------------------------------------------------
-#THIS IS INCORRECT WAY!
+# THIS IS INCORRECT WAY!
 threadObj = threading.Thread(target=print('cats','dogs',sep=' & '))
 #---------------------------------------------------------------------
 
-#This is de wai xD
+# This is correct way
 #---------------------------------------------------------------------
 threadObj = threading.Thread(target=print, args=['Cats','Dogs'],kwargs={'sep':' & '})
 threadObj.start()
@@ -957,9 +1046,9 @@ subprocess.Popen(['start','hello.txt'],shell=True)
 # Lets make simple class
 class Person:
     pass # An empty block
-p = Person()
-print(p)
->> <__main__.Person object at 0x07124850> # We print something like this(This tells us we have instance
+>> p = Person()
+>> print(p)
+<__main__.Person object at 0x07124850> # We print something like this(This tells us we have instance
 # of the Person class in the __main__ module
 
 #---------------------------------------------------------------------
@@ -968,9 +1057,9 @@ print(p)
 class Person:
     def say_hi(self):
         print('Hello')
-p = Person()
-p.say_hi()
->> Hello
+>> p = Person()
+>> p.say_hi()
+Hello
 # We can also write this as Person().say_hi()
 
 #----------------------------------
@@ -983,9 +1072,9 @@ class Person:
     def say_hi(self):
         print('Hello',self.name)
     
-p = Person('keljo')
-p.say_hi()
->> Hello keljo
+>> p = Person('keljo')
+>> p.say_hi()
+Hello keljo
 
 # Default init values
 
@@ -993,12 +1082,12 @@ class Person:
     def __init__(self,name="Unknown")
         self.name=name
                
-p = Person()
-p.name
->> Unknown
-p=Person("github")
-p.name
->> github
+>> p = Person()
+>> p.name
+Unknown
+>> p=Person("github")
+>> p.name
+github
 
 # If you use data members with names using the double underscore prefix such as __private Python uses
 # name-mangling to effectively make it a private variable
@@ -1012,47 +1101,41 @@ class Test():
     def __init__(self):
         print("yo")
 
-t = Test()
->> yo
-t.__doc__
->> This is doc
+>> t = Test()
+yo
+>> t.__doc__
+This is doc
 
 #----------------------------------
 # Inheritance
 #----------------------------------
-# see code Python->Codes->Week6->day38
+class Employ():   # General supeclass
+      def __init__(self,name):       # - 
+            self.name = name         # | Common or default behaviors
+      def computeSalary(self,hours): # |
+            return 20*hours          # -
+            
+class Engineer(Employ):               # Specialized subclass
+      def computeSalary(self,hours):  # Custom behavior ( Engineer is same like Employ but it has better salary )
+            return 50*hours           # we can inherid rather than make "new class" and repeat everything we did for Employ 
+                                      # basicly that is ingeritance, Engineer has same methods like Employ but we can edit 
+                                      # some if we want .. This is usefull if you have class with 10 methods and want to make
+                                      # similar class with few diferend methods
 
-class House:
-    def __init__(self,name,age):
-        self.name = name
-        self.age = age
-        print('Constructing House')
-    def function(self):
-        print('Function called from House')
-class Member(House):       # Member inherits House's methods
-    def memberfunction(self):
-        print('Function called from Member')
-#----------------------------------
-# Testing..
-#----------------------------------
-h = House('h',10)
->> Constructing house
-m = Member('m',20)
->> Constructing house  # We made constructor only in House so Member inherided House's constructor
-h.name
->> h
-m.name
->> m
-h.function()
->> Function called from House
-m.memberfunction()
->> Function called from Member
-m.function()
->> Function called from House
+>> Bob = Employ("Bob")
+>> Sue = Employ("Sue")
+>> Tom = Engineer("Tom")
+>> company = [Bob,Sue,Tom]
+>> for emp in company:
+        print("{0}({1}$)".format(emp.name,emp.computeSalary(160)))
+#Bob(3200$)
+#Sue(3200$)
+#Tom(8000$)
 
-#----------------------------------
-#Lets make little improvements
-#----------------------------------
+
+#------
+# More Examples of inheritance
+#-----
 class House:
     def __init__(self,name):
         self.name = name
@@ -1075,17 +1158,18 @@ class Dog(House):
         House.tell(self)
         print('Color: {}'.format(self.color))
 
-m = Member('keljo',10)
-d = dog('doggo','Yellow')
+>> m = Member('keljo',10)
+>> d = dog('doggo','Yellow')
 # We make m and d ( as Member and Dog)
 
-members = [m,d]
+>> members = [m,d]
 # We make list of members 'in' House
 
-for member in members:
-    member.tell()
->> Name: keljo Age:10
-   Name: doggo Color: Yellow
+
+>> for member in members:
+       member.tell()
+Name: keljo Age:10
+Name: doggo Color: Yellow
    
 # Using for in loop we can easily access all 'members' of House class
 
