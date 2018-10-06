@@ -13,7 +13,7 @@ def main():
     global word
     print("Starting script... press 'ctrl+space' to turn off")
     while not keyboard.is_pressed('ctrl+space'):
-        if pyperclip.paste() != word and len(pyperclip.paste().split())<3:
+        if pyperclip.paste() != word and len(pyperclip.paste().split())<5:
             word = pyperclip.paste()
             wordChc=False
             req = requests.get("https://api-portal.dictionary.com/dcom/pageData/%s" % word)
