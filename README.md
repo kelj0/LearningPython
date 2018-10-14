@@ -1178,20 +1178,71 @@ Name: doggo Color: Yellow
 # that methods through Members and Dog( in this case) or even make new class like 
 # Cat(House) and it would have all methods that House have
 
+#----------------------------------
+# Simplest python class (roughlt similar to struct in C
+#----------------------------------
+>> class rec: pass
+>> rec.name="test"
+>> rec.age = 99      # Just object with attributes
+>>print(rec.name)
+test
+>> x = rec()     # Instances inherit class names
+>> x.name
+test
+>> x.name = "iks"
 
-# We can define what ect. '+' means in our class
-#----snippet----
-def __add__ (self,other):
-    return self.value - other.value
-# Now when we call ourClass+ourClass we will subtract values from classes
+>> def uppername(obj):
+      return obj.name.upper()  #Still needs a self argument(obj)
+>> uppername(x)
+IKS
+>> rec.method = uppername     # Now it's a class's method!
+>> x.method()
+IKS
+>> rec.method()
+TEST
 
-# We can also define what will print do when we call it in our class
-#------snipet------
-def __str__(self)
-    return "You called print on me wtf??"
-# now every time we write print(ourClass) it will output "You called print on me wtf??"
-# We can define almost everything in our class , i wont post all options, google them xD
+
+#----------------------------------
+# Operator overloading
+#----------------------------------
+# Lets objects coded with classes intercept and respond to operators that work on built-in types
+# Classes may override most built-in type operations
+
+#-------
+# Example __add__
+# Overloading '+'
+#-------
+class Test():
+      def __init__(self,value):
+            print("Setting value to: {0}".format(value))
+            self.value=value
+      def __add__(self,v):
+            return 2*self.value+v
+>> t = Test(2)
+Setting value to: 2
+>> t+2
+6
+# It returns 6 because we overloaded operator, in this example this means every time we add 
+# with our class, we will add with 2* value that we gave to it
+
+#-------
+# Example __str__
+Overloading 'print()'
+#-------
+class Test():
+      def __init__(self,name):
+            print("Setting name to: {0}".format(name))
+            self.name=name
+      def __str__(self):
+            return "This class's name is %s" % self.name
+>> t = Test("test class")
+Setting name to: test class
+>>print(t)
+This class's name is test class
+      
+# now every time we write print(Test()) it will output "This class's name is " + class.name
 # Example for print https://stackoverflow.com/questions/1535327/how-to-print-a-class-or-objects-of-class-using-print
+
 ```
 ## Working with JSON<a name="JSON"></a>
 ```py
