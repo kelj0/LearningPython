@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-URL = "hyyp://index.page.com/index"
+URL = "http://index.page.com/index"
 req = requests.get(URL)
 soup = BeautifulSoup(req.text,"html.parser")
 PATH = "/path/to/download/folder"
