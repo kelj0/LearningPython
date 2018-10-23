@@ -1,7 +1,7 @@
-# NOTES FOR PYTHON
+# Python references
 ---
-## Table of contents
 
+### Table of contents
 ### Basics
 
 -    [Basics](#Basics)
