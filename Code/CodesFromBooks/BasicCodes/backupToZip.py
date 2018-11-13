@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 # backupToZip.py - Copies an entire folder and its contents into a zip
 # whose filename increments
 

@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # Scrapes songs from bandcamp
 
 from bs4 import BeautifulSoup

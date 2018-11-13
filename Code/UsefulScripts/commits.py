@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import requests, bs4, sys, re
 
 def main():

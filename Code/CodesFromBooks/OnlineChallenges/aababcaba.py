@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 
 word = "test"
 l = [word[0]]

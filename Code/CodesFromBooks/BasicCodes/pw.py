@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-#! python3
 #pw.py - an insecure password locker program.
 
 PASSWORDS={'email': 'aSADSAKdj9813sSA12ODd0s9ajdsa',

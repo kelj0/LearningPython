@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
 a=20
 name="Karlo"
 
