@@ -1,4 +1,10 @@
+#! /usr/bin/python3
+
 import os, json
+from flask import Flask
+
+app = Flask(__name__)
+
 
 
 def path_to_dict(path):
@@ -10,11 +16,19 @@ def path_to_dict(path):
         d['type'] = "file"
     return d
 
+
+@app.route("/")
+def getFiles():
+	return json.dumps(path_to_dict('.'),indent=2,sort_keys=True)     
+
+
+
 def main():
-    print(json.dumps(path_to_dict('.'),indent=2,sort_keys=True))
+    print("Starting server...")
+    app.secret_key = "testing"
+    app.run(host='0.0.0.0',debug=True)
 
 
 if __name__=='__main__':
-
     main()
 
