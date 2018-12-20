@@ -17,6 +17,18 @@ def path_to_dict(path):
     return d
 
 
+def createDir(path,name):
+    try:
+        os.mkdir(os.path.join(path,name))
+        return {'code':0,'message':'Dir create successfully','name':name,'path':path}
+    except FileExistsError:
+        return {'code':-1,'message':'Dir already exists!'}
+    except Exception as e:
+        print("Unhandled exception in 'createDir' occured!\nException: ", e)
+        return {'code':1,'message':'Internal server error!'}
+
+
+
 @app.route("/")
 def getFiles():
 	return json.dumps(path_to_dict('.'),indent=2,sort_keys=True)     
