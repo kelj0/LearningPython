@@ -4,8 +4,9 @@
 ### Table of contents
 
 ### Setting up
+-	[Install](#install)
 -	[Development Enviroment](#development-enviroment)
-
+-	[Versions](#python3-or-2)
 ### Basics
 
 -    [Basic syntax](#basic-syntax)
@@ -52,6 +53,20 @@ If you want to get input in debugger
 
 
 ---
+
+## Install <a name="install"></a>
+```
+Probably already have it installed. If you are windows user gl :)
+
+Exception
+[Python is not installed by default in any of the BSDs, unless you count OS X. 
+You may well find that it is available on a BSD system because it was added 
+after the system was installed. If not, it is available through the default 
+package system in all cases](https://unix.stackexchange.com/a/24808)
+
+Check it with 
+$ python --version
+```
 
 ## Development Enviroment <a name="development-enviroment"></a>
 
@@ -202,9 +217,72 @@ Features include:
 $ pip install ptpython
 ```
 
+## Versions <a name="python3-or-2"></a>
 
+The basic gist of the state of things is as follows:
+* Most production applications today use Python 2.7.
+* Python 3 is ready for the production deployment of applications today.
+* Python 2.7 will only receive necessary security updates [until 2020](https://www.python.org/dev/peps/pep-0373/#id2)
+* The brand name “Python” encapsulates both Python 3 and Python 2.
+ 
+```
+Recommendations (based on Hitchhiker's Guide to Python!)
 
+- Use Python 3 for new Python applications.
+- If you’re learning Python for the first time, familiarizing yourself with 
+   Python 2.7 will be very useful, but not more useful than learning Python 3.
+- Learn both. They are both “Python”.
+- Software that is already built often depends on Python 2.7.
+- If you are writing a new open source Python library, it’s best to write 
+   it for both Python 2 and 3 simultaneously. Only supporting Python 3 for a new 
+   library you want to be widely adopted is a political statement and will alienate 
+   many of your users. This is not a problem — slowly, over the next three years, 
+   this will become less the case.
+```
 
+### Implementations
+```
+When people speak of Python they often mean not just the language but 
+also the CPython implementation. Python is actually a specification for 
+a language that can be implemented in many different ways.
+```
+
+#### CPython
+```
+CPython is the reference implementation of Python, written in C. It compiles Python 
+code to intermediate bytecode which is then interpreted by a virtual machine. 
+CPython provides the highest level of compatibility with Python packages and C 
+extension modules.
+```
+
+#### PyPy
+```
+PyPy is a Python interpreter implemented in a restricted statically-typed 
+subset of the Python language called RPython. The interpreter features a 
+just-in-time compiler and supports multiple back-ends (C, CLI, JVM).
+```
+
+#### Jython
+```
+Jython is a Python implementation that compiles Python code to Java bytecode 
+which is then executed by the JVM (Java Virtual Machine). Additionally, it 
+is able to import and use any Java class like a Python module.
+```
+
+#### IronPython
+```
+IronPython is an implementation of Python for the .NET framework. It can use 
+both Python and .NET framework libraries, and can also expose Python code to 
+other languages in the .NET framework.
+```
+
+#### PythonNet
+```
+Python for .NET is a package which provides near seamless integration of a 
+natively installed Python installation with the .NET Common Language Runtime 
+(CLR). This is the inverse approach to that taken by IronPython (see above), 
+to which it is more complementary than competing with.
+```
 
 ---
 
