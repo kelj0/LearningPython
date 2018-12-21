@@ -8,7 +8,7 @@
 
 ### Basics
 
--    [Basic syntax](#Basics)
+-    [Basic syntax](#basic-syntax)
 -    [Data types](#Data-Types)
 
 ### Usefull stuff
@@ -208,7 +208,7 @@ $ pip install ptpython
 
 ---
 
-## Basic syntax <a name="Basics"></a>
+## Basic syntax <a name="basic-syntax"></a>
 ```py
 # Printing text
 print("Print text")
