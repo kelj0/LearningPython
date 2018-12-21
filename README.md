@@ -2,9 +2,13 @@
 ---
 
 ### Table of contents
+
+### Setting up
+-	[Development Enviroment](#development-enviroment)
+
 ### Basics
 
--    [Basics](#Basics)
+-    [Basic syntax](#Basics)
 -    [Data types](#Data-Types)
 
 ### Usefull stuff
@@ -49,7 +53,162 @@ If you want to get input in debugger
 
 ---
 
-## Basics <a name="Basics"></a>
+## Development Enviroment <a name="development-enviroment"></a>
+
+### Text Editors
+
+#### Vim
+```
+Vim is a text editor which uses keyboard shortcuts for editing 
+instead of menus or icons. There are a couple of plugins and 
+settings for the Vim editor to aid Python development. If you only 
+develop in Python, a good start is to set the default settings 
+for indentation and line-wrapping to values compliant with PEP 8. 
+In your home directory, open a file called .vimrc and add the following lines:
+
+---------------------------------------------------------------------------
+set textwidth=79  " lines longer than 79 columns will be broken
+set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
+set tabstop=4     " a hard TAB displays as 4 columns
+set expandtab     " insert spaces when hitting TABs
+set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
+set shiftround    " round indent to multiple of 'shiftwidth'
+set autoindent    " align the new line indent with the previous line
+---------------------------------------------------------------------------
+
+Also SuperTab (https://www.vim.org/scripts/script.php?script_id=1643) 
+is small Vim plugin that makes code completion more convenient 
+by using <Tab> key or any other customized keys
+```
+
+#### Emacs
+```
+Emacs is another powerful text editor. It is fully programmable (Lisp), 
+but it can be some work to wire up correctly. A good start if you’re 
+already an Emacs user is Python Programming in Emacs at EmacsWiki
+(https://www.emacswiki.org/emacs/PythonProgrammingInEmacs)
+```
+
+#### Sublime Text
+```
+Sublime Text is a sophisticated text editor for code, markup, and prose. 
+You’ll love the slick user interface, extraordinary features, 
+and amazing performance.
+```
+
+
+### IDEs
+
+#### PyCharm/IntelliJ IDEA
+```
+PyCharm is developed by JetBrains, also known for IntelliJ IDEA. Both share 
+the same code base and most of PyCharm’s features can be brought to IntelliJ 
+with the free Python Plug-In(https://plugins.jetbrains.com/plugin/631-python)
+```
+
+#### Visual Studio Code
+```
+Python for Visual Studio is an extension for the Visual Studio Code IDE. 
+This is a free, lightweight, open source IDE, with support for Mac, Windows, and 
+Linux. Built using open source technologies such as Node.js and Python, with 
+compelling features such as Intellisense (autocompletion), local and remote 
+debugging, linting, and the like.
+
+https://code.visualstudio.com/
+```
+
+#### Enthought Canopy
+```
+Enthought Canopy is a Python IDE which is focused towards Scientists 
+and Engineers as it provides pre installed libraries for data analysis.
+https://www.enthought.com/product/canopy/
+```
+
+#### Spyder
+```
+Spyder is an IDE specifically geared toward working with scientific Python 
+libraries (namely Scipy). It includes integration with pyflakes, pylint and rope.
+
+Spyder is open source (free), offers code completion, syntax highlighting, 
+a class and function browser, and object inspection.
+https://github.com/spyder-ide/spyder
+```
+
+#### WingIDE
+```
+WingIDE is a Python specific IDE. It runs on Linux, Windows, and 
+Mac (as an X11 application, which frustrates some Mac users).
+
+WingIDE offers code completion, syntax highlighting, source browser, 
+graphical debugger and support for version control systems.
+https://wingware.com/
+```
+
+### Other Tools
+
+#### IPython
+```
+IPython provides a rich toolkit to help you make the most out of using Python interactively. 
+Its main components are:
+
+    Powerful Python shells (terminal- and Qt-based)
+    A web-based notebook with the same core features but support for rich media, text, code, 
+		mathematical expressions and inline plots
+    Support for interactive data visualization and use of GUI toolkits
+    Flexible, embeddable interpreters to load into your own projects
+    Tools for high level and interactive parallel computing
+
+$ pip install ipython
+
+To download and install IPython with all its optional dependencies for the 
+notebook, qtconsole, tests, and other functionalities:
+
+$ pip install ipython[all]
+```
+
+#### BPython
+```
+bpython is an alternative interface to the Python interpreter for Unix-like operating systems. 
+
+It has the following features:
+    In-line syntax highlighting
+    Readline-like autocomplete with suggestions displayed as you type
+    Expected parameter list for any Python function
+    “Rewind” function to pop the last line of code from memory and re-evaluate
+    Send entered code off to a pastebin
+    Save entered code to a file
+    Auto-indentation
+    Python 3 support
+
+$ pip install bpython
+```
+
+#### ptpython
+```
+ptpython is a REPL build on top of the prompt_toolkit library. It is considered to 
+be an alternative to BPython. 
+
+Features include:
+    Syntax highlighting
+    Autocompletion
+    Multiline editing
+    Emacs and Vim Modes
+    Embedding REPL inside of your code
+    Syntax validation
+    Tab pages
+    Support for integrating with IPython’s shell, by installing IPython 
+	(pip install ipython) and running ptipython.
+
+$ pip install ptpython
+```
+
+
+
+
+
+---
+
+## Basic syntax <a name="Basics"></a>
 ```py
 # Printing text
 print("Print text")
