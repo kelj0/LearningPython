@@ -57,13 +57,13 @@ If you want to get input in debugger
 ## Install <a name="install"></a>
 ```
 Probably already have it installed. If you are windows user gl :)
-
-Exception
+```
+Exception: 
 [Python is not installed by default in any of the BSDs, unless you count OS X. 
 You may well find that it is available on a BSD system because it was added 
 after the system was installed. If not, it is available through the default 
 package system in all cases](https://unix.stackexchange.com/a/24808)
-
+```
 Check it with 
 $ python --version
 ```
