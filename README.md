@@ -1416,7 +1416,7 @@ Name: doggo Color: Yellow
 # Cat(House) and it would have all methods that House have
 
 #----------------------------------
-# Simplest python class (roughlt similar to struct in C
+# Simplest python class (roughly similar to struct in C)
 #----------------------------------
 >> class rec: pass
 >> rec.name="test"
@@ -1480,7 +1480,73 @@ This class's name is test class
 # now every time we write print(Test()) it will output "This class's name is " + class.name
 # Example for print https://stackoverflow.com/questions/1535327/how-to-print-a-class-or-objects-of-class-using-print
 
+#----------------------------------
+# Decorators
+#----------------------------------
+# Syntactically, a function decorator is a sort of runtime declaration about the function
+# that follows. A function decorator is coded on a line by itself just before the def state-
+# ment that defines a function or method. It consists of the @ symbol, followed by what
+# we call a metafunction—a function (or other callable object) that manages another function.
+
+class Spam:
+	numInstances = 0
+	def __init__(self):
+		Spam.numInstances = Spam.numInstances + 1
+	@staticmethod
+	def printNumInstances():
+		print("Number of instances created: %s" % Spam.numInstances)
+>> a = Spam()
+>> b = Spam()
+>> c = Spam()
+>> Spam.printNumInstances()
+Number of instances created: 3
+>> a.printNumInstances()
+Number of instances created: 3
+
+
+class Methods(object):
+	def imeth(self, x):    # Normal instance method: passed a self
+		print([self, x])
+
+	@staticmethod
+	def smeth(x):
+		print([x]) # Static: no instance passed
+
+	@classmethod
+	def cmeth(cls, x):
+		print([cls, x]) # Class: gets class, not instance
+
+	@property  # Property: computed on fetch
+	def name(self):
+		return 'Bob ' + self.__class__.__name__
+>> from bothmethods_decorators import Methods
+>> obj = Methods()
+>> obj.imeth(1)
+[<bothmethods_decorators.Methods object at 0x0000000002A256A0>, 1]
+>> obj.smeth(2)
+[2]
+>> obj.cmeth(3)
+[<class 'bothmethods_decorators.Methods'>, 3]
+>> obj.name
+'Bob Methods'
+
+
+class tracer:
+	def __init__(self, func):  # Remember original, init counter
+		self.calls = 0
+		self.func = func
+	def __call__(self, *args):  # On later calls: add logic, run original
+		self.calls += 1
+		print('call %s to %s' % (self.calls, self.func.__name__))
+		return self.func(*args)
+	@tracer
+	def spam(a, b, c):
+		return a + b + c # Same as spam = tracer(spam)  # Wrap spam in a decorator object
+print(spam(1, 2, 3))  # Really calls the tracer wrapper object 
+print(spam('a', 'b', 'c')) # Invokes __call__ in clas
+
 ```
+
 ## Working with JSON<a name="JSON"></a>
 ```py
 #Example getting word from dictionary.com
