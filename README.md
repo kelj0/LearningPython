@@ -2567,8 +2567,8 @@ If you get error like this
 ```
 /*# sourceMappingURL=bootstrap.css.map */
 ```
-This line is causing it ( its last line in bootstrap.css)
-[Stackoverflow solution](https://stackoverflow.com/questions/21773376/bootstrap-trying-to-load-map-file-how-to-disable-it-do-i-need-to-do-it)
-[Explaination](https://stackoverflow.com/a/21773495)
+This line is causing it ( its last line in bootstrap.css) just remove it and it will work
+[Stackoverflow solution](https://stackoverflow.com/questions/21773376/bootstrap-trying-to-load-map-file-how-to-disable-it-do-i-need-to-do-it),
+ [Explaination](https://stackoverflow.com/a/21773495)
 
 
