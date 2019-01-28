@@ -50,7 +50,7 @@ If you want to get input in debugger
 ### Random libs
 -    [Turtle module](#Turtle_module)
 -    [Pygame](#Pygame)
-
+-	 [Flask](#Flask)
 
 ---
 
@@ -2550,3 +2550,27 @@ If interpretrer complains about one of your variable names and you dont know wha
 # | yield  | True  | False  | None    |       |          |
 # +--------+-------+--------+---------+-------+----------+
 ```
+
+
+---
+## Flask <a name="flask"></a>
+
+```
+Flask has really well documented docs so i will just link docs here
+
+* [Docs](http://flask.pocoo.org/docs/1.0/)
+* [Security](http://werkzeug.pocoo.org/docs/0.14/)
+
+
+If you get error like this
+![alt text](res/bootstrapFlaskError.png)
+
+/*# sourceMappingURL=bootstrap.css.map */
+
+This line is causing it ( its last line in bootstrap.css)
+[Stackoverflow solution](https://stackoverflow.com/questions/21773376/bootstrap-trying-to-load-map-file-how-to-disable-it-do-i-need-to-do-it)
+[Explaination](https://stackoverflow.com/a/21773495)
+
+
+```
+
