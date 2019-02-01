@@ -52,7 +52,7 @@ def main():
                     definitionsURB.append("------------")
                 os.system('notify-send "definitions from urbandictionary.com:[{}\n{}"'\
                 .format(word+"]\n------------",'\n'.join(definitionsURB)))
-    os.system('notify-send "Thank you for using define.py made by kkeglje"')
+    os.system('notify-send "Thank you for using define.py made by kelj0"')
 
 
 if __name__ == '__main__':
