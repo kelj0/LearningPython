@@ -51,7 +51,7 @@ If you want to get input in debugger
 ### Random libs
 -    [Turtle module](#Turtle_module)
 -    [Pygame](#Pygame)
--	 [Flask](#Flask)
+-    [Flask](#Flask)
 
 ---
 
