@@ -13,6 +13,7 @@
 -    [Data types](#Data-Types)
 
 ### Usefull stuff
+-    [Test Driven Development](#TDD)
 -    [Random](#Random)
 -    [Time](#Time)
 -    [Multithreading](#Multithreading)
@@ -994,10 +995,24 @@ test = list(set(test))
 >> set("karlo") == set("rloka")
 True
 #--------
-
 ```
 
+
 # Usefull stuff
+
+
+## Test_Driven_Development<a name="TDD"></a>
+```
+Test-Driven Development(TDD) is an iterative development cycle that emphasizes writing automated tests
+before writing the actual feature or function. TDD compines building and testing. This process not only helps
+ensure correctness of the code - but also helps to indirectly evolve the design and architecture of the 
+project at hand.
+
+1. Write a test
+2. Run the test (it should fail)
+3. Write just enought ode for the test to pass
+4. Refactor code and retest, again adn again (if necessary)
+```
 
 ## Random<a name="Random"></a>
 ```py
