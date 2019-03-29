@@ -9,6 +9,7 @@
   <div class="page">
 
     <h1>Flaskr-TDD</h1>
+    <a class="btn btn-info" role="button" href="{{ url_for('search') }}">Search</a>
     <div class="metanav">
       {% if not session.logged_in %}
         <a href="{{ url_for('login') }}">log in</a>
@@ -34,10 +35,7 @@
     {% endif %}
     <ul class="entries">
       {% for entry in entries %}
-        <li class="entry">
-            <h2 id="{{ entry.id }}">{{ entry.title }}</h2>
-            {{ entry.text|safe }}
-        </li>
+      <li class="entry"><h2 id="{{ entry.post_id }}">{{ entry.title }}</h2>{{ entry.text|safe }}</li>
       {% else %}
         <li><em>No entries here so far</em></li>
       {% endfor %}
