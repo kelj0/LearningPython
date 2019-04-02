@@ -1,0 +1,23 @@
+li{
+    list-style-type:none;
+    margin-bottom: 2px;
+}
+
+.upload{
+    margin-bottom: 4px;
+
+}
+
+form{
+    border-bottom:1px black solid;
+    margin-bottom: 10px;
+}
+
+.download{
+    cursor: pointer;
+    background-color: rgb(98, 195, 115)
+}
+.remove{
+    cursor: pointer;
+    background-color: rgb(255, 0, 0)
+}

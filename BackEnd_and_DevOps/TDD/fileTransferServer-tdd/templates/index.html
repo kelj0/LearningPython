@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
     <title>Index of {{current_dir}}</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
     <h1>Index of {{current_dir}}</h1>
-    <p>Upload new file</p>
     <form action = "http://localhost:5000/upload" method = "POST" 
          enctype = "multipart/form-data">
-         <input type = "file" name = "file" />
-         <input type = "submit"/>
+         <input class="upload" type = "file" name = "file" />
+         <input class="upload" value="Upload" type = "submit"/>
       </form>
     <ul>
         {% if files|length > 0 %}
             {% for file in files %}
-                <li><button type="submit" onclick="window.open('/{{file}}')">{{file}}</button></li>
+                <li>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        {{file}} <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a class="download" style="cursor: pointer;background-color: rgb(98, 195, 115);margin-bottom: 2px;" onclick="window.open('/{{file}}')">Download</a></li>
+                            <li><a class="remove" style="cursor: pointer;background-color: rgb(255, 0, 0)" onclick="remove('{{file}}')">Remove</a></li>
+                        </ul>
+                    </div>
+                </li>
             {% endfor %}
         {% else %}
             <p>Files folder is empty</p>
         {% endif %}
     </ul>
+    <script src="../static/main.js"></script>
 </body>
 </html>
