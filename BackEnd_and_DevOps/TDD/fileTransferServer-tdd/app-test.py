@@ -1,6 +1,6 @@
 import unittest
 import os
-
+import io
 from app import app
 
 class BasicTestCase(unittest.TestCase):
@@ -20,14 +20,50 @@ class FlaskrTestCase(unittest.TestCase):
         if not os.path.exists('FILES'):
             os.mkdir(os.path.join(basedir,app.config['FILES_FOLDER']))
         for i in range(5):
-            with open(os.path.join(basedir,app.config['FILES_FOLDER'],str(i)+"file.txt"),'w+') as f:
-                f.write("This is dummy text in {}file.txt".format(i))
+            self.createDummyFile('%sfile.txt'%i,"This is dummy text in ")
         self.app = app.test_client()
 
+    # helper functions
+    def createDummyFile(self,filename,text):
+        with open(os.path.join(app.config['FILES_FOLDER'],filename),'w+') as f:
+                f.write("{0} {1}".format(text,filename))
+
+    def removeFile(self,path):
+        os.remove(path)
+
+    # asserts
     def test_dummy_files(self):
         rv = self.app.get('/')
         self.assertNotIn(b'Files folder is empty',rv.data)
 
+    def test_file_upload(self):
+        data = {'filename': 'testFile.txt'}
+        with open(os.path.join(app.config['FILES_FOLDER'],"testFile.txt"),'w+') as f:
+                f.write("This file is used in testing")
+        data['file'] = (io.BytesIO(b"abcdef"), 'testFile.txt')
+        response = self.app.post(
+            '/upload', data=data, follow_redirects=True,
+            content_type='multipart/form-data'
+        )
+        try:
+            self.assertIn(b'testFile.txt', response.data)
+        finally:
+            self.removeFile(os.path.join(app.config['FILES_FOLDER'],"testFile.txt"))
+
+    def test_remove_file(self):
+        self.createDummyFile("testfileforremove.txt",'test')
+        response = self.app.post(
+            '/remove',data=dict(filename='testfileforremove.txt'),follow_redirects=True
+        )
+        try:
+            self.assertEqual(response.status_code,200)
+        except:
+            self.removeFile(os.path.join(app.config['FILES_FOLDER'],"testfileforremove.txt"))
+
+        response = self.app.post(
+            '/remove',data=dict(filename="ghost_file.ghost"),follow_redirects=True
+        )
+        self.assertEqual(response.status_code,405)
 
 
 if __name__ == "__main__":
