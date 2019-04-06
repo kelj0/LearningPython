@@ -1014,6 +1014,17 @@ project at hand.
 4. Refactor code and retest, again adn again (if necessary)
 
 When refactoring, work on either the code or the test, but not both at once
+
+We write a functional test and see it fail. The, the process of "writing code" to get it to pass
+is a mini-TDD cycle of its own:
+>write one or more unit tests
+>go into unit-test/code cycle iuntil the unit tests pass
+>go back to functional test to check that it gets a little further
+>write a bit more of application
+
+The functional tests are the ultimate judge of wheather your application works or not.
+The unit tests are a tool to help you along the way
+
 ```
 
 ## Random<a name="Random"></a>
