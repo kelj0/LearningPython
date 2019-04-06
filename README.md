@@ -1012,6 +1012,8 @@ project at hand.
 2. Run the test (it should fail)
 3. Write just enought ode for the test to pass
 4. Refactor code and retest, again adn again (if necessary)
+
+When refactoring, work on either the code or the test, but not both at once
 ```
 
 ## Random<a name="Random"></a>
