@@ -1025,6 +1025,9 @@ is a mini-TDD cycle of its own:
 The functional tests are the ultimate judge of wheather your application works or not.
 The unit tests are a tool to help you along the way
 
+A long unit test either needs to be broken into two, or it may be an indication 
+that the thing you’re testing is too complicated
+
 ```
 
 ## Random<a name="Random"></a>
