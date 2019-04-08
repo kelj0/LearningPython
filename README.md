@@ -1045,7 +1045,37 @@ Three strikes and refactor - A rule of thumb for when to remove duplication from
                              to wait until you see a third use case, so that you’re 
                              more sure about what part of the code really is the 
                              common, re-usable part to refactor out.
+
+
+
+inputbox.send_keys(Keys.ENTER)
+time.sleep(1)
+self.check_for_row_in_list_table('1: Buy peacock feathers')
+
+This is what’s called an “explicit wait”. That’s by contrast with “implicit waits”: in certain cases, Selenium tries to wait “automatically” for you when it thinks the page is loading. It even provides a method called implicitly_wait that lets you control how long it will wait if you ask it for an element that doesn’t seem to be on the page yet.
+
+The problem is that those time.sleeps is that we currently wait for one second, but who’s to say that’s the right amount of time?
+For most tests we run against our own machine, one second is way too long, and it’s going to really slow down our FT runs. 0.1s would be fine. But the problem is that if you set it that low, every so often you’re going to get a spurious failure because, for whatever reason, the laptop was being a bit slow just then. And even at 1s you can never be quite sure you’re not going to get random failures that don’t indicate a real problem, and false positives in tests are a real annoyance
+
+fix?
+something like this
 ```
+```py
+from selenium.common.exceptions import WebDriverException
+MAX_WAIT = 10
+
+def test():
+  start_time = time.time()
+  while True:
+    try:
+        # try to test something
+    except (WebDriverException) as e:
+        if time.time() - start_time > MAX_WAIT:
+            raise e # if our max time has passed, test fails
+        time.sleep(0.5) # else we'll wait for 0.5s and try again
+```
+
+
 
 ## Random<a name="Random"></a>
 ```py
