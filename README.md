@@ -1061,7 +1061,8 @@ page is loading. It even provides a method called implicitly_wait that lets you
 control how long it will wait if you ask it for an element that doesn’t seem to 
 be on the page yet.
 
-The problem is that those time.sleeps is that we currently wait for one second, but who’s to say that’s the right amount of time?
+The problem is that those time.sleeps is that we currently wait for one second, but 
+who’s to say that’s the right amount of time?
 For most tests we run against our own machine, one second is way too long, and it’s 
 going to really slow down our FT runs. 0.1s would be fine. But the problem is that 
 if you set it that low, every so often you’re going to get a spurious failure because
@@ -1086,6 +1087,15 @@ def test():
             raise e # if our max time has passed, test fails
         time.sleep(0.5) # else we'll wait for 0.5s and try again
 ```
+```
+>Ensuring test isolation and managing global state
+ Different tests shouldn't affect one another. This means we need to reset any permanent 
+ state at the end of each test. 
+ In case of django, test runner helps us do this by creating a test db which wipes clean between each test
+```
+
+
+
 
 
 
