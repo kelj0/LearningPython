@@ -30,12 +30,14 @@ def main():
 
             if not wordChc:
                 definitions = []
-                for definition in data[:3]:
-                    definitions.append(cleanhtml(definition['definition']))
-                    definitions.append("------------")
-                os.system('notify-send "definitions from dictionary.com:[{}\n{}"'\
-                .format(word+"]\n------------",'\n'.join(definitions)))
-            
+                try:
+                    for definition in data[:3]:
+                        definitions.append(cleanhtml(definition['definition']))
+                        definitions.append("------------")
+                    os.system('notify-send "definitions from dictionary.com:[{}\n{}"'\
+                    .format(word+"]\n------------",'\n'.join(definitions)))
+                except KeyError:
+                    os.system('notify-send "no results in dictionary.com"')
             try:    
                 dataURB = json.loads(reqURB.text)['list']
             except TypeError:
