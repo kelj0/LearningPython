@@ -1,6 +1,6 @@
 #! /usr/bin/python3
 
-import requests,json,sys,os,pyperclip,re,keyboard
+import requests,json,sys,os,pyperclip,re
 
 def cleanhtml(raw_html):
     cleanr = re.compile('<.*?>')
@@ -11,8 +11,8 @@ word = "test"
 
 def main():
     global word
-    print("Starting script... press 'ctrl+space' to turn off")
-    while not keyboard.is_pressed('ctrl+space'):
+    print("Starting script... press 'ctrl+c' in terminal to turn off")
+    while True:
         if pyperclip.paste() != word and len(pyperclip.paste().split())<5:
             word = pyperclip.paste()
             wordChc=False
