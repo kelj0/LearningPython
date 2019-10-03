@@ -42,7 +42,7 @@ def startChatRoom(ip,port):
             if sock == s:
                 sockfd, addr = s.accept()
                 sockfd.send("Enter username: ".encode())
-                user = Client(addr[0],addr[1],str(sockfd.recv(1024).decode())[:-2])
+                user = Client(addr[0],addr[1],str(sockfd.recv(1024).decode())[:-1])
                 CONNECTION_LIST[sockfd] = user.getUsername()
                 print("[{0}:{1}] {2} connected".format(addr[0],addr[1],user.getUsername()))
             else:
@@ -64,7 +64,10 @@ def startAdminPanel(ip,port):
     logged_in = False
     connections = [s]
     while 1:
-        r = select.select(connections,[],[])[0]
+        try:
+            r = select.select(connections,[],[])[0]
+        except ValueError:
+            pass
         for sock in r:
             if sock == s:
                 if not logged_in:
@@ -72,13 +75,28 @@ def startAdminPanel(ip,port):
                     connections.append(sock)
                     sock.send("Username: ".encode())
                     username = str(sock.recv(RECV_BUFFER).decode())
-                    print("Admin connected %s" % username)
-                    logged_in = True
+                    sock.send("Password: ".encode())
+                    password = str(sock.recv(RECV_BUFFER).decode())
+                    if username == "root\n" and password == "root\n":
+                        print("Admin connected %s" % username)
+                        logged_in = True
+                    else:
+                        sock.send("Wrong username/password.\n".encode())
+                        logged_in = False
+                        sock.close()
+                        break
+                else:
+                    sock.send("Admin already logged in!".encode())
             else:
                 try:
                     data = sock.recv(RECV_BUFFER)
                     if data:
-                        sock.send(("Got your message: %s" % data.decode()).encode())
+                        if ''.join(data[:5]) == "/kick":
+                            sock.send(("Kicking {}".format(''.join(data[5:]))).encode())
+                        elif ''.join(data[:5]) == "/ban":
+                            sock.send(("Kicking {}".format(''.join(data[5:]))).encode())
+                        else:
+                            sock.send("Invalid commands!\n Possible commands:\n/kick name\n/ban name\n ".encode())
                 except:
                     print("Admin disconnected")
                     logged_in = False
